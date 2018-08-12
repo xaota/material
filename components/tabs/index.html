@@ -1,0 +1,13 @@
+<script src="./material-tabs.js" type="module"></script>
+
+<template id="material-tabs">
+  <link rel="stylesheet" href="../../style/clear.css" />
+  <link rel="stylesheet" href="./material-tabs.css" />
+
+  <div id="tabs">
+    <slot id="tabsSlot" name="title"></slot>
+  </div>
+  <div id="panels">
+    <slot id="panelsSlot"></slot>
+  </div>
+</template>

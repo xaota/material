@@ -1,0 +1,53 @@
+:host {
+  display: block;
+}
+
+div.root {
+  background: #fff;
+  border: 1px sold #eee;
+  box-shadow: 0 1px 2px #000;
+  box-sizing: border-box;
+}
+
+header {
+  display: block;
+  position: relative;
+  cursor: default;
+}
+
+header > p {
+  display: inline-block;
+  padding: 1em;
+}
+
+header p.summary {
+  width: 33%;
+  color: black;
+}
+
+header p.description {
+  color: gray;
+}
+
+header:after {
+  content: '#';
+  position: absolute;
+  right: 1em;
+  top: 1em;
+  cursor: pointer;
+  color: black;
+}
+
+slot {
+  display: block;
+  color: black;
+  padding: 0 1em;
+  background-color: white;
+  max-height: 0;
+  overflow: hidden;
+  transition: max-height 0.2s ease-out, padding 0.2s ease-in;
+}
+
+div.root.expand > slot {
+  padding: 1em;
+}

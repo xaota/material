@@ -1,0 +1,101 @@
+@charset "utf-8";
+
+:host {
+  display: inline-block;
+  --duration: .4s;
+  --size: 200px;
+  --radius: 2px;
+  --contrast: 1px;
+
+  --fill-static: var(--accent);
+  --fill-active: var(--accent-hover);
+  --fill-ripple: var(--accent-background);
+  --fill-stroke: var(--accent-text);
+  --text-shadow: var(--color-text);
+}
+
+:host([type="success"]) {
+  --fill-static: var(--success);
+  --fill-active: var(--success-hover);
+  --fill-ripple: var(--success-background);
+  --fill-stroke: var(--success-text);
+  --text-shadow: var(--color-text);
+}
+
+:host([type="primary"]) {
+  --fill-static: var(--primary);
+  --fill-active: var(--primary-hover);
+  --fill-ripple: var(--primary-background);
+  --fill-stroke: var(--primary-text);
+  --text-shadow: var(--color-text);
+}
+
+:host([type="details"]) {
+  --fill-static: var(--details);
+  --fill-active: var(--details-hover);
+  --fill-ripple: var(--details-background);
+  --fill-stroke: var(--details-text);
+  --text-shadow: var(--color-text-action);
+}
+
+:host([type="warning"]) {
+  --fill-static: var(--warning);
+  --fill-active: var(--warning-hover);
+  --fill-ripple: var(--warning-background);
+  --fill-stroke: var(--warning-text);
+  --text-shadow: var(--color-text);
+}
+
+:host([type="failure"]) {
+  --fill-static: var(--failure);
+  --fill-active: var(--failure-hover);
+  --fill-ripple: var(--failure-background);
+  --fill-stroke: var(--failure-text);
+  --text-shadow: var(--color-text);
+}
+
+button {
+  border-radius: var(--radius);
+  background-color: var(--fill-static);
+  color: var(--fill-stroke);
+  text-shadow: 0 0 var(--contrast) var(--text-shadow);
+  border: none;
+  display: block;
+  box-sizing: border-box;
+  user-select: none;
+  font-size: 1.1em;
+  font-weight: 100;
+  padding: 0.4em 1.2em 0.5em;
+  outline: none;
+  text-align: center;
+  cursor: pointer;
+  position: relative;
+  overflow:hidden;
+  text-transform: lowercase;
+  font-variant: small-caps;
+}
+
+button:hover {
+  background-color: var(--fill-active);
+}
+
+div.ripple {
+  background: var(--fill-ripple);
+  position: absolute;
+  border-radius: 50%;
+  width: 0;
+  height: 0;
+  transition: var(--duration) all ease-in;
+  transform: translate(-50%, -50%);
+}
+
+div.ripple.run {
+  width: var(--size);
+  height: var(--size);
+  background-color: var(--fill-static);
+}
+
+slot {
+  display: block;
+  position: relative;
+}

@@ -1,0 +1,25 @@
+:host {
+  text-align: left;
+  border-right: 1px solid #ccc;
+  padding-top: var(--vertical-padding);
+}
+
+a {
+  display: block;
+  color: #333;
+  font: normal 16px Tahoma;
+  padding: 5px 10px;
+  text-transform: lowercase;
+  text-decoration: none;
+  cursor: pointer;
+}
+
+a.active {
+  border-right: 1px solid var(--accent);
+  background-color: var(--accent-background);
+}
+
+a:hover {
+  color: white;
+  background-color: var(--accent);
+}

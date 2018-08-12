@@ -1,0 +1,30 @@
+@import 'import.css';
+
+body {
+  height: 100vh;
+  overflow: hidden;
+  display: grid;
+  grid-template-columns: var(--header-size) auto var(--messenger-size);
+  grid-template-rows: var(--panel-size) auto;
+  grid-template-areas:  "settings header  header"
+                        "settings general messenger";
+}
+
+header-panel {
+  /* background-color: var(--background); */
+  grid-column: header;
+  /* grid-row: header; */
+  align-self: end;
+}
+
+settings-panel {
+  grid-row: settings;
+}
+
+general-page {
+  grid-row: general;
+}
+
+messenger-layer {
+  grid-row: messenger;
+}

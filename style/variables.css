@@ -1,0 +1,6 @@
+:root {
+  --font: -apple-system, system-ui, BlinkMacSystemFont, "Segoe UI", "Roboto", "Ubuntu", "Helvetica Neue", sans-serif;
+
+  --indent: 1em;
+  --height: 100vh;
+}

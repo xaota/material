@@ -7,58 +7,107 @@
   --radius: 2px;
   --contrast: 1px;
 
-  --fill-static: var(--accent);
-  --fill-active: var(--accent-hover);
-  --fill-ripple: var(--accent-background);
-  --fill-stroke: var(--accent-text);
-  --text-shadow: var(--color-text);
-}
-
-:host([type="success"]) {
-  --fill-static: var(--success);
-  --fill-active: var(--success-hover);
-  --fill-ripple: var(--success-background);
-  --fill-stroke: var(--success-text);
-  --text-shadow: var(--color-text);
+  --fill-static: var(--color-default);
+  --fill-active: var(--color-default-dark);
+  --fill-ripple: var(--color-default-light);
+  --text-stroke: var(--color-text-darken);
+  --text-shadow: var(--color-text-addition);
 }
 
 :host([type="primary"]) {
-  --fill-static: var(--primary);
-  --fill-active: var(--primary-hover);
-  --fill-ripple: var(--primary-background);
-  --fill-stroke: var(--primary-text);
-  --text-shadow: var(--color-text);
+  --fill-static: var(--color-primary);
+  --fill-active: var(--color-primary-dark);
+  --fill-ripple: var(--color-primary-light);
+  --fill-stroke: var(--color-text-lighten);
 }
 
-:host([type="details"]) {
-  --fill-static: var(--details);
-  --fill-active: var(--details-hover);
-  --fill-ripple: var(--details-background);
-  --fill-stroke: var(--details-text);
-  --text-shadow: var(--color-text-action);
+:host([type="secondary"]) {
+  --fill-static: var(--color-secondary);
+  --fill-active: var(--color-secondary-dark);
+  --fill-ripple: var(--color-secondary-light);
+  --fill-stroke: var(--color-text-lighten);
+}
+
+:host([type="darken"]) {
+  --fill-static: var(--color-darken);
+  --fill-active: var(--color-darken-dark);
+  --fill-ripple: var(--color-darken-light);
+  --fill-stroke: var(--color-text-lighten);
+}
+
+:host([type="lighten"]) {
+  --fill-static: var(--color-lighten);
+  --fill-active: var(--color-lighten-dark);
+  --fill-ripple: var(--color-lighten-light);
+}
+
+:host([type="success"]) {
+  --fill-static: var(--color-success);
+  --fill-active: var(--color-success-dark);
+  --fill-ripple: var(--color-success-light);
+  --fill-stroke: var(--color-text-lighten);
+}
+
+:host([type="process"]) {
+  --fill-static: var(--color-process);
+  --fill-active: var(--color-process-dark);
+  --fill-ripple: var(--color-process-light);
+  --fill-stroke: var(--color-text-lighten);
 }
 
 :host([type="warning"]) {
-  --fill-static: var(--warning);
-  --fill-active: var(--warning-hover);
-  --fill-ripple: var(--warning-background);
-  --fill-stroke: var(--warning-text);
-  --text-shadow: var(--color-text);
+  --fill-static: var(--color-warning);
+  --fill-active: var(--color-warning-dark);
+  --fill-ripple: var(--color-warning-light);
 }
 
 :host([type="failure"]) {
-  --fill-static: var(--failure);
-  --fill-active: var(--failure-hover);
-  --fill-ripple: var(--failure-background);
-  --fill-stroke: var(--failure-text);
-  --text-shadow: var(--color-text);
+  --fill-static: var(--color-failure);
+  --fill-active: var(--color-failure-dark);
+  --fill-ripple: var(--color-failure-light);
+  --fill-stroke: var(--color-text-lighten);
 }
 
+:host([type="info"]) {
+  --fill-static: var(--color-info);
+  --fill-active: var(--color-info-dark);
+  --fill-ripple: var(--color-info-light);
+  --fill-stroke: var(--color-text-lighten);
+}
+
+:host([type="details"]) {
+  --fill-static: var(--color-details);
+  --fill-active: var(--color-details-dark);
+  --fill-ripple: var(--color-details-light);
+  --fill-stroke: var(--color-text-lighten);
+}
+
+:host([type="accent"]) {
+  --fill-static: var(--color-accent);
+  --fill-active: var(--color-accent-dark);
+  --fill-ripple: var(--color-accent-light);
+  --fill-stroke: var(--color-text-lighten);
+}
+
+:host([type="alert"]) {
+  --fill-static: var(--color-alert);
+  --fill-active: var(--color-alert-dark);
+  --fill-ripple: var(--color-alert-light);
+}
+
+:host([type="error"]) {
+  --fill-static: var(--color-error);
+  --fill-active: var(--color-error-dark);
+  --fill-ripple: var(--color-error-light);
+  --fill-stroke: var(--color-text-lighten);
+}
+
+/* */
 button {
   border-radius: var(--radius);
   background-color: var(--fill-static);
   color: var(--fill-stroke);
-  text-shadow: 0 0 var(--contrast) var(--text-shadow);
+  /* text-shadow: 0 0 var(--contrast) var(--text-shadow); */
   border: none;
   display: block;
   box-sizing: border-box;

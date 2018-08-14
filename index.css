@@ -1,8 +1,14 @@
 @import 'style/import.css';
+@import 'palette.css';
 
 :root {
-  --background: #333;
-  --foreground: #eee;
+  --background-light: #fff;
+  --background: #eee;
+  --background-dark: #ddd;
+
+  --foreground-light: #222;
+  --foreground: #111;
+  --foreground-dark: #000;
 
   --aside: 20%;
   --padding: var(--indent) calc(var(--indent) / 2);
@@ -31,7 +37,7 @@ aside {
 
 aside a {
   display: block;
-  background: #444;
+  background: var(--background-light);
   color: silver;
   margin: calc(var(--indent) / 2) 0;
   padding: var(--padding);
@@ -91,7 +97,7 @@ h6 { font-size: 18px; }
 p { line-height: 1.5; margin: 16px 0; }
 
 div.source {
-  background: #444;
+  background: var(--background-light);
   padding: var(--indent) 1.2em;
   margin: var(--indent);
   border-left: 1.2em solid #383838;
@@ -103,7 +109,7 @@ div.source.center {
 pre {
   font-family: "Courier New", Couriery, monospace;
   font-weight: 100;
-  background: #444;
+  background: var(--background-light);
   padding: var(--padding);
   padding-left: 1.2em;
   margin: var(--indent);

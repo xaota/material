@@ -28,7 +28,7 @@ const element = 'material-button';
     }
   }
 
-customElements.define(element, MaterialButton);
+window.customElements.define(element, MaterialButton);
 
 // #region [Private]
 

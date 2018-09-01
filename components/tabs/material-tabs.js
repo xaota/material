@@ -1,4 +1,4 @@
-import Material from '../Material.js';
+import Material from '../../script/Material.js';
 
 const element = 'material-tabs';
 customElements.define(element, class MaterialTabs extends Material {

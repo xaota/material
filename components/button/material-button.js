@@ -1,4 +1,4 @@
-import Material, {$, drawRipple, pointerOffset} from '../Material.js';
+import Material, {$, drawRipple, pointerOffset} from '../../script/Material.js';
 const element = 'material-button';
 
 /** {MaterialButton} Кнопка @class @extends {Material}

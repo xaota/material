@@ -70,6 +70,7 @@ customElements.define(element, NewComponent);
 ## Список компонент
 - [ ] Button / Кнопки
 - [ ] Input / Поля ввода
+- [ ] Select / Выбор
 - [ ] Switch / Переключатели
 - [ ] Chips / Теги
 - [ ] Expand / Спойлеры
@@ -91,13 +92,13 @@ customElements.define(element, NewComponent);
 - Counter?
 - Progress
 - Loader
-- Select
 - Table
 - Bar
 - BarApplication
 - BarNavigation
 - BarSide
 - BarSideNavigation
+- Toolbar
 - Charm
 - Drawer
 - Avatar

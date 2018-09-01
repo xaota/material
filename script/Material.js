@@ -2,10 +2,6 @@
   * @property {DocumentImport} template html-шаблон компонента
   * @property {DocumentFragment} content готовое к вставке содержимое компонента
   * @property {string} basepath путь до компонента
-  * @method init() инициализация содержимого компонента
-  * @method mount() инициализация содержимого компонента (после рендеринга)
-  * @method event(...) отправка события во внешний DOM
-  * @method render() вставка содержимого компонента в shadowRoot
   */
   export default class Material extends HTMLElement {
   /**
@@ -16,21 +12,25 @@
   constructor(id, mode = 'open') {
       super();
       this.shadow = this.attachShadow({mode});
-      const {template, basepath} = include(id);
-      stylesheet(template.content, basepath);
-      this.template = template;
+      const data = include(id);
+      stylesheet(data);
+      this.template = data.template;
     }
 
-  /** */
+  /**
+    * @method render вставка содержимого компонента в shadowRoot
+    */
     render() {
       if (!this.ownerDocument.defaultView) return; // !
-      this.content = this.template.content.cloneNode(true);
+      this.content = this.template.cloneNode(true);
       this.init();
       this.shadow.appendChild(this.content);
       return this;
     }
 
-  /** */
+  /**
+    * @method event отправка события во внешний DOM
+    */
     event(event, detail = null) {
       const options = {bubbles: true, composed: true};
       event = new CustomEvent(event, {detail, ...options});
@@ -38,13 +38,15 @@
     }
 
     // #region [Behavior] @verride
-    /** */
+    /**
+      * @method init инициализация содержимого компонента
+      */
       init() {
         return this;
       }
 
     /**
-      *
+      * @method mount инициализация содержимого компонента (после рендеринга)
       */
       mount() {
         return this;
@@ -52,6 +54,7 @@
 
     /** */
       connectedCallback() {
+        // this.ready() // this.init()
         this.render();
         this.mount();
       }
@@ -88,30 +91,86 @@
   }
 
 // #region [Private]
-/** */
-  function include(id) {
-    const url = basepath(document.baseURI);
-    const doc = $('#' + id).import;
-    return {
-      template: doc.getElementById(id),
-      basepath: basepath(doc.URL).slice(url.length)
-    };
-  }
+  /** */
+    function include(id) {
+      const included = $('#' + id).import;
+      return {
+        basepath: URL(document.baseURI),
+        included: URL(included.URL),
+        template: included.getElementsByTagName('template')[0].content
+      };
+    }
 
-/** */
-  function basepath(url) {
-    return url.substr(0, url.lastIndexOf('/') + 1);
-  }
+  /** */
+    function stylesheet({basepath, included, template}) {
+      const sheets = $(['link[rel="stylesheet"]:not([data-absolute])'], template);
+      sheets.forEach(link => {
+        const href = URL(link.getAttribute('href'));
+        const url = absolutePath(basepath, included, href);
+        link.href = url;
+        link.dataset.absolute = true;
+      });
+    }
 
-/** */
-  function stylesheet(node, path) {
-    const sheets = $(['link[rel="stylesheet"]:not([data-absolute])'], node);
-    sheets.forEach(link => {
-      const url = link.getAttribute('href');
-      link.href = path + url;
-      link.dataset.absolute = true;
-    });
-  }
+  /**  */
+    function absolutePath(rootpath, basepath, relative) {
+      const folders = rootpath.folders.every((e, i) => relative.folders[i] === e)
+        ? relative.folders.slice(rootpath.folders.length)
+        : relative.folders;
+
+      return [
+        basepath.protocol + ":/",
+        basepath.host,
+        basepath.folders.slice(0, basepath.folders.length - relative.parents).concat(folders).join('/'),
+        relative.file
+      ].join('/');
+    }
+
+  /** Разбор url */
+    function URL(url) {
+      const a = document.createElement('a');
+      a.href = url;
+      const file = (a.pathname.match(/\/([^/?#]+)$/i) || [undefined, ''])[1];
+      const index = file.lastIndexOf('.');
+      const hash = a.hash.replace('#', '');
+      const folders = a.pathname.replace(/^\//, '').split('/');
+      const parents = url.match(/^(\.\.\/)+/g);
+
+      if (folders.length && [file, ''].includes(folders.slice(-1)[0])) folders.pop();
+
+      return {
+        source: url,
+        protocol: a.protocol.replace(':', ''),
+        host: a.hostname,
+        port: a.port,
+        query: a.search,
+        params: fromQuery(a.search),
+        file,
+        extension: index > -1 ? file.substr(index + 1) : '',
+        hash,
+        path: a.pathname.replace(/^([^/])/, '/$1'),
+        relative: (a.href.match(/tps?:\/\/[^/]+(.+)/) || [undefined, ''])[1],
+        folders,
+        segment: hash.split('/'),
+        parents: parents !== null ? parents[0].split('/').length - 1 : 0,
+        neighbor: url.indexOf('./') === 0
+      };
+    }
+
+  /** Создание объекта из query-строки
+    * @param {string} string query-строка (если первый символ '?' - он будет проигнорирован)
+    * @param {boolean} decode если передан, данные будут декодированы
+    * @return {object} список параметров
+    */
+    function fromQuery(string, decode = false) {
+      const result = {}, segment = string.replace(/^\?/, '').split('&');
+      for (let i = 0; i < segment.length; ++i) {
+        if (!segment[i]) continue;
+        const temp = segment[i].split('=');
+        result[temp[0]] = decode ? decodeURIComponent(temp[1]) : temp[1];
+      }
+      return result;
+    }
 // #endregion
 
 /** */

@@ -16,11 +16,76 @@
   border-radius: 4px;
   background-color: #616161;
   position: absolute;
-  left: 50%;
-  transform: translateX(-50%);
-  top: 120%;
+  z-index: 1;
 }
 
 :host(:hover) > div.root {
   display: block;
 }
+
+/* #region [Layout] Положение подсказки */
+  :host > div.root, :host([y="top"]) > div.root {
+    bottom: calc(100% + 8px);
+  }
+  :host([y="bottom"]) > div.root {
+    top: calc(100% + 8px);
+    bottom: auto;
+  }
+  :host([y="center"]) > div.root {
+    top: 50%;
+    bottom: auto;
+    transform: translateY(-50%);
+  }
+
+  :host > div.root, :host([x="center"]) > div.root {
+    left: 50%;
+    transform: translateX(-50%);
+  }
+  :host([x="left"]) > div.root {
+    left: auto;
+    right: calc(100% + 8px);
+    transform: none;
+  }
+  :host([x="right"]) > div.root {
+    left: calc(100% + 8px);
+    transform: none;
+  }
+
+  :host([x="center"][y="center"]) > div.root {
+    transform: translate(-50%, -50%);
+  }
+  :host([x="right"][y="center"]) > div.root,
+  :host([x="left"][y="center"]) > div.root {
+    transform: translate(0, -50%)
+  }
+
+  /* INSET */
+  :host([inset]) > div.root, :host([inset][y="top"]) > div.root {
+    top: 8px;
+    bottom: auto;
+  }
+  :host([inset][y="bottom"]) > div.root {
+    bottom: 8px;
+    top: auto;
+  }
+  :host([inset][y="center"]) > div.root {
+    top: 50%;
+    bottom: auto;
+    transform: translateY(-50%);
+  }
+
+  :host([inset][x="left"]) > div.root {
+    left: 8px;
+    right: auto;
+    /* transform: none; */
+  }
+  :host([inset][x="right"]) > div.root {
+    left: auto;
+    right: 8px;
+    /* transform: none; */
+  }
+
+  :host([inset][x="center"][y="center"]) > div.root {
+    transform: translate(-50%, -50%);
+  }
+/* #endregion */

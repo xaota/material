@@ -5,7 +5,7 @@ about: Укажите примеры использования и опишит�
 ---
 
 ```html
-<link rel="import" href="/material/components/" id="" />
+<link rel="import" href="/material/components/" id="material-" />
 
 
 ```

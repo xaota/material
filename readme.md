@@ -93,18 +93,18 @@ window.customElements.define(element, NewComponent);
 > Смело используйте новые технологии и не беспокойтесь об IE или браузерах, в которых что-то пока не работает. Скоро все будет топчик!
 
 ## Список компонент (готово / в процессе)
-- [ ] Button / Кнопки
-- [ ] Input / Поля ввода
-- [ ] Select / Выбор
-- [ ] Switch / Переключатели
-- [ ] Chips / Теги
-- [ ] Expand / Развороты
-- [ ] Tabs / Вкладки
-- [ ] Header (ApplicationBar) / Колонтитул
-- [ ] Paper (Panel) / Панель / Блок для размещения информации
-- [ ] List / Списки
-- [ ] Drop / Выпадающие блоки
-- [ ] ToolTip / Подсказки
+- [ ] Button | Кнопки
+- [ ] Input | Поля ввода
+- [ ] [#4](//github.com/xaota/material/issues/4) Select | Выбор
+- [ ] Switch | Переключатели
+- [ ] Chips | Теги
+- [ ] Expand | Развороты
+- [ ] Tabs | Вкладки
+- [ ] [#8](//github.com/xaota/material/issues/8) Header (ApplicationBar) | Колонтитул
+- [ ] Paper (Panel) | Панель / Блок для размещения информации
+- [ ] List | Списки
+- [ ] Drop | Выпадающие блоки
+- [ ] Tooltip | Подсказки
 
 > Эти компоненты уже можно использовать в ваших проектах, со временем в них все будет доведено "до ума", не потребуется(?) дополнительных действий с вашей стороны
 
@@ -120,8 +120,8 @@ window.customElements.define(element, NewComponent);
 - Calendar
 - Rating
 - Counter?
-- Progress
-- Loader
+- [#10](//github.com/xaota/material/issues/10) Progress | Отображение уровня загрузки
+- [#9](//github.com/xaota/material/issues/9) Loader | Отображение бесконечной загрузки
 - Table
 - Bar
 - BarNavigation
@@ -143,7 +143,7 @@ window.customElements.define(element, NewComponent);
 - Stepper
 - Master
 - Wizard
-- Search
+- [#11](//github.com/xaota/material/issues/11) Search | Строка поиска
 - Popup
 - Modal
 - BreadCrumb

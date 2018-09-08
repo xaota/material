@@ -109,7 +109,7 @@ window.customElements.define(element, NewComponent);
 - [ ] Paper (Panel) | Панель / Блок для размещения информации
 - [ ] [#15](//github.com/xaota/material/issues/15) List | Списки
 - [ ] Drop | Выпадающие блоки
-- [ ] Tooltip | Подсказки
+- [ ] [#16](//github.com/xaota/material/issues/16) Tooltip | Подсказки
 
 > Эти компоненты уже можно использовать в ваших проектах, со временем в них все будет доведено "до ума", не потребуется(?) дополнительных действий с вашей стороны
 

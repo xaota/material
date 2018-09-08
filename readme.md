@@ -92,24 +92,29 @@ window.customElements.define(element, NewComponent);
 
 > Смело используйте новые технологии и не беспокойтесь об IE или браузерах, в которых что-то пока не работает. Скоро все будет топчик!
 
-## Список компонент (готово / в процессе)
+## Список компонент
+> Около названий некоторых компонент есть сылки на задачу (типа тз) для просмотра подробностей
+
+### Готово / В процессе улучшения
 - [ ] [#12](//github.com/xaota/material/issues/12) Button | Кнопки
 - [ ] [#13](//github.com/xaota/material/issues/13) Input | Поля ввода
-- [ ] [#4](//github.com/xaota/material/issues/4) Select | Выбор
-- [ ] Switch | Переключатели
+- [ ] [#4](//github.com/xaota/material/issues/4) Select | Поле выбора из выпадающего списка
+- [ ] Switch | Выключатели
+- [ ] Checkbox | Флажки
+- [ ] Radio | Переключатели
 - [ ] Chips | Теги
 - [ ] Expand | Развороты
 - [ ] Tabs | Вкладки
 - [ ] [#8](//github.com/xaota/material/issues/8) Header (ApplicationBar) | Колонтитул
 - [ ] Paper (Panel) | Панель / Блок для размещения информации
-- [ ] List | Списки
+- [ ] [#15](//github.com/xaota/material/issues/15) List | Списки
 - [ ] Drop | Выпадающие блоки
 - [ ] Tooltip | Подсказки
 
 > Эти компоненты уже можно использовать в ваших проектах, со временем в них все будет доведено "до ума", не потребуется(?) дополнительных действий с вашей стороны
 
 ### ROADMAP (список компонент для реализации)
-- Textarea | Многострочное поле ввода
+- [#14](//github.com/xaota/material/issues/14) Textarea | Многострочное поле ввода
 - Badge | Счетчик уведомлений
 - Cards
 - Structure

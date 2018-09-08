@@ -1,12 +1,13 @@
 #  Web Components / Material UI Design
 
 ## Как добавить в проект
-Просто положите папку репозитория в корне вашего сервера.\
-В будущем будет npm пакет.
+Просто положите папку репозитория в корне вашего сервера.
+
+> В будущем будет npm пакет.
 
 ## Как собрать
 Polymer или Vue.js работают с веб-компонентами.\
-А вообще, можно ничего не собирать, они нативно работают в Chrome, но для прода все-таки стоит подумать о сборщике.
+Вообще, можно ничего не собирать, они нативно работают в Chrome, но для прода все-таки стоит подумать о сборщике.
 
 ## Как использовать
 Добавьте импорт компонента на страницу (например, кнопка)
@@ -48,10 +49,10 @@ const element = 'new-component';
       super(element);
     }
 
-    // ... тут логика компонента
+    // ... тут логика компонента (если нужно)
   }
 
-customElements.define(element, NewComponent);
+window.customElements.define(element, NewComponent);
 ```
 5. Добавьте стили к вашему компоненту (`new-component.css`).
 6. Примените компонент на странице `/index.html` (это такая свалка для предпросмотра).
@@ -67,22 +68,30 @@ customElements.define(element, NewComponent);
 6. Когда будет больше компонент, надо все отрефакторить.
 7. Для самоорганизации можно использовать `issue` и `projects` этого репозитория, а для общей документации - `wiki`.
 
-## Список компонент
+> Смело используйте новые технологии и не беспокойтесь об IE или браузерах, в которых что-то пока не работает. Скоро все будет топчик!
+
+## Список компонент (готово / в процессе)
 - [ ] Button / Кнопки
 - [ ] Input / Поля ввода
 - [ ] Select / Выбор
 - [ ] Switch / Переключатели
 - [ ] Chips / Теги
-- [ ] Expand / Спойлеры
+- [ ] Expand / Развороты
 - [ ] Tabs / Вкладки
+- [ ] Header (ApplicationBar) / Колонтитул
+- [ ] Paper / Панель / Блок для размещения информации
+- [ ] List / Списки
+- [ ] Drop / Выпадающие блоки
+- [ ] ToolTip / Подсказки
 
+> Эти компоненты уже можно использовать в ваших проектах, со временем в них все буудет доведено "до ума", не потребуется(?) дополнительных действий
+
+### ROADMAP (список компонент для реализации)
 - Badge
 - Cards
-- List
 - Structure
 - StructureGrid
 - Panel
-- Paper
 - PickerDate
 - PickerTime
 - PickerDateTime
@@ -94,7 +103,6 @@ customElements.define(element, NewComponent);
 - Loader
 - Table
 - Bar
-- BarApplication
 - BarNavigation
 - BarSide
 - BarSideNavigation
@@ -107,11 +115,9 @@ customElements.define(element, NewComponent);
 - Menu
 - MenuVertical
 - MenuHorizontal
-- Drop
 - Notify
 - Toast
 - Snack
-- ToolTip
 - Hint
 - Stepper
 - Master
@@ -125,7 +131,6 @@ customElements.define(element, NewComponent);
 - Upload
 - Typography
 - Link
-- Header
 - Caption
 - Title?
 - Contents
@@ -149,6 +154,7 @@ customElements.define(element, NewComponent);
 - Video
 - Layer
 - Ad
+- Banner
 - Divider
 - Blockquote
 - Remark
@@ -158,4 +164,4 @@ customElements.define(element, NewComponent);
 
 ### Примеры
 Можно посмотреть на реализации Material элементов, например, тут\
-https://material-ui.com/demos/buttons/
+https://material-ui.com/demos/buttons/ (кнопки)

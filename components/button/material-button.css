@@ -146,5 +146,5 @@ div.ripple.run {
 
 slot {
   display: block;
-  position: relative;
+  /* position: relative; */
 }

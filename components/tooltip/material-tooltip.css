@@ -1,0 +1,26 @@
+@charset "utf-8";
+
+:host {
+  display: inline-block;
+  position: relative;
+}
+
+:host > div.root {
+  display: none;
+  color: #fff;
+  padding: 4px 8px;
+  font-size: 0.625rem;
+  max-width: 300px;
+  font-family: "Roboto", "Helvetica", "Arial", sans-serif;
+  line-height: 1.4em;
+  border-radius: 4px;
+  background-color: #616161;
+  position: absolute;
+  left: 50%;
+  transform: translateX(-50%);
+  top: 120%;
+}
+
+:host(:hover) > div.root {
+  display: block;
+}

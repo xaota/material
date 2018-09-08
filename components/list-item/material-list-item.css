@@ -1,0 +1,21 @@
+@charset "utf-8";
+
+:host, slot {
+  display: block;
+}
+
+slot {
+  /* padding: 16px 24px; */
+  cursor: pointer;
+}
+
+slot:hover {
+  background: rgba(0, 0, 0, 0.08);
+}
+
+:host ::slotted(*) {
+  display: block;
+  text-decoration: none;
+  padding: 16px 24px;
+  white-space: nowrap;
+}

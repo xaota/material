@@ -1,0 +1,17 @@
+@charset "utf-8";
+
+:host {
+  display: inline-block;
+  --indent: -8px;
+}
+
+div.root {
+  /* display: inline-block; */
+  position: relative;
+}
+
+::slotted(material-drop) {
+  position: absolute;
+  top: var(--indent);
+  left: var(--indent);
+}

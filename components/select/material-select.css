@@ -1,0 +1,111 @@
+@charset "utf-8";
+
+:host {
+  display: inline-block;
+  --duration: .2s;
+  --size: 200px;
+  --radius: 2px;
+  --contrast: 1px;
+
+  --stroke-static: var(--accent-hover);
+  --stroke-active: var(--accent);
+  --stroke-ripple: var(--accent-background);
+  --fill-ripple:   var(--color-drop);
+
+  --position: 50%;
+}
+
+div.root {
+  box-sizing: border-box;
+  user-select: none;
+  font: normal 1em / normal Tahoma, sans-serif;
+  transition: 0.3s all ease;
+  position: relative;
+  overflow: hidden;
+  vertical-align: top;
+  outline: none;
+  padding: 0;
+  border-bottom: 1px solid var(--stroke-static);
+}
+
+div.root:hover {
+  border-bottom-color: var(--stroke-ripple);
+}
+
+div.root:focus-within {
+  border-bottom-color: var(--stroke-active);
+}
+
+div.root > input {
+  box-sizing: border-box;
+  outline: none;
+  display: block;
+  width: 100%;
+  margin: 0;
+  padding: 1.2em 0.6em;
+  background: none;
+  border: none;
+  font: normal 1em / normal Tahoma, sans-serif;
+  transition: 0.2s all ease;
+}
+
+div.root > input:focus, div.root > input:valid {
+  padding: 1.5em 0.6em 0.9em;
+}
+
+div.root > input + label {
+  position: absolute;
+  color: gray;
+  left: 0.6em;
+  pointer-events: none;
+  transition: 0.2s all ease;
+  top: 1.5em;
+  font: normal 1em / normal Tahoma, sans-serif;
+}
+
+div.root > input:focus + label, div.root > input:valid + label {
+  font-size: .8em;
+  color: var(--stroke-active);
+  top: .2em;
+}
+
+div.ripple {
+  background: var(--fill-ripple);
+  position: absolute;
+  border-radius: 50%;
+  width: 0;
+  height: 0;
+  transition: var(--duration) all ease-in;
+  transform: translate(-50%, -50%);
+}
+
+div.ripple.run {
+  width: var(--size);
+  height: var(--size);
+  background-color: var(--fill-static);
+}
+
+slot {
+  display: block;
+  position: relative;
+}
+
+/* div.root:before, */
+div.root:after {
+  content: '';
+  position: absolute;
+  display: block;
+  height: 0;
+  width: 0;
+  bottom: 0;
+  left: 50%;
+  border: 1px solid var(--stroke-active);
+  border-left: none;
+  border-right: none;
+  transition: .2s width ease, .2s left ease;
+}
+
+div.root:focus-within:after {
+  left: 0;
+  width: 100%;
+}

@@ -66,6 +66,17 @@
 
       // adoptedCallback() {}
     // #endregion
+
+    // #region [Static]
+    /** Является ли узел элементом {Material-*} @static
+      * @param {HTMLElament} node проверяемый узел
+      * @param {string} element название целевого узла
+      * @return {boolean} node instanceof MaterialDrop
+      */
+      static is(node, element) {
+        return node && node.nodeName && node.nodeName.toLowerCase() === element.toLowerCase();
+      }
+    // #endregion
   }
 
 /** */

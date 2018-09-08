@@ -93,8 +93,8 @@ window.customElements.define(element, NewComponent);
 > Смело используйте новые технологии и не беспокойтесь об IE или браузерах, в которых что-то пока не работает. Скоро все будет топчик!
 
 ## Список компонент (готово / в процессе)
-- [ ] Button | Кнопки
-- [ ] Input | Поля ввода
+- [ ] [#12](//github.com/xaota/material/issues/12) Button | Кнопки
+- [ ] [#13](//github.com/xaota/material/issues/13) Input | Поля ввода
 - [ ] [#4](//github.com/xaota/material/issues/4) Select | Выбор
 - [ ] Switch | Переключатели
 - [ ] Chips | Теги
@@ -109,20 +109,22 @@ window.customElements.define(element, NewComponent);
 > Эти компоненты уже можно использовать в ваших проектах, со временем в них все будет доведено "до ума", не потребуется(?) дополнительных действий с вашей стороны
 
 ### ROADMAP (список компонент для реализации)
-- Badge
+- Textarea | Многострочное поле ввода
+- Badge | Счетчик уведомлений
 - Cards
 - Structure
 - StructureGrid
-- PickerDate
-- PickerTime
-- PickerDateTime
+- PickerDate | Выбор времени
+- PickerTime | Выбор даты (календарь)
+- PickerDateTime | Выбор даты и времени
 - Countdown
-- Calendar
-- Rating
+- Calendar | Календарь
+- Rating | Рейтинг (звездочки)
+- Reaction | Кнопки Like/Dislike и другие
 - Counter?
 - [#10](//github.com/xaota/material/issues/10) Progress | Отображение уровня загрузки
 - [#9](//github.com/xaota/material/issues/9) Loader | Отображение бесконечной загрузки
-- Table
+- Table | Отображение таблиц
 - Bar
 - BarNavigation
 - BarSide

@@ -1,27 +1,19 @@
-import Material from '../../script/Material.js'
-const element = 'material-paper';
+import Material from '../../script/Material.js';
 
-/** 
-  * 
+const component = Material.meta(import.meta.url, 'material-paper');
+/**
+  *
   */
-  class MaterialPaper extends Material {
-  /** 
-    * 
+  export default class MaterialPaper extends Material {
+  /**
+    *
     */
     constructor() {
-      super(element);
-    }
-
-  /** 
-    * 
-    */
-    init() {
-      const content = this.content;
-
+      super(component);
     }
   }
 
-customElements.define(element, MaterialPaper);
+Material.define(component, MaterialPaper);
 
 // #region [Private]
 

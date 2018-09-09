@@ -47,10 +47,7 @@ Polymer или Vue.js работают с веб-компонентами.\
 2. Создайте файлы для разметки, стилей и скрипта.
 3. Создайте разметку для нового компонента
 ```html
-<script src="./new-component.js" type="module"></script>
-
-<template id="material-button">
-  <link rel="stylesheet" href="../../style/clear.css" />
+<template>
   <link rel="stylesheet" href="./new-component.css" />
 
   <!-- тут разметка для вашего компонента -->
@@ -60,7 +57,7 @@ Polymer или Vue.js работают с веб-компонентами.\
 4. Добавьте логику и подключение вашего компонента (`new-component.js`)
 ```javascript
 import Material from '../Material.js';
-const element = 'new-component';
+const component = Material.meta(import.meta.url, 'new-component');
 
 /** {NewComponent} Ваш компонент @class @extends {Material}
   */
@@ -74,7 +71,7 @@ const element = 'new-component';
     // ... тут логика компонента (если нужно)
   }
 
-window.customElements.define(element, NewComponent);
+Material.define(element, NewComponent);
 ```
 5. Добавьте стили к вашему компоненту (`new-component.css`).
 6. Примените компонент на странице `/index.html` (это такая свалка для предпросмотра).

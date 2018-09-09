@@ -1,6 +1,6 @@
-import Material from '../../script/Material.js'
-const element = 'material-drop';
+import Material from '../../script/Material.js';
 
+const component = Material.meta(import.meta.url, 'material-drop');
 /**
   *
   */
@@ -9,7 +9,7 @@ const element = 'material-drop';
     *
     */
     constructor() {
-      super(element);
+      super(component);
     }
 
   /** Является ли узел элементом {MaterialDrop} @static
@@ -17,25 +17,8 @@ const element = 'material-drop';
     * @return {boolean} node instanceof MaterialDrop
     */
     static is(node) {
-      return Material.is(node, element);
+      return Material.is(node, MaterialDrop);
     }
-
-  /**
-    *
-    */
-    init() {
-      const content = this.content;
-    }
-
-  /** */
-    // mount() {
-    //   const shadow = this.shadow;
-    //   shadow.addEventListener('click', () => {
-    //     console.log('click');
-    //     this.visible = false;
-
-    //   });
-    // }
 
   /** */
     get visible() {
@@ -50,7 +33,7 @@ const element = 'material-drop';
     }
   }
 
-customElements.define(element, MaterialDrop);
+Material.define(component, MaterialDrop);
 
 // #region [Private]
 

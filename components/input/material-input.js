@@ -1,33 +1,29 @@
-import Material, {$, drawRipple, pointerOffset} from '../../script/Material.js';
-const element = 'material-input';
+import Material, {drawRipple, pointerOffset} from '../../script/Material.js';
 
-/**
- *
- *
- * @class MaterialInput
- * @extends {Material}
- */
-  class MaterialInput extends Material {
+const component = Material.meta(import.meta.url, 'material-input');
+/** @class MaterialInput @extends {Material}
+  */
+  export default class MaterialInput extends Material {
   /**
     *
     */
     constructor() {
-      super(element, 'closed');
+      super(component, 'closed');
     }
 
   /**
     *
     */
-    init() {
-      const content = this.content;
-      const root = $('div.root', content);
+    ready(content) {
+      this;
+      const root = content.querySelector('div.root');
       root.addEventListener('click', event => {
         const position = pointerOffset(root, event);
         root.style.setProperty('--position', position.x + 'px');
         drawRipple.call(root, position);
       });
-      const input = $('div.root > input', content);
-      input.addEventListener('blur', event => {
+      const input = content.querySelector('div.root > input');
+      input.addEventListener('blur', _ => {
         root.style.setProperty('--position', '50%');
       });
     }
@@ -39,7 +35,7 @@ const element = 'material-input';
 
   /** */
     attributeChangedCallback(attribute, previous, current) {
-      const shadow = this.shadow;
+      const shadow = this.shadowRoot;
       // console.log('content', content);
       // const input = $('div.root > input', content);
       const input = shadow.querySelector('div.root > input');
@@ -74,7 +70,7 @@ const element = 'material-input';
     }
   }
 
-customElements.define(element, MaterialInput);
+Material.define(component, MaterialInput);
 
 // #region [Private]
 

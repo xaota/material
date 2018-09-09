@@ -1,7 +1,7 @@
 import Material from '../../script/Material.js'
 import MaterialDrop from '../drop/material-drop.js';
-const element = 'material-drop-root';
 
+const component = Material.meta(import.meta.url, 'material-drop-root');
 /**
   *
   */
@@ -10,16 +10,15 @@ const element = 'material-drop-root';
     *
     */
     constructor() {
-      super(element);
+      super(component);
     }
 
   /**
     *
     */
-    mount() {
-      const shadow = this.shadow;
-      const root = shadow.querySelector('div.root');
-      const slot = shadow.querySelector('slot');
+    mount(content) {
+      const root = content.querySelector('div.root');
+      const slot = content.querySelector('slot');
       const nodes = [...slot.assignedNodes()];
       const drop = nodes.filter(e => MaterialDrop.is(e))[0];
       if (!drop) return this;
@@ -30,7 +29,7 @@ const element = 'material-drop-root';
     }
   }
 
-customElements.define(element, MaterialDropRoot);
+Material.define(component, MaterialDropRoot);
 
 // #region [Private]
 

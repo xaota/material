@@ -1,6 +1,6 @@
 import Material from '../../script/Material.js'
-const element = 'material-list-item';
-
+// const element = 'material-list-item';
+const component = Material.meta(import.meta.url, 'material-list-item');
 /**
   *
   */
@@ -9,15 +9,14 @@ const element = 'material-list-item';
     *
     */
     constructor() {
-      super(element);
+      super(component);
     }
 
   /**
     *
     */
-    mount() {
-      const shadow = this.shadow;
-      const slot = shadow.querySelector('slot');
+    mount(content) {
+      const slot = content.querySelector('slot');
       slot.addEventListener('slotchange', () => {
         const nodes = [...slot.assignedNodes()];
         if (nodes.length === 1 && nodes[0] instanceof Text) {
@@ -34,7 +33,7 @@ const element = 'material-list-item';
     }
   }
 
-customElements.define(element, MaterialListItem);
+Material.define(component, MaterialListItem);
 
 // #region [Private]
 

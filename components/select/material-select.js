@@ -1,6 +1,12 @@
-import Material from '../../script/Material.js'
-const element = 'material-select';
+import Material from '../../script/Material.js';
 
+import '../input/material-input.js';
+import '../drop/material-drop.js';
+import '../drop-root/material-drop-root.js';
+import '../list/material-list.js';
+import '../list-item/material-list-item.js';
+
+const component = Material.meta(import.meta.url, 'material-select');
 /**
   *
   */
@@ -9,21 +15,13 @@ const element = 'material-select';
     *
     */
     constructor() {
-      super(element);
-    }
-
-  /**
-    *
-    */
-    init() {
-      const content = this.content;
+      super(component);
     }
 
   /** */
-    mount() {
-      const shadow = this.shadow;
+    mount(content) {
       // console.log(shadow.querySelectorAll('*'));
-      const input = shadow.querySelector('material-input');
+      const input = content.querySelector('material-input');
       // console.log(input);
       // console.log(shadow, input, attribute, previous, current);
       // if (!input) return; //
@@ -44,7 +42,7 @@ const element = 'material-select';
   /** */
     attributeChangedCallback(attribute, previous, current) {
       if (attribute !== 'label') return;
-      const shadow = this.shadow;
+      const shadow = this.shadowRoot;
       const input = shadow.querySelector('material-input');
       // console.log(shadow, input, attribute, previous, current);
       if (!input) return; //
@@ -68,11 +66,11 @@ const element = 'material-select';
     * @return {boolean} node instanceof MaterialSelect
     */
     static is(node) {
-      return Material.is(node, element);
+      return Material.is(node, component);
     }
   }
 
-customElements.define(element, MaterialSelect);
+Material.define(component, MaterialSelect);
 
 // #region [Private]
 

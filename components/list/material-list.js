@@ -1,28 +1,16 @@
 import Material from '../../script/Material.js'
-const element = 'material-list';
 
-/** 
-  * 
+const component = Material.meta(import.meta.url, 'material-list');
+/**
+  *
   */
-  class MaterialList extends Material {
-  /** 
-    * 
+  export default class MaterialList extends Material {
+  /**
+    *
     */
     constructor() {
-      super(element);
-    }
-
-  /** 
-    * 
-    */
-    init() {
-      const content = this.content;
-
+      super(component);
     }
   }
 
-customElements.define(element, MaterialList);
-
-// #region [Private]
-
-// #endregion
+Material.define(component, MaterialList);

@@ -1,20 +1,15 @@
-import Material from '../../script/Material.js'
-const element = 'material-chip';
+import Material from '../../script/Material.js';
 
+const component = Material.meta(import.meta.url, 'material-chip');
 /** */
-  class MaterialChip extends Material {
+  export default class MaterialChip extends Material {
     /** */
       constructor() {
-        super(element);
+        super(component);
       }
-
-      // init() {
-      //   const content = this.content;
-
-      // }
   }
 
-customElements.define(element, MaterialChip);
+Material.define(component, MaterialChip);
 
 // #region [Private]
 

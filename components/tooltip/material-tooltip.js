@@ -1,6 +1,6 @@
-import Material from '../../script/Material.js'
-const element = 'material-tooltip';
+import Material from '../../script/Material.js';
 
+const component = Material.meta(import.meta.url, 'material-tooltip');
 /** {MaterialTooltip} @class @default @export
   *
   */
@@ -9,15 +9,14 @@ const element = 'material-tooltip';
     *
     */
     constructor() {
-      super(element);
+      super(component);
     }
 
   /**
     *
     */
-    init() { // ready
-      const content = this.content;
-      content.querySelector('div.root').innerHTML = this.getAttribute('content')
+    ready(content) {
+      content.querySelector('div.root').innerHTML = this.getAttribute('content');
       return this;
     }
 
@@ -26,11 +25,11 @@ const element = 'material-tooltip';
     * @return {boolean} node instanceof MaterialTooltip
     */
     static is(node) {
-      return Material.is(node, element);
+      return Material.is(node, MaterialTooltip);
     }
   }
 
-window.customElements.define(element, MaterialTooltip);
+Material.define(component, MaterialTooltip);
 
 // #region [Private]
 

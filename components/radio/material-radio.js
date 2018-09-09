@@ -1,20 +1,15 @@
 import Material from '../../script/Material.js'
-const element = 'material-radio';
+const component = Material.meta(import.meta.url, 'material-radio');
 
 /** */
-  class MaterialRadio extends Material {
+  export default class MaterialRadio extends Material {
   /** */
     constructor() {
-      super(element);
+      super(component);
     }
-
-    // init() {
-    //   const content = this.content;
-    //
-    // }
   }
 
-customElements.define(element, MaterialRadio);
+Material.define(component, MaterialRadio);
 
 // #region [Private]
 

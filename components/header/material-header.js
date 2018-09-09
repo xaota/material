@@ -1,22 +1,23 @@
 import Material from '../../script/Material.js'
-const element = 'material-header';
 
+const component = Material.meta(import.meta.url, 'material-header');
 /**
   *
   */
-  class MaterialHeader extends Material {
+  export default class MaterialHeader extends Material {
   /**
     *
     */
     constructor() {
-      super(element);
+      // super(element);
+      super(component);
     }
 
   /**
     *
     */
-    init() {
-      const root = this.content.querySelector('div.root');
+    ready(content) {
+      const root = content.querySelector('div.root');
       root.querySelector('header > p.caption')    .innerText = this.caption;
       root.querySelector('header > p.description').innerText = this.description;
     }
@@ -46,7 +47,7 @@ const element = 'material-header';
     }
   }
 
-customElements.define(element, MaterialHeader);
+Material.define(component, MaterialHeader);
 
 // #region [Private]
 

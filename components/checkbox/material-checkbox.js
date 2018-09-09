@@ -1,17 +1,14 @@
 import Material from '../../script/Material.js';
 
-const element = 'material-checkbox';
-customElements.define(element, class MaterialCheckbox extends Material {
+const component = Material.meta(import.meta.url, 'material-checkbox');
 /** */
-  constructor() {
-    super(element);
+  export default class MaterialCheckbox extends Material {
+  /** */
+    constructor() {
+      super(component);
+    }
   }
-
-  // init() {
-  //   const content = this.content;
-  //
-  // }
-});
+Material.define(component, MaterialCheckbox);
 
 // #region [Private]
 

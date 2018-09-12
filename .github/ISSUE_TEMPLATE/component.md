@@ -4,10 +4,8 @@ about: Укажите примеры использования и опишит�
 
 ---
 
-```html
-<link rel="import" href="/material/components/" id="material-" />
-
-
+```js
+import Material from '/material/components//material-.js';
 ```
 |       branch      | pull-request |
 | :---------------: | :----------: |

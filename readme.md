@@ -7,14 +7,14 @@
 
 ## Как собрать
 Polymer или Vue.js работают с веб-компонентами.\
-Вообще, можно ничего не собирать, они нативно работают в Chrome, но для прода все-таки стоит подумать о сборщике.
+Вообще, можно ничего не собирать, они нативно работают в Chrome и в Firefox (за флагом), но для прода все-таки стоит подумать о сборщике.
 
 ## Как использовать
 Добавьте импорт компонента на страницу (например, кнопка `material-button`)
-```html
-<link rel="import" href="components/button" id="material-button" />
+```js
+import MaterialButton from '/material/components/button/material-button.js';
 ```
-и используйте новый тег
+и используйте новый тег в разметке
 ```html
 <material-button>Button</material-button>
 ```
@@ -73,9 +73,14 @@ const component = Material.meta(import.meta.url, 'new-component');
 
 Material.define(element, NewComponent);
 ```
-5. Добавьте стили к вашему компоненту (`new-component.css`).
-6. Примените компонент на странице `/index.html` (это такая свалка для предпросмотра).
-7. Напишите `readme.md` для вашего компонента.
+5. Подключите класс, описывающий ваш компонент, в скрипт, обрабатывающий логику страницы
+```js
+import NewComponent from '/material/components/path/to/new-component.js';
+```
+*__Примечание__*. Достаточно сделать это в одном месте.
+6. Добавьте стили к вашему компоненту (`new-component.css`).
+7. Примените компонент на странице `/index.html` (это такая свалка для предпросмотра).
+8. Напишите `readme.md` для вашего компонента.
 
 ## Примечания
 1. Используйте `es-imports` и подключайте все скрипты как модули.
@@ -101,7 +106,7 @@ Material.define(element, NewComponent);
 - [ ] Radio | Переключатели
 - [ ] Chips | Теги
 - [ ] Expand | Развороты
-- [ ] Tabs | Вкладки
+- [ ] [#19](//github.com/xaota/material/issues/19) Tabs | Вкладки
 - [ ] [#8](//github.com/xaota/material/issues/8) Header (ApplicationBar) | Колонтитул
 - [ ] Paper (Panel) | Панель / Блок для размещения информации
 - [ ] [#15](//github.com/xaota/material/issues/15) List | Списки
@@ -152,7 +157,7 @@ Material.define(element, NewComponent);
 - Modal
 - BreadCrumb
 - Snippet
-- Code(?)
+- Code(?) (Source)
 - Upload
 - Typography
 - Link
@@ -189,4 +194,7 @@ Material.define(element, NewComponent);
 
 ### Примеры
 Можно посмотреть на реализации Material элементов, например, тут\
-https://material-ui.com/demos/buttons/ (кнопки)
+[https://material-ui.com/demos/buttons/](https://material-ui.com/demos/buttons/) (кнопки)
+
+### TODO:
+e2e / Тестировние компонент

@@ -66,7 +66,7 @@ const component = Material.meta(import.meta.url, 'material-select');
     * @return {boolean} node instanceof MaterialSelect
     */
     static is(node) {
-      return Material.is(node, component);
+      return Material.is(node, MaterialSelect);
     }
   }
 

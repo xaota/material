@@ -5,5 +5,5 @@
 }
 
 div.root slot {
-  
+  display: flex;
 }

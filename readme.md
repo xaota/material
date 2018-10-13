@@ -112,6 +112,7 @@ import NewComponent from '/material/components/path/to/new-component.js';
 - [ ] [#15](//github.com/xaota/material/issues/15) List | Списки
 - [ ] Drop | Выпадающие блоки
 - [ ] [#16](//github.com/xaota/material/issues/16) Tooltip | Подсказки
+- [ ] [#20](//github.com/xaota/material/issues/20) BreadCrumbs | Следы
 
 > Эти компоненты уже можно использовать в ваших проектах, со временем в них все будет доведено "до ума", не потребуется(?) дополнительных действий с вашей стороны
 
@@ -155,7 +156,6 @@ import NewComponent from '/material/components/path/to/new-component.js';
 - [#11](//github.com/xaota/material/issues/11) Search | Строка поиска
 - Popup
 - Modal
-- BreadCrumb
 - Snippet
 - Code(?) (Source)
 - Upload

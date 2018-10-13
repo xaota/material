@@ -1,0 +1,19 @@
+@charset "utf-8";
+
+:host {
+  display: block;
+}
+
+div.root slot {
+  display: flex;
+}
+
+::slotted(a) {
+  margin-right: 0.5em;
+  text-decoration: none;
+}
+
+::slotted(a)::after {
+  content: "→";
+  margin-left: 0.5em;
+}

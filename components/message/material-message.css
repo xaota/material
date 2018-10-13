@@ -1,0 +1,9 @@
+@charset "utf-8";
+
+:host {
+  display: block;
+}
+
+div.root slot {
+  display: flex;
+}

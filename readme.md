@@ -107,42 +107,52 @@ import NewComponent from '/material/components/path/to/new-component.js';
 - [ ] Chips | Теги
 - [ ] Expand | Развороты
 - [ ] [#19](//github.com/xaota/material/issues/19) Tabs | Вкладки
-- [ ] [#8](//github.com/xaota/material/issues/8) Header (ApplicationBar) | Колонтитул
+- [ ] [#8](//github.com/xaota/material/issues/8) Title (ApplicationBar) | Колонтитул
 - [ ] Paper (Panel) | Панель / Блок для размещения информации
 - [ ] [#15](//github.com/xaota/material/issues/15) List | Списки
 - [ ] Drop | Выпадающие блоки
 - [ ] [#16](//github.com/xaota/material/issues/16) Tooltip | Подсказки
 - [ ] [#20](//github.com/xaota/material/issues/20) BreadCrumbs | Следы
 - [ ] [#21](//github.com/xaota/material/issues/21) Message | Сообщения в чате
+- [ ] Badge | Счетчик уведомлений
+- [ ] Card | Карточка
+- [ ] Icon | Иконки
+- [ ] Blockquote | Цитаты
+- [ ] Figure | Рамки
+- [ ] [#10](//github.com/xaota/material/issues/10) Progress | Отображение уровня загрузки
+- [ ] [#9](//github.com/xaota/material/issues/9) Loader | Отображение бесконечной загрузки
+- [ ] Table | Отображение таблиц
+- [ ] [#11](//github.com/xaota/material/issues/11) Search | Строка поиска
+- [ ] [#14](//github.com/xaota/material/issues/14) Textarea | Многострочное поле ввода
+- [ ] Dialog | Диалог (чат)
+- [ ] Grid | Сетка - Structure-Grid
+- [ ] Header | Заголовок
+- [ ] Footer | Подвал (сводная информация)
+- [ ] Copyright | Авторские права
+- [ ] Parallax
+- [ ] Panorama | Панорамы и 360-градусные изображения
+- [ ] Payment | Платежи банковской картой
+- [ ] Calendar | Календарь
+- [ ] Avatar
+- [ ] Navigation (Navigation Bar) | Панель навигации
 
 > Эти компоненты уже можно использовать в ваших проектах, со временем в них все будет доведено "до ума", не потребуется(?) дополнительных действий с вашей стороны
 
 ### ROADMAP (список компонент для реализации)
-- [#14](//github.com/xaota/material/issues/14) Textarea | Многострочное поле ввода
-- Badge | Счетчик уведомлений
-- Cards
 - Structure
-- StructureGrid
 - PickerDate | Выбор времени
 - PickerTime | Выбор даты (календарь)
 - PickerDateTime | Выбор даты и времени
 - Countdown
-- Calendar | Календарь
 - Rating | Рейтинг (звездочки)
 - Reaction | Кнопки Like/Dislike и другие
 - Counter?
-- [#10](//github.com/xaota/material/issues/10) Progress | Отображение уровня загрузки
-- [#9](//github.com/xaota/material/issues/9) Loader | Отображение бесконечной загрузки
-- Table | Отображение таблиц
 - Bar
-- BarNavigation
 - BarSide
 - BarSideNavigation
 - Toolbar
 - Charm
 - Drawer
-- Avatar
-- Card
 - Widget
 - Menu
 - MenuVertical
@@ -154,7 +164,6 @@ import NewComponent from '/material/components/path/to/new-component.js';
 - Stepper
 - Master
 - Wizard
-- [#11](//github.com/xaota/material/issues/11) Search | Строка поиска
 - Popup
 - Modal
 - Snippet
@@ -163,9 +172,7 @@ import NewComponent from '/material/components/path/to/new-component.js';
 - Typography
 - Link
 - Caption
-- Title?
 - Contents
-- Dialog
 - Pagination
 - Slider
 - SliderRange
@@ -175,7 +182,6 @@ import NewComponent from '/material/components/path/to/new-component.js';
 - InfoBox
 - KeyPad (pin-code)
 - Ribbon
-- Figure
 - Emotion
 - Smile
 - Sticker
@@ -186,9 +192,12 @@ import NewComponent from '/material/components/path/to/new-component.js';
 - Ad
 - Banner
 - Divider
-- Blockquote
 - Remark
-- Icon
+- Route
+- Timeline
+- Map
+- Address
+
 
 и так далее...)
 

@@ -113,6 +113,7 @@ import NewComponent from '/material/components/path/to/new-component.js';
 - [ ] Drop | Выпадающие блоки
 - [ ] [#16](//github.com/xaota/material/issues/16) Tooltip | Подсказки
 - [ ] [#20](//github.com/xaota/material/issues/20) BreadCrumbs | Следы
+- [ ] [#21](//github.com/xaota/material/issues/21) Message | Сообщения в чате
 
 > Эти компоненты уже можно использовать в ваших проектах, со временем в них все будет доведено "до ума", не потребуется(?) дополнительных действий с вашей стороны
 
@@ -178,7 +179,6 @@ import NewComponent from '/material/components/path/to/new-component.js';
 - Emotion
 - Smile
 - Sticker
-- Message
 - Player
 - Audio
 - Video

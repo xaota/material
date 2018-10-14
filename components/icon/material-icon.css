@@ -1,9 +1,9 @@
 @charset "utf-8";
 
 :host {
-  display: block;
+  display: inline-block;
 }
 
-div.root slot {
-  display: flex;
+slot {
+  display: none;
 }

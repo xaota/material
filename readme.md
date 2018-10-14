@@ -205,5 +205,8 @@ import NewComponent from '/material/components/path/to/new-component.js';
 Можно посмотреть на реализации Material элементов, например, тут\
 [https://material-ui.com/demos/buttons/](https://material-ui.com/demos/buttons/) (кнопки)
 
+### Икноки
+https://material.io/tools/icons
+
 ### TODO:
 e2e / Тестировние компонент

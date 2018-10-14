@@ -135,6 +135,7 @@ import NewComponent from '/material/components/path/to/new-component.js';
 - [ ] Calendar | Календарь
 - [ ] Avatar
 - [ ] Navigation (Navigation Bar) | Панель навигации
+- [ ] Sheet | Список элементов
 
 > Эти компоненты уже можно использовать в ваших проектах, со временем в них все будет доведено "до ума", не потребуется(?) дополнительных действий с вашей стороны
 

@@ -7,10 +7,10 @@
   --radius: 2px;
   --contrast: 1px;
 
-  --stroke-static: var(--accent-hover);
-  --stroke-active: var(--accent);
-  --stroke-ripple: var(--accent-background);
-  --fill-ripple:   var(--color-drop);
+  --stroke-static: var(--color-details);
+  --stroke-active: var(--color-details-dark);
+  --stroke-ripple: var(--color-text-lighten);
+  --fill-ripple:   var(--color-details-light);
 
   --position: 50%;
 }

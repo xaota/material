@@ -146,5 +146,28 @@ div.ripple.run {
 
 slot {
   display: block;
-  /* position: relative; */
+}
+
+:slotted(*) {
+  display: inline-block;
+}
+
+::slotted(material-icon) {
+  margin-top:    -0.6em;
+  margin-bottom: -0.4em;
+}
+
+::slotted(material-icon:not(:only-child):first-child) {
+  margin-right: 0;
+  margin-left: -0.6em;
+}
+
+::slotted(material-icon:not(:only-child):last-child) {
+  margin-left: 0;
+  margin-right: -0.6em;
+}
+
+::slotted(material-icon:only-child) {
+  margin-left: -1.2em;
+  margin-right: -1.2em;
 }

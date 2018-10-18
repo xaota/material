@@ -2,6 +2,17 @@
 
 :host {
   display: inline-block;
+  margin: 0;
+  padding: 0;
+  --size: 24px;
+}
+
+img {
+  display: block;
+  padding: 0;
+  margin: 0;
+  width: var(--size);
+  height: var(--size);
 }
 
 slot {

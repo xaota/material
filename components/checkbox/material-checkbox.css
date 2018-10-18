@@ -20,8 +20,9 @@
   border-color: #d5d5d5;
 }
 
-.cbx:checked ~ label { background: #6fbeb5; }
-.cbx:checked ~ label:after {content: '+';display: block; text-align: center;}
+.cbx:checked ~ label {
+  background: #6fbeb5 url('../../icons/light/check.svg') center center;
+}
 
 .cbx:disabled ~ label {
   background: #d5d5d5;

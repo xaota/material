@@ -25,6 +25,7 @@ div.root {
   outline: none;
   padding: 0;
   border-bottom: 1px solid var(--stroke-static);
+  background-repeat: no-repeat;
 }
 
 div.root:hover {
@@ -66,6 +67,34 @@ div.root > input:focus + label, div.root > input:valid + label {
   font-size: .8em;
   color: var(--stroke-active);
   top: .2em;
+}
+
+:host([icon]:not([right])) div.root {
+  background-position: left 0.3em top 1.4em;
+}
+:host([icon]:not([right])) div.root > input {
+  padding-left: 2em;
+}
+:host([icon]:not([right])) div.root > input + label {
+  left: 2.3em;
+}
+
+:host([icon][right]) div.root {
+  background-position: right 0.3em top 1.4em;
+}
+:host([icon][right]) div.root > input {
+  padding-right: 2em;
+}
+
+
+:host-context([fold]) div.root > input:not(:valid) {
+  width: 0;
+}
+:host-context([fold]) div.root > input:focus {
+  width: 100%;
+}
+:host-context([fold]) div.root > input:not(:focus):not(:valid) + label {
+  display: none;
 }
 
 div.ripple {

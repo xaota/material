@@ -21,8 +21,13 @@ const component = Material.meta(import.meta.url, 'material-icon');
       slot.addEventListener('slotchange', () => {
         const icon = slot.assignedNodes()[0].nodeValue.trim();
         root.setAttribute('alt', icon);
-        root.src = new URL(`../../icons/${theme}/${icon}.svg`, component.base);
+        root.src = MaterialIcon.src(icon, theme);
       });
+    }
+
+  /** */
+    static src(icon, theme = 'light') {
+      return new URL(`../../icons/${theme}/${icon}.svg`, component.base);
     }
   }
 

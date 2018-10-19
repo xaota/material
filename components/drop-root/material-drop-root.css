@@ -2,7 +2,7 @@
 
 :host {
   display: inline-block;
-  --indent: -8px;
+  --indent: 8px;
 }
 
 div.root {
@@ -12,6 +12,75 @@ div.root {
 
 ::slotted(material-drop) {
   position: absolute;
-  top: var(--indent);
-  left: var(--indent);
+  /* top: var(--indent);
+  left: var(--indent); */
 }
+
+/* #region [Layout] Положение подсказки @TODO: */
+/* outset (default) */
+:host ::slotted(material-drop), :host([y="top"]) ::slotted(material-drop) {
+  top: calc(var(--indent));
+}
+:host([y="bottom"]) ::slotted(material-drop) {
+  bottom: calc(100% + var(--indent));
+  /* top: auto; */
+}
+/*
+:host([y="center"]) ::slotted(material-drop) {
+  top: 50%;
+  bottom: auto;
+  transform: translateY(-50%);
+}
+
+:host ::slotted(material-drop), :host([x="center"]) ::slotted(material-drop) {
+  left: 50%;
+  transform: translateX(-50%);
+}
+:host([x="left"]) ::slotted(material-drop) {
+  left: auto;
+  right: calc(100% + var(--indent));
+  transform: none;
+}
+:host([x="right"]) ::slotted(material-drop) {
+  left: calc(100% + var(--indent));
+  transform: none;
+}
+
+:host([x="center"][y="center"]) ::slotted(material-drop) {
+  transform: translate(-50%, -50%);
+}
+:host([x="right"][y="center"]) ::slotted(material-drop),
+:host([x="left"][y="center"]) ::slotted(material-drop) {
+  transform: translate(0, -50%)
+} */
+
+/* OUTSET */
+/* :host([outset]) ::slotted(material-drop), :host([outset][y="top"]) ::slotted(material-drop) {
+  top: var(--indent);
+  bottom: auto;
+}*/
+:host([outset][y="bottom"]) ::slotted(material-drop) {
+  top: calc(100% + var(--indent));
+  bottom: auto;
+}
+/*:host([outset][y="center"]) ::slotted(material-drop) {
+  top: 50%;
+  bottom: auto;
+  transform: translateY(-50%);
+}
+
+:host([outset][x="left"]) ::slotted(material-drop) {
+  left: var(--indent);
+  right: auto;
+  // transform: none;
+}
+:host([outset][x="right"]) ::slotted(material-drop) {
+  left: auto;
+  right: var(--indent);
+  // transform: none;
+}
+
+:host([outset][x="center"][y="center"]) ::slotted(material-drop) {
+  transform: translate(-50%, -50%);
+} */
+/* #endregion */

@@ -1,0 +1,13 @@
+<template>
+  <link rel="stylesheet" href="./material-search-drop.css" />
+
+  <material-drop-root y="bottom" outset>
+      <material-search></material-search>
+
+      <material-drop>
+        <material-list>
+          <slot></slot>
+        </material-list>
+      </material-drop>
+    </material-drop-root>
+</template>

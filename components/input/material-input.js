@@ -1,4 +1,5 @@
 import Material, {drawRipple, pointerOffset} from '../../script/Material.js';
+import MaterialIcon from '../icon/material-icon.js';
 
 const component = Material.meta(import.meta.url, 'material-input');
 /** @class MaterialInput @extends {Material}
@@ -29,20 +30,35 @@ const component = Material.meta(import.meta.url, 'material-input');
     }
 
   /** */
+    mount(content) {
+      this;
+      const root = content.querySelector('div.root');
+      setIcon(this.icon, root);
+    }
+
+  /** */
     static get observedAttributes() {
-      return ['value', 'placeholder'];
+      return ['value', 'placeholder', 'icon', 'right'];
     }
 
   /** */
     attributeChangedCallback(attribute, previous, current) {
-      const shadow = this.shadowRoot;
-      // console.log('content', content);
-      // const input = $('div.root > input', content);
-      const input = shadow.querySelector('div.root > input');
-      // console.log(shadow, input, attribute, previous, current)
-      current
-        ? input[attribute] = current
-        : input[attribute] = '';
+      const content = this.shadowRoot;
+      const root =  content.querySelector('div.root');
+      if (!root) return; // !
+      const input = root   .querySelector('input');
+      switch (attribute) {
+        case 'value':
+        case 'placeholder':
+          current
+            ? input[attribute] = current
+            : input[attribute] = '';
+          break;
+        case 'icon':
+          setIcon(current, root);
+          break;
+
+      }
     }
 
   /** */
@@ -68,10 +84,40 @@ const component = Material.meta(import.meta.url, 'material-input');
         ? this.setAttribute('placeholder', value)
         : this.removeAttribute('placeholder');
     }
+
+  /** */
+    get right() {
+      return this.hasAttribute('right');
+    }
+
+  /** */
+    set right(value) {
+      value
+        ? this.setAttribute('right', '')
+        : this.removeAttribute('right');
+    }
+
+  /** */
+    get icon() {
+      return this.getAttribute('icon');
+    }
+
+  /** */
+    set icon(value) {
+      value
+        ? this.setAttribute('icon', value)
+        : this.removeAttribute('icon');
+    }
   }
 
 Material.define(component, MaterialInput);
 
 // #region [Private]
-
+  /** */
+    function setIcon(icon, root) {
+      if (!root) return;
+      if (!icon) return root.style.backgroundImage = 'none';
+      icon = MaterialIcon.src(icon);
+      root.style.backgroundImage = `url(${icon})`;
+    }
 // #endregion

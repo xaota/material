@@ -1,0 +1,17 @@
+@charset "utf-8";
+
+:host {
+  display: inline-block;
+}
+
+material-input {
+  margin-left: -0.3em;
+  margin-right: -0.3em;
+  width: 120px;
+}
+
+material-button {
+  margin-bottom: 0.3em;
+}
+
+

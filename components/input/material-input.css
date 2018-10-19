@@ -12,7 +12,7 @@
   --stroke-ripple: var(--color-text-lighten);
   --fill-ripple:   var(--color-details-light);
 
-  --position: 50%;
+  vertical-align: bottom;
 }
 
 div.root {
@@ -22,7 +22,6 @@ div.root {
   transition: 0.3s all ease;
   position: relative;
   overflow: hidden;
-  vertical-align: top;
   outline: none;
   padding: 0;
   border-bottom: 1px solid var(--stroke-static);

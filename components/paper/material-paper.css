@@ -19,3 +19,7 @@ slot {
   padding: 16px 24px;
   /* overflow: hidden; */
 }
+
+:host([x]) slot {
+  padding: 8px 12px;
+}

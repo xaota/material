@@ -34,6 +34,8 @@ const component = Material.meta(import.meta.url, 'material-input');
       this;
       const root = content.querySelector('div.root');
       setIcon(this.icon, root);
+      const input = content.querySelector('input');
+      input.value = this.value;
     }
 
   /** */

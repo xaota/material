@@ -1,11 +1,9 @@
 <template>
-  <link rel="stylesheet" href="../../style/material.css" />
   <link rel="stylesheet" href="./material-tabs.css" />
 
-  <div id="tabs">
-    <slot id="tabsSlot" name="title"></slot>
+  <div class="root">
+      <div id="links"></div>
   </div>
-  <div id="panels">
-    <slot id="panelsSlot"></slot>
-  </div>
+
+  <slot></slot>
 </template>

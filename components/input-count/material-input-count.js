@@ -17,9 +17,10 @@ const component = Material.meta(import.meta.url, 'material-input-count');
 
   /** */
     mount(content) {
-      const {append, remove} = elements(content);
+      const {append, remove, input} = elements(content);
       append.addEventListener('click', _ => this.value += this.step);
       remove.addEventListener('click', _ => this.value -= this.step);
+      setValue(input, this.value, this.value, this.max, this.min);
     }
 
   /** */
@@ -33,25 +34,20 @@ const component = Material.meta(import.meta.url, 'material-input-count');
       const {input} = elements(content);
       switch (attribute) {
         case 'placeholder': input.placeholder = this.placeholder; break;
+        case 'value'      : setValue(input, current, this.value, this.max, this.min);
       }
     }
 
   /** */
     get value() {
-      return parseInt(this.getAttribute('value')) || this.min;
+      return parseInt(this.getAttribute('value')) || 0;
     }
 
   /** */
     set value(value = '') {
-      if (value === '') return this.removeAttribute('value');
-      const content = this.shadowRoot;
-      const current = this.value;
-      const {input} = elements(content);
-      value = parseValue(value, current, this.max, this.min);
-      if (value === current) return;
-      input.setAttribute('value', value);
-      this.setAttribute('value', value);
-      // event('change')
+      value === ''
+        ? this.removeAttribute('value')
+        : this.setAttribute('value', value);
     }
 
   /** */
@@ -68,7 +64,7 @@ const component = Material.meta(import.meta.url, 'material-input-count');
 
   /** */
     get min() {
-      return parseInt(this.getAttribute('min')) || 0;
+      return parseInt(this.getAttribute('min')) || -Infinity;
     }
 
   /** */
@@ -80,7 +76,7 @@ const component = Material.meta(import.meta.url, 'material-input-count');
 
   /** */
     get max() {
-      return parseInt(this.getAttribute('max')) || 0;
+      return parseInt(this.getAttribute('max')) || Infinity;
     }
 
   /** */
@@ -121,5 +117,12 @@ Material.define(component, MaterialInputCount);
       if (value > max) return current;
       if (value < min) return current;
       return value;
+    }
+
+  /** */
+    function setValue(input, value, current, max, min) {
+      if (!input) return;
+      value = parseValue(value, current, max, min);
+      input.value = value;
     }
 // #endregion

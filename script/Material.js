@@ -18,8 +18,22 @@ import Component from './Component.js';
     this.insertBefore(div, this.firstChild);
     div.style.top  = `${y - div.clientHeight / 2}px`;
     div.style.left = `${x - div.clientWidth / 2}px`;
+    const duration = parseFloat(window.getComputedStyle(div).transitionDuration) * 1000;
+    // div.addEventListener('transitionrun', _ => {
+    //   console.log('run', _);
+    // });
+    // div.addEventListener('transitionstart', _ => {
+    //   console.log('start', _);
+    // });
+    // div.addEventListener('transitioncancel', _ => {
+    //   console.log('cancel', _);
+    // });
+    div.addEventListener('transitionend', _ => {
+      // console.log('end', _);
+      div.remove();
+    });
     div.classList.add('run');
-    div.addEventListener('transitionend', _ => div.remove());
+    setTimeout(() => div.remove(), duration + 100);
   }
 
 /** */

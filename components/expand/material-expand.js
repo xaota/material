@@ -47,7 +47,17 @@ const component = Material.meta(import.meta.url, 'material-expand');
         : this.removeAttribute("description");
     }
 
-  /* get/set expand() {} */
+  /** */
+    get expand() {
+      return this.hasAttribute('expand');
+    }
+
+  /** */
+    set expand(value = '') {
+      !!value
+        ? this.setAttribute('expand', '')
+        : this.removeAttribute('expand');
+    }
   }
 
 Material.define(component, MaterialExpand);
@@ -55,14 +65,13 @@ Material.define(component, MaterialExpand);
 // #region [Private]
   /** */
     function expand(root) {
-      const slot = root.querySelector('slot');
+      // const slot = root.querySelector('slot');
       const className = 'expand';
       const expanded = root.classList.contains(className);
       root.classList.toggle(className);
-      // const padding
-      slot.style.maxHeight = expanded
-        ? null
-        : slot.scrollHeight + "px";
+      // slot.style.maxHeight = expanded
+      //   ? null
+      //   : slot.scrollHeight + "px";
       return !expanded;
     }
 // #endregion

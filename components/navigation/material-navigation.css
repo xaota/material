@@ -33,6 +33,7 @@ slot[name="center"], slot[name="right"] {
   margin: 0 .3em;
   text-decoration: none;
   color: var(--color-primary-dark);
+  font-family: var(--font);
 }
 
 ::slotted(*:hover) {

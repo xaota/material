@@ -1,0 +1,9 @@
+@charset "utf-8";
+
+:host {
+  display: block;
+  font-size: 24px;
+  font-family: var(--font);
+  font-weight: 300;
+  margin-bottom: 8px;
+}

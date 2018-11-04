@@ -4,6 +4,18 @@
   display: block;
 }
 
-div.root slot {
-  display: flex;
+slot {
+  display: block;
+}
+
+slot[name="description"] {
+  padding: 0.4em 1em 1em;
+}
+
+::slotted(img) {
+  width: 100%;
+}
+
+::slotted(material-text) {
+  font-size: 14px;
 }

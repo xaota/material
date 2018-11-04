@@ -1,0 +1,6 @@
+@charset "utf-8";
+
+:host {
+  display: block;
+  font-family: var(--font);
+}

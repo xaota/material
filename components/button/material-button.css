@@ -159,12 +159,12 @@ slot {
 }
 
 ::slotted(material-icon:not(:only-child):first-child) {
-  margin-right: 0;
+  margin-right: 0.3em;
   margin-left: -0.6em;
 }
 
 ::slotted(material-icon:not(:only-child):last-child) {
-  margin-left: 0;
+  margin-left: 0.3em;
   margin-right: -0.6em;
 }
 

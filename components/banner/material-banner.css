@@ -1,0 +1,32 @@
+@charset "utf-8";
+
+:host {
+  display: grid;
+  /* background: #fff; */
+  border-bottom: 1px solid #eee;
+  box-sizing: border-box;
+  padding: 1em;
+  grid-template-areas: "avatar content" ". action";
+  grid-template-columns: fit-content(48px);
+  grid-column-gap: 10px;
+}
+
+slot[name="avatar"] {
+  grid-area: avatar;
+  display: block;
+}
+
+slot:not([name]) {
+  grid-area: content;
+  display: block;
+}
+
+slot[name="action"] {
+  display: block;
+  grid-area: action;
+  justify-self: end;
+}
+
+::slotted(p) {
+  margin: 0;
+}

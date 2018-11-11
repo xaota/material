@@ -2,6 +2,7 @@
 
 :host, slot {
   display: block;
+  font-family: var(--font);
 }
 
 slot {
@@ -17,4 +18,5 @@ slot:hover {
   text-decoration: none;
   padding: 16px 24px;
   white-space: nowrap;
+  font-family: var(--font);
 }

@@ -14,6 +14,11 @@
   --text-shadow: var(--color-text-addition);
 }
 
+
+:host([hidden]) {
+  display: none;
+}
+
 :host([mode="primary"]) {
   --fill-static: var(--color-primary);
   --fill-active: var(--color-primary-dark);

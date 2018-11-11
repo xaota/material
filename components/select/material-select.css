@@ -3,3 +3,11 @@
 :host {
   display: inline-block;
 }
+
+material-drop-root {
+  display: block;
+}
+
+material-input {
+  width: 100%;
+}

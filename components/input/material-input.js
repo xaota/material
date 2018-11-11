@@ -36,6 +36,8 @@ const component = Material.meta(import.meta.url, 'material-input');
       setIcon(this.icon, root);
       const input = content.querySelector('input');
       input.value = this.value;
+
+      input.addEventListener('input', _ => this.value = input.value);
     }
 
   /** */
@@ -52,7 +54,7 @@ const component = Material.meta(import.meta.url, 'material-input');
       switch (attribute) {
         case 'value':
         case 'placeholder':
-          current
+          current // && input[attribute] !== current
             ? input[attribute] = current
             : input[attribute] = '';
           break;
@@ -69,10 +71,8 @@ const component = Material.meta(import.meta.url, 'material-input');
     }
 
   /** */
-    set value(value = '') {
-      value
-        ? this.setAttribute('value', value)
-        : this.removeAttribute('value');
+    set value(value) {
+      this.setAttribute('value', value);
     }
 
   /** */
@@ -81,7 +81,7 @@ const component = Material.meta(import.meta.url, 'material-input');
     }
 
   /** */
-    set placeholder(value = '') {
+    set placeholder(value) {
       value
         ? this.setAttribute('placeholder', value)
         : this.removeAttribute('placeholder');

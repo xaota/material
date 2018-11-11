@@ -22,15 +22,19 @@ const component = Material.meta(import.meta.url, 'material-select');
     mount(content) {
       // console.log(shadow.querySelectorAll('*'));
       const input = content.querySelector('material-input');
+      const list  = content.querySelector('material-list');
       // console.log(input);
       // console.log(shadow, input, attribute, previous, current);
       // if (!input) return; //
       input.innerHTML = this.label;
 
-      this.addEventListener('click-ListItem', event => {
-        const text = event.target.innerText;
-        // console.log(input, shadow)
+      list.addEventListener('click', event => {
+        const item = event.target; // ! on <material-list-item>
+        const text = item.innerText;
+
         input.value = text;
+        this.setAttribute('value', item.value || text);
+        this.event('change');
       });
     }
 
@@ -60,6 +64,18 @@ const component = Material.meta(import.meta.url, 'material-select');
         ? this.setAttribute('label', value)
         : this.removeAttribute('label');
     }
+
+  /** */
+    get value() {
+      return this.getAttribute('value');
+    }
+
+  /** */
+    // set value(value = '') {
+    //   value
+    //     ? this.setAttribute('value', value)
+    //     : this.removeAttribute('value');
+    // }
 
   /** Является ли узел элементом {MaterialSelect} @static
     * @param {HTMLElament} node проверяемый узел

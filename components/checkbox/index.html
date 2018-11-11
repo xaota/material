@@ -1,7 +1,8 @@
 <template>
-  <link rel="stylesheet" href="../../style/material.css" />
   <link rel="stylesheet" href="./material-checkbox.css" />
 
-  <input type="checkbox" id="unchecked" class="cbx hidden"/>
-  <label for="unchecked" class="lbl"></label>
+  <input type="checkbox" id="checkbox" hidden />
+  <label for="checkbox">
+    <slot></slot>
+  </label>
 </template>

@@ -8,8 +8,11 @@ const component = Material.meta(import.meta.url, 'material-list-item');
   /**
     *
     */
-    constructor() {
+    constructor(value, html) {
       super(component);
+
+      if (value) this.value = value;
+      if (html)  this.innerHTML = html;
     }
 
   /**
@@ -26,10 +29,22 @@ const component = Material.meta(import.meta.url, 'material-list-item');
         }
       });
 
-      this.addEventListener('click', event => {
-        // event.stopPropagation();
-        this.event('click-ListItem');
-      });
+      // this.addEventListener('click', event => {
+      //   // event.stopPropagation();
+      //   this.event('click-ListItem');
+      // });
+    }
+
+  /** */
+    get value() {
+      return this.getAttribute('value');
+    }
+
+  /** */
+    set value(value) {
+      value === ''
+        ? this.removeAttribute('value')
+        : this.setAttribute('value', value);
     }
   }
 

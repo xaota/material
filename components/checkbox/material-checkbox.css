@@ -4,29 +4,42 @@
   display: inline-block;
 }
 
-.lbl {
-  position: relative;
-  display: block;
+label {
+  display: flex;
+}
+
+label:before {
+  display: inline-block;
+  content: '';
   height: 20px;
   width: 20px;
   background: none;
   border: 1px solid #898989;
   border-radius: 2px;
-  cursor: pointer;
   transition: all 0.3s ease;
+  cursor: pointer;
 }
 
-.lbl:hover {
+:host([right]) label {
+  flex-direction: row-reverse;
+}
+
+:host([right]) label:before {
+  margin-left: 0.4em;
+}
+:host(:not([right])) label:before {
+  margin-right: 0.4em;
+}
+
+label:hover:before {
   border-color: #d5d5d5;
 }
 
-.cbx:checked ~ label {
+#checkbox:checked + label:before {
   background: #6fbeb5 url('../../icons/light/check.svg') center center;
 }
 
-.cbx:disabled ~ label {
+#checkbox:disabled + label:before {
   background: #d5d5d5;
   pointer-events: none;
 }
-
-.hidden { display: none; }

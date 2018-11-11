@@ -21,6 +21,8 @@ const component = Material.meta(import.meta.url, 'material-input-count');
       append.addEventListener('click', _ => this.value += this.step);
       remove.addEventListener('click', _ => this.value -= this.step);
       setValue(input, this.value, this.value, this.max, this.min);
+
+      input.addEventListener('input', _ => this.value = input.value);
     }
 
   /** */
@@ -44,10 +46,8 @@ const component = Material.meta(import.meta.url, 'material-input-count');
     }
 
   /** */
-    set value(value = '') {
-      value === ''
-        ? this.removeAttribute('value')
-        : this.setAttribute('value', value);
+    set value(value) {
+      this.setAttribute('value', value);
     }
 
   /** */
@@ -56,7 +56,7 @@ const component = Material.meta(import.meta.url, 'material-input-count');
     }
 
   /** */
-    set placeholder(value = '') {
+    set placeholder(value) {
       value
         ? this.setAttribute('placeholder', value)
         : this.removeAttribute('placeholder');

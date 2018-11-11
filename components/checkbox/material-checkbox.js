@@ -7,6 +7,28 @@ const component = Material.meta(import.meta.url, 'material-checkbox');
     constructor() {
       super(component);
     }
+
+  /** */
+    mount(content) {
+      const checkbox = content.querySelector('input[type="checkbox"]');
+      checkbox.checked = this.checked;
+      checkbox.addEventListener('change', _ => this.checked = checkbox.checked);
+    }
+
+  /** */
+    get checked() {
+      return this.hasAttribute('checked');
+    }
+
+  /** */
+    set checked(value) {
+      const checkbox = this.shadowRoot.querySelector('#checkbox');
+      if (checkbox) checkbox.checked = value;
+      value
+        ? this.setAttribute('checked', '')
+        : this.removeAttribute('checked');
+      this.event('change');
+    }
   }
 Material.define(component, MaterialCheckbox);
 

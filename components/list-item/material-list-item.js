@@ -46,6 +46,14 @@ const component = Material.meta(import.meta.url, 'material-list-item');
         ? this.removeAttribute('value')
         : this.setAttribute('value', value);
     }
+
+  /** Является ли узел элементом {MaterialListItem} @static
+    * @param {HTMLElament} node проверяемый узел
+    * @return {boolean} node instanceof MaterialListItem
+    */
+    static is(node) {
+      return Material.is(node, MaterialListItem);
+    }
   }
 
 Material.define(component, MaterialListItem);

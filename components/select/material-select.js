@@ -4,7 +4,7 @@ import '../input/material-input.js';
 import '../drop/material-drop.js';
 import '../drop-root/material-drop-root.js';
 import '../list/material-list.js';
-import '../list-item/material-list-item.js';
+import MaterialListItem from '../list-item/material-list-item.js';
 
 const component = Material.meta(import.meta.url, 'material-select');
 /**
@@ -29,7 +29,11 @@ const component = Material.meta(import.meta.url, 'material-select');
       input.innerHTML = this.label;
 
       list.addEventListener('click', event => {
-        const item = event.target; // ! on <material-list-item>
+        const item = event.path
+          .slice(0, event.path.indexOf(list))
+          .filter(e => MaterialListItem.is(e))
+          .reverse()[0];
+        if (!item) return;
         const text = item.innerText;
 
         input.value = text;

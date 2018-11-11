@@ -1,15 +1,42 @@
 @charset "utf-8";
 
+:host {
+  --duration: .4s;
+  --size: 200px;
+  --fill-ripple: var(--color-default-light);
+}
+
 :host, slot {
   display: block;
   font-family: var(--font);
+}
+
+div.root {
+  position: relative;
+  overflow: hidden;
+}
+
+div.ripple {
+  background: var(--fill-ripple);
+  position: absolute;
+  border-radius: 50%;
+  width: 0;
+  height: 0;
+  transition: var(--duration) all ease-in;
+  transform: translate(-50%, -50%);
+}
+
+div.ripple.run {
+  width: var(--size);
+  height: var(--size);
+  background-color: var(--fill-static);
 }
 
 slot {
   cursor: pointer;
 }
 
-slot:hover {
+:host(:hover) {
   background: rgba(0, 0, 0, 0.08);
 }
 

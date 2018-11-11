@@ -1,4 +1,4 @@
-import Material from '../../script/Material.js'
+import Material, {drawRipple, pointerOffset} from '../../script/Material.js'
 // const element = 'material-list-item';
 const component = Material.meta(import.meta.url, 'material-list-item');
 /**
@@ -29,10 +29,11 @@ const component = Material.meta(import.meta.url, 'material-list-item');
         }
       });
 
-      // this.addEventListener('click', event => {
-      //   // event.stopPropagation();
-      //   this.event('click-ListItem');
-      // });
+      const root = content.querySelector('div.root');
+      root.addEventListener('click', event => {
+        const position = pointerOffset(root, event);
+        drawRipple.call(root, position);
+      });
     }
 
   /** */

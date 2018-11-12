@@ -36,6 +36,7 @@ const component = Material.meta(import.meta.url, 'material-textarea');
       setIcon(this.icon, root);
       const textarea = content.querySelector('textarea');
       textarea.value = this.value;
+      textarea.addEventListener('input', _ => this.value = textarea.value);
     }
 
   /** */

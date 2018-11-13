@@ -28,6 +28,18 @@ import Template from './Template.js';
       return this;
     }
 
+  /** */
+    get disabled() {
+      return this.hasAttribute('disabled');
+    }
+
+  /** */
+    set disabled(value) {
+      value
+        ? this.setAttribute('disabled', '')
+        : this.removeAttribute('disabled');
+    }
+
   /** Отправка событий во внешний DOM
     * @param {string} event Название события
     * @param {any} detail Передаваемые параметры
@@ -73,5 +85,9 @@ import Template from './Template.js';
 
 /** */
   function isString(val) { // lodash
-    return typeof val === 'string' || ((Boolean(val) && typeof val === 'object') && Object.prototype.toString.call(val) === '[object String]');
+    const string    = typeof val === 'string';
+    const object    = typeof val === 'object';
+    const boolean   = Boolean(val);
+    const prototype = Object.prototype.toString.call(val);
+    return string || ((boolean && object) && prototype === '[object String]');
   }

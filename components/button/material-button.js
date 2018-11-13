@@ -17,6 +17,10 @@ const component = Material.meta(import.meta.url, 'material-button');
       this;
       const button = content.querySelector('button');
       button.addEventListener('click', event => {
+        if (this.disabled) {
+          event.stopPropagation();
+          return false;
+        }
         const position = pointerOffset(button, event);
         drawRipple.call(button, position);
       });

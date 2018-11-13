@@ -2,6 +2,7 @@
 
 :host {
   display: inline-block;
+  position: relative;
   --duration: .4s;
   --size: 200px;
   --radius: 2px;
@@ -105,6 +106,22 @@
   --fill-active: var(--color-error-dark);
   --fill-ripple: var(--color-error-light);
   --fill-stroke: var(--color-text-lighten);
+}
+
+:host([disabled]) {
+  --fill-active: var(--fill-static);
+  cursor: default;
+}
+
+:host([disabled]):after {
+  position:absolute;
+  top: 0;
+  left: 0;
+  right: 0;
+  bottom: 0;
+  display: block;
+  content: '';
+  background: rgba(255, 255, 255, .3);
 }
 
 /* */

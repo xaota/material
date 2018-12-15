@@ -115,7 +115,7 @@ import NewComponent from '/material/components/path/to/new-component.js';
 - [ ] [#20](//github.com/xaota/material/issues/20) BreadCrumbs | Следы
 - [ ] [#21](//github.com/xaota/material/issues/21) Message | Сообщения в чате
 - [ ] Badge | Счетчик уведомлений
-- [ ] Card | Карточка
+- [ ] [#22](//github.com/xaota/material/issues/22) Card | Карточка
 - [ ] Icon | Иконки
 - [ ] Blockquote | Цитаты
 - [ ] Figure | Рамки

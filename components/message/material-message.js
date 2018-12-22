@@ -11,6 +11,14 @@ const component = Material.meta(import.meta.url, 'material-message');
     constructor() {
       super(component);
     }
+
+  /** Является ли узел элементом {MaterialMessage} @static
+    * @param {HTMLElament} node проверяемый узел
+    * @return {boolean} node instanceof MaterialMessage
+    */
+    static is(node) {
+      return Material.is(node, MaterialMessage);
+    }
   }
 
 Material.define(component, MaterialMessage);

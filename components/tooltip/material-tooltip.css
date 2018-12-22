@@ -5,6 +5,10 @@
   position: relative;
 }
 
+::slotted(*) {
+  display: block;
+}
+
 :host > div.root {
   display: none;
   color: #fff;

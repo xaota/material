@@ -20,6 +20,10 @@
   justify-items: end;
 }
 
+slot {
+  font-family: var(--font);
+}
+
 slot:not([name]) {
   display: inline-block;
   grid-row: content;

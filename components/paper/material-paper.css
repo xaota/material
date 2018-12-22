@@ -17,6 +17,7 @@
 slot {
   display: block;
   padding: 16px 24px;
+  font-family: var(--font);
   /* overflow: hidden; */
 }
 

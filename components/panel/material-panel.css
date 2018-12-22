@@ -14,32 +14,36 @@
 
 div.root {
   display: flex;
+  flex-direction: column;
+  justify-content: center;
+  align-items: center;
+  height: 100%;
 }
 
 slot {
   display: block;
-  padding: 16px 24px;
-  margin: 0;
-  font-size: 0;
-  /* overflow: hidden; */
 }
 
-slot[name="center"], slot[name="right"] {
-  margin-left: auto;
+slot[name="top"] {
+  margin-bottom: auto;
+  margin-top: 1em;
+}
+
+slot[name="bottom"] {
+  margin-top: auto;
+  margin-bottom: 1em;
 }
 
 ::slotted(*) {
   font-size: 18px;
-  margin: 0 .3em 1px;
+  margin: 0 .3em;
   text-decoration: none;
   color: var(--color-primary-dark);
   font-family: var(--font);
-  display: inline-block;
-  vertical-align: top;
+  display: block;
 }
 
 ::slotted(*:hover) {
   color: black;
-  border-bottom: 1px dashed var(--color-primary-light);
-  margin-bottom: 0;
+  /* border-bottom: 1px dashed var(--color-primary-light); */
 }

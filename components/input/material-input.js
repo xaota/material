@@ -67,7 +67,7 @@ const component = Material.meta(import.meta.url, 'material-input');
 
   /** */
     get value() {
-      return this.getAttribute('value');
+      return this.getAttribute('value') || '';
     }
 
   /** */

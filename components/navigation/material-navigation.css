@@ -30,16 +30,25 @@ slot[name="center"], slot[name="right"] {
 
 ::slotted(*) {
   font-size: 18px;
-  margin: 0 .3em 1px;
+  margin: 0 .6em 1px 0;
   text-decoration: none;
   color: var(--color-primary-dark);
   font-family: var(--font);
   display: inline-block;
   vertical-align: top;
 }
+::slotted(*:last-child) {
+  margin-right: 0;
+}
 
 ::slotted(*:hover) {
   color: black;
   border-bottom: 1px dashed var(--color-primary-light);
   margin-bottom: 0;
+}
+
+::slotted(material-button-tooltip-icon), ::slotted(material-button-tooltip-icon:hover) {
+  margin-top:    -8px;
+  margin-bottom: -8px;
+  border-bottom: none;
 }

@@ -18,8 +18,13 @@ const component = Material.meta(import.meta.url, 'material-icon');
       const slot = content.querySelector('slot');
       const root = content.querySelector('img');
       const theme = 'light';
-      slot.addEventListener('slotchange', () => {
-        const icon = slot.assignedNodes()[0].nodeValue.trim();
+      slot.addEventListener('slotchange', _ => {
+        const self = slot.assignedNodes()[0];
+        const value = self instanceof HTMLSlotElement
+          ? self.assignedNodes()[0].nodeValue
+          : self.nodeValue;
+        if (!value) return;
+        const icon = value.trim();
         root.setAttribute('alt', icon);
         root.src = MaterialIcon.src(icon, theme);
       });

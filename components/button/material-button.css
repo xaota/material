@@ -147,6 +147,18 @@ button {
   font-variant: small-caps;
 }
 
+:host([text]) button {
+  background: none;
+}
+
+:host([text][mode]) button {
+  color: var(--fill-static);
+}
+
+:host([text="outline"]) button {
+  border: 1px solid var(--fill-static);
+}
+
 button:hover {
   background-color: var(--fill-active);
 }

@@ -23,7 +23,7 @@
   z-index: 1;
 }
 
-:host(:hover) > div.root {
+:host(:hover) > div.root:not(:empty) {
   display: block;
 }
 

@@ -3,6 +3,13 @@ import '/material/components/icon/material-icon.js';
 import '/material/components/tooltip/material-tooltip.js';
 
 const component = Material.meta(import.meta.url, 'material-button-tooltip-icon');
+const updateAttribute = {
+      text(root, value) {Material.updateChildrenAttribute(root, 'material-button',  'text',     value)},
+  disabled(root, value) {Material.updateChildrenAttribute(root, 'material-button',  'disabled', value)},
+   content(root, value) {Material.updateChildrenAttribute(root, 'material-tooltip', 'content',  value)},
+         x(root, value) {Material.updateChildrenAttribute(root, 'material-tooltip', 'x',        value)},
+         y(root, value) {Material.updateChildrenAttribute(root, 'material-tooltip', 'y',        value)}
+};
 
 /** {MaterialButtonTooltipIcon} Кнопка с подсказкой @class @extends {Material}
   */
@@ -13,61 +20,32 @@ const component = Material.meta(import.meta.url, 'material-button-tooltip-icon')
       super(component, 'closed');
     }
 
-    mount(content) {
-      updateText(content, this.text);
-      updateContent(content, this.content);
-    }
-
+  /** */
     static get observedAttributes() {
-      return ['text', 'content'];
-    }
-
-    attributeChangedCallback(name, previous, current) {
-      if (name === 'text') updateText(this.shadowRoot, current);
-      if (name === 'content') updateContent(this.shadowRoot, current);
-    }
-
-    /** */
-      get text() {
-        return this.getAttribute("text");
-      }
-
-    /** */
-      set text(value) {
-        value == null
-          ? this.removeAttribute("text")
-          : this.setAttribute("text", value);
-      }
-
-    /** */
-    get content() {
-      return this.getAttribute("content");
+      return Object.keys(updateAttribute);
     }
 
   /** */
-    set content(value) {
-      value == null
-        ? this.removeAttribute("content")
-        : this.setAttribute("content", value);
+    mount(root) {
+      Object
+        .keys(updateAttribute)
+        .forEach(attribute => updateAttribute[attribute](root, this[attribute]));
+    }
+
+  /** */
+    attributeChangedCallback(name, previous, current) {
+      const root = this.shadowRoot;
+      if (current !== previous) updateAttribute[name](root, current);
+    }
+
+  /** Является ли узел элементом {MaterialButtonTooltipIcon} @static
+    * @param {HTMLElament} node проверяемый узел
+    * @return {boolean} node instanceof MaterialButtonTooltipIcon
+    */
+    static is(node) {
+      return Material.is(node, MaterialButtonTooltipIcon);
     }
   }
 
+Material.attributes(MaterialButtonTooltipIcon);
 Material.define(component, MaterialButtonTooltipIcon);
-
-// #region [Private]
-  function updateText(content, text) {
-    const button = content.querySelector('material-button');
-    if (!button) return;
-    text == null
-      ? button.removeAttribute('text')
-      : button.setAttribute('text', text);
-  }
-
-  function updateContent(root, content) {
-    const tooltip = root.querySelector('material-tooltip');
-    if (!tooltip) return;
-    content == null
-      ? tooltip.removeAttribute('content')
-      : tooltip.setAttribute('content', content);
-  }
-// #endregion

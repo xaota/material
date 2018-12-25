@@ -24,23 +24,11 @@ import Template from './Template.js';
     }
 
   /** */
-    mount(content) {
+    mount(root) {
       return this;
     }
 
-  /** */
-    get disabled() {
-      return this.hasAttribute('disabled');
-    }
-
-  /** */
-    set disabled(value) {
-      value
-        ? this.setAttribute('disabled', '')
-        : this.removeAttribute('disabled');
-    }
-
-  /** Отправка событий во внешний DOM
+  /** Отправка событий во внешний DOM @event / event
     * @param {string} event Название события
     * @param {any} detail Передаваемые параметры
     * @return {CustomEvent} Распространяемое событие
@@ -62,6 +50,7 @@ import Template from './Template.js';
       this.mount(this.shadowRoot);
     }
 
+  /** @subsection @static */
   /** */
     static is(node, constructor) {
       if (!isString(constructor)) return node instanceof constructor;
@@ -81,13 +70,67 @@ import Template from './Template.js';
     static meta(base, name, href = './index.html') {
       return {name, href, base};
     }
+
+  /** */
+    static attributes(constructor, ...list) {
+      const attributes = constructor.observedAttributes;
+      if (list.length === 0 && attributes) list = attributes;
+      list.forEach(attribute => setAttribute(constructor.prototype, attribute));
+    }
+
+  /** */
+    static properties(constructor, ...list) {
+      const attributes = constructor.observedAttributes;
+      if (list.length === 0 && attributes) list = attributes;
+      list.forEach(property => setProperty(constructor.prototype, property));
+    }
+
+  /** */
+    static updateChildrenAttribute(root, selector, attribute, value) {
+      const children = root.querySelector(selector);
+      if (!children) return;
+      value == null
+        ? children.removeAttribute(attribute)
+        : children.setAttribute(attribute, value);
+    }
   }
 
-/** */
-  function isString(val) { // lodash
-    const string    = typeof val === 'string';
-    const object    = typeof val === 'object';
-    const boolean   = Boolean(val);
-    const prototype = Object.prototype.toString.call(val);
-    return string || ((boolean && object) && prototype === '[object String]');
-  }
+// #region [Private]
+  /** */
+    function setAttribute(prototype, attribute) {
+      Object.defineProperty(prototype, attribute, {
+        get() {
+          return this.getAttribute(attribute);
+        },
+        set(value) {
+          value == null
+            ? this.removeAttribute(attribute)
+            : this.setAttribute(attribute, value);
+        }
+      });
+    }
+
+  /** */
+    function setProperty(prototype, property) {
+      Object.defineProperty(prototype, property, {
+        get() {
+          return this.hasAttribute(property);
+        },
+        set(value) {
+          value === ''
+            ? this.removeAttribute(property)
+            : this.setAttribute(property, '');
+        }
+      });
+    }
+
+  /** @subsection @common */
+  /** */
+    function isString(val) { // lodash
+      const string    = typeof val === 'string';
+      const object    = typeof val === 'object';
+      const boolean   = Boolean(val);
+      const prototype = Object.prototype.toString.call(val);
+      return string || ((boolean && object) && prototype === '[object String]');
+    }
+// #endregion

@@ -2,6 +2,10 @@ import Material from '../../script/Material.js';
 import '/material/components/icon/material-icon.js';
 
 const component = Material.meta(import.meta.url, 'material-button-icon');
+const updateAttribute = {
+      text(root, value) {Material.updateChildrenAttribute(root, 'material-button',  'text',     value)},
+  disabled(root, value) {Material.updateChildrenAttribute(root, 'material-button',  'disabled', value)}
+};
 
 /** {MaterialButtonIcon} Кнопка-иконка @class @extends {Material}
   */
@@ -12,39 +16,32 @@ const component = Material.meta(import.meta.url, 'material-button-icon');
       super(component, 'closed');
     }
 
-    mount(content) {
-      update(content, this.text);
-    }
-
+  /** */
     static get observedAttributes() {
-      return ['text'];
+      return Object.keys(updateAttribute);
     }
 
+  /** */
+    mount(root) {
+      Object
+        .keys(updateAttribute)
+        .forEach(attribute => updateAttribute[attribute](root, this[attribute]));
+    }
+
+  /** */
     attributeChangedCallback(name, previous, current) {
-      if (name === 'text') update(this.shadowRoot, current);
+      const root = this.shadowRoot;
+      if (current !== previous) updateAttribute[name](root, current);
     }
 
-    /** */
-      get text() {
-        return this.getAttribute("text");
-      }
-
-    /** */
-      set text(value) {
-        value == null
-          ? this.removeAttribute("text")
-          : this.setAttribute("text", value);
-      }
+  /** Является ли узел элементом {MaterialButtonIcon} @static
+    * @param {HTMLElament} node проверяемый узел
+    * @return {boolean} node instanceof MaterialButtonIcon
+    */
+    static is(node) {
+      return Material.is(node, MaterialButtonIcon);
+    }
   }
 
+Material.attributes(MaterialButtonIcon);
 Material.define(component, MaterialButtonIcon);
-
-// #region [Private]
-  function update(content, text) {
-    const button = content.querySelector('material-button');
-    if (!button) return;
-    text == null
-      ? button.removeAttribute('text')
-      : button.setAttribute('text', text);
-  }
-// #endregion

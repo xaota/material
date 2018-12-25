@@ -11,7 +11,7 @@ import Component from './Component.js';
     }
   }
 
-/** */
+/** @this {Material} */
   export function drawRipple({x, y}) { // Material design ripple animation.
     const div = document.createElement('div');
     div.classList.add('ripple');
@@ -50,23 +50,3 @@ import Component from './Component.js';
       y: event.offsetY + (host.top  - root.top)
     };
   }
-
-/*
-// теоретически, было
-get opened() {
-    return this.getAttribute("opened") !== null;
-}
-set opened(value) {
-    if (!!value) {
-        this.setAttribute("opened", "");
-    } else {
-        this.removeAttribute("opened");
-    }
-}
-// теоретически, стало
-properties = {
-    opened: {
-        type: Boolean,
-    },
-}
-*/

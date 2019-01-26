@@ -9,8 +9,8 @@ const component = Material.meta(import.meta.url, 'material-tabs-item');
     }
 
   /** */
-    get name() {
-      return this.getAttribute('name');
+    get chaption() {
+      return this.getAttribute('chaption');
     }
   }
 

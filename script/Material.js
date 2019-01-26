@@ -20,7 +20,7 @@ import Component from './Component.js';
     div.style.left = `${x - div.clientWidth / 2}px`;
     const width  = Math.floor(parseFloat(window.getComputedStyle(this).width));
     const height = Math.floor(parseFloat(window.getComputedStyle(this).height));
-    const size = Math.max(width, height);
+    const size = Math.max(width, height) * 2;
     div.style.setProperty('--size', size + 'px');
     const duration = parseFloat(window.getComputedStyle(div).transitionDuration) * 1000;
     // div.addEventListener('transitionrun', _ => {

@@ -3,7 +3,7 @@
 :host {
   display: inline-block;
   position: relative;
-  --duration: .4s;
+  --duration: .24s;
   --size: 200px;
   --radius: 2px;
   --contrast: 1px;
@@ -181,6 +181,7 @@ div.ripple.run {
 
 slot {
   display: block;
+  position: relative;
 }
 
 :slotted(*) {

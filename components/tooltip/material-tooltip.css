@@ -1,6 +1,9 @@
 @charset "utf-8";
 
 :host {
+  --color: #616161;
+  --arrow: 4px;
+
   display: inline-block;
   position: relative;
 }
@@ -18,7 +21,7 @@
   font-family: "Roboto", "Helvetica", "Arial", sans-serif;
   line-height: 1.4em;
   border-radius: 4px;
-  background-color: #616161;
+  background-color: var(--color);
   position: absolute;
   z-index: 1;
 }
@@ -92,4 +95,69 @@
   :host([inset][x="center"][y="center"]) > div.root {
     transform: translate(-50%, -50%);
   }
+/* #endregion */
+
+/* #region [Layout] Положение уголка */
+  :host(:not([inset])) > div.root:before {
+    content: '';
+    display: block;
+    width: 0;
+    height: 0;
+    border: var(--arrow) solid transparent;
+    position: absolute;
+  }
+
+  :host(:not([inset])) > div.root:before, :host([y="top"]:not([inset])) > div.root:before {
+    top: 100%;
+    left: calc(50% - var(--arrow));
+    border-top-color: var(--color);
+  }
+
+  :host([y="bottom"]:not([inset])) > div.root:before {
+    top: auto;
+    bottom: 100%;
+    left: calc(50% - var(--arrow));
+    border-color: transparent;
+    border-bottom-color: var(--color);
+  }
+
+  :host([y="center"][x="left"]:not([inset])) > div.root:before {
+    left: 100%;
+    top: calc(50% - var(--arrow));
+    border-top-color: transparent;
+    border-left-color: var(--color);
+  }
+
+  :host([y="center"][x="right"]:not([inset])) > div.root:before {
+    left: auto;
+    right: 100%;
+    top: calc(50% - var(--arrow));
+    border-top-color: transparent;
+    border-right-color: var(--color);
+  }
+
+  :host([x="left"][y="bottom"]:not([inset]))   > div.root:before,
+  :host([x="left"][y="top"]:not([inset]))      > div.root:before,
+  :host([x="right"][y="bottom"]:not([inset]))  > div.root:before,
+  :host([x="right"][y="top"]:not([inset]))     > div.root:before,
+  :host([x="center"][y="center"]) > div.root:before {
+    display: none;
+  }
+
+  :host([x="left"][y="bottom"]:not([inset])) > div.root {
+    border-top-right-radius: 0;
+  }
+
+  :host([x="left"][y="top"]:not([inset])) > div.root {
+    border-bottom-right-radius: 0;
+  }
+
+  :host([x="right"][y="bottom"]:not([inset])) > div.root {
+    border-top-left-radius: 0;
+  }
+
+  :host([x="right"][y="top"]:not([inset])) > div.root {
+    border-bottom-left-radius: 0;
+  }
+
 /* #endregion */

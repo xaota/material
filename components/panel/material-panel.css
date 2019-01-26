@@ -22,6 +22,9 @@ div.root {
 
 slot {
   display: block;
+  width: 100%;
+  text-align: center;
+  font-family: var(--font);
 }
 
 slot[name="top"] {

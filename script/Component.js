@@ -99,11 +99,13 @@ import Template from './Template.js';
   /** */
     function setAttribute(prototype, attribute) {
       Object.defineProperty(prototype, attribute, {
+        /** */
         get() {
           return this.getAttribute(attribute);
         },
+        /** */
         set(value) {
-          value == null
+          value === null
             ? this.removeAttribute(attribute)
             : this.setAttribute(attribute, value);
         }
@@ -113,9 +115,11 @@ import Template from './Template.js';
   /** */
     function setProperty(prototype, property) {
       Object.defineProperty(prototype, property, {
+        /** */
         get() {
           return this.hasAttribute(property);
         },
+        /** */
         set(value) {
           value === ''
             ? this.removeAttribute(property)
@@ -126,7 +130,7 @@ import Template from './Template.js';
 
   /** @subsection @common */
   /** */
-    function isString(val) { // lodash
+    function isString(val) { // @lodash
       const string    = typeof val === 'string';
       const object    = typeof val === 'object';
       const boolean   = Boolean(val);

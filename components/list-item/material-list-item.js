@@ -1,5 +1,4 @@
-import Material, {drawRipple, pointerOffset} from '../../script/Material.js'
-// const element = 'material-list-item';
+import Material, {drawRipple, pointerOffset} from '../../script/Material.js';
 const component = Material.meta(import.meta.url, 'material-list-item');
 /**
   *
@@ -15,10 +14,16 @@ const component = Material.meta(import.meta.url, 'material-list-item');
       if (html)  this.innerHTML = html;
     }
 
+  /** */
+    static get observedAttributes() {
+      return ['value', 'disabled', 'selected'];
+    }
+
   /**
     *
     */
     mount(content) {
+      this;
       const slot = content.querySelector('slot');
       slot.addEventListener('slotchange', () => {
         const nodes = [...slot.assignedNodes()];
@@ -36,18 +41,6 @@ const component = Material.meta(import.meta.url, 'material-list-item');
       });
     }
 
-  /** */
-    get value() {
-      return this.getAttribute('value');
-    }
-
-  /** */
-    set value(value) {
-      value === ''
-        ? this.removeAttribute('value')
-        : this.setAttribute('value', value);
-    }
-
   /** Является ли узел элементом {MaterialListItem} @static
     * @param {HTMLElament} node проверяемый узел
     * @return {boolean} node instanceof MaterialListItem
@@ -57,6 +50,8 @@ const component = Material.meta(import.meta.url, 'material-list-item');
     }
   }
 
+Material.properties(MaterialListItem, 'disabled', 'selected');
+Material.attributes(MaterialListItem, 'value');
 Material.define(component, MaterialListItem);
 
 // #region [Private]

@@ -14,14 +14,11 @@
 
 div.root {
   display: flex;
+  padding: 16px 24px;
 }
 
 slot {
   display: block;
-  padding: 16px 24px;
-  margin: 0;
-  font-size: 0;
-  /* overflow: hidden; */
 }
 
 slot[name="center"], slot[name="right"] {
@@ -37,6 +34,7 @@ slot[name="center"], slot[name="right"] {
   display: inline-block;
   vertical-align: top;
 }
+
 ::slotted(*:last-child) {
   margin-right: 0;
 }

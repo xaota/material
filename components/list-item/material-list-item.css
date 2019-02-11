@@ -36,7 +36,11 @@ slot {
   cursor: pointer;
 }
 
-:host(:hover), :host([selected]) {
+:host([selected]) {
+  background: rgba(0, 0, 0, 0.03);
+}
+
+:host(:hover) {
   background: rgba(0, 0, 0, 0.08);
 }
 

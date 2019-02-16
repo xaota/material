@@ -35,7 +35,7 @@ import Template from './Template.js';
     */
     event(event, detail = null) {
       const options = {bubbles: true, composed: true};
-      event = event.includes('-')
+      event = detail !== null || event.includes('-')
         ? new CustomEvent(event, {detail, ...options})
         : new Event(event);
       return this.dispatchEvent(event);

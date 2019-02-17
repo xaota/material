@@ -1,11 +1,14 @@
 import Material from '../../script/Material.js';
-import '/material/components/button/material-button.js';
+import '/material/components/button-upload/material-button-upload.js';
 import '/material/components/tooltip/material-tooltip.js';
 
-const component = Material.meta(import.meta.url, 'material-button-tooltip');
+const component = Material.meta(import.meta.url, 'material-button-upload-tooltip');
 const updateAttribute = {
-      text(root, value) {Material.updateChildrenAttribute(root, 'material-button',  'text',     value)},
-  disabled(root, value) {Material.updateChildrenAttribute(root, 'material-button',  'disabled', value)},
+      text(root, value) {Material.updateChildrenAttribute(root, 'material-button-upload',  'text',     value)},
+  disabled(root, value) {Material.updateChildrenAttribute(root, 'material-button-upload',  'disabled', value)},
+    accept(root, value) {Material.updateChildrenAttribute(root, 'material-button-upload',  'accept', value)},
+  /** */
+  multiple(root, value) { Material.updateChildrenAttribute(root, 'material-button-upload', 'multiple', value) },
    content(root, value) {Material.updateChildrenAttribute(root, 'material-tooltip', 'content',  value)},
          x(root, value) {Material.updateChildrenAttribute(root, 'material-tooltip', 'x',        value)},
          y(root, value) {Material.updateChildrenAttribute(root, 'material-tooltip', 'y',        value)}
@@ -13,7 +16,7 @@ const updateAttribute = {
 
 /** {MaterialButtonTooltip} Кнопка с подсказкой @class @extends {Material}
   */
-  export default class MaterialButtonTooltip extends Material {
+  export default class MaterialButtonUploadTooltip extends Material {
   /** Создание элемента
     */
     constructor() {
@@ -43,10 +46,11 @@ const updateAttribute = {
     * @return {boolean} node instanceof MaterialButtonTooltip
     */
     static is(node) {
-      return Material.is(node, MaterialButtonTooltip);
+      return Material.is(node, MaterialButtonUploadTooltip);
     }
   }
 
-Material.attributes(MaterialButtonTooltip);
-Material.define(component, MaterialButtonTooltip);
+Material.attributes(MaterialButtonUploadTooltip, 'text', 'accept', 'content', 'x', 'y');
+Material.properties(MaterialButtonUploadTooltip, 'multiple', 'disabled');
+Material.define(component, MaterialButtonUploadTooltip);
 

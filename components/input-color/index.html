@@ -1,0 +1,22 @@
+<template>
+  <!-- <link rel="stylesheet" href="../../style/material.css" /> -->
+  <link rel="stylesheet" href="./material-input-color.css" />
+
+  <material-drop-root outset y="bottom">
+    <div class="root">
+      <input required />
+      <label><slot></slot></label>
+    </div>
+
+    <material-drop>
+      <material-tabs>
+        <material-tabs-item chaption="палитра" class="selected">content 1</material-tabs-item>
+        <material-tabs-item chaption="схема">
+          <material-paper>
+            <input type="color" />
+          </material-paper>
+        </material-tabs-item>
+      </material-tabs>
+    </material-drop>
+  </material-drop-root>
+</template>

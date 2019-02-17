@@ -1,20 +1,22 @@
 import Material from '../../script/Material.js';
+import '/material/components/button-upload/material-button-upload.js';
+import '/material/components/icon/material-icon.js';
 
-const component = Material.meta(import.meta.url, 'material-button-upload');
+const component = Material.meta(import.meta.url, 'material-button-upload-icon');
 const updateAttribute = {
   /** */
-      text(root, value) { Material.updateChildrenAttribute(root, 'material-button',  'text',     value) },
+      text(root, value) { Material.updateChildrenAttribute(root, 'material-button-upload', 'text',     value) },
   /** */
-  disabled(root, value) { Material.updateChildrenAttribute(root, 'material-button',  'disabled', value) },
+  disabled(root, value) { Material.updateChildrenAttribute(root, 'material-button-upload', 'disabled', value) },
   /** */
-    accept(root, value) { Material.updateChildrenAttribute(root, 'input[type="file"]', 'accept', value) },
+    accept(root, value) { Material.updateChildrenAttribute(root, 'material-button-upload', 'accept',   value) },
   /** */
-  multiple(root, value) { Material.updateChildrenAttribute(root, 'input[type="file"]', 'multiple', value) }
+  multiple(root, value) { Material.updateChildrenAttribute(root, 'material-button-upload', 'multiple', value) }
 };
 
 /** {MaterialButtonTooltip} Кнопка с подсказкой @class @extends {Material}
   */
-  export default class MaterialButtonUpload extends Material {
+  export default class MaterialButtonUploadIcon extends Material {
   /** Создание элемента
     */
     constructor() {
@@ -31,8 +33,6 @@ const updateAttribute = {
       Object
         .keys(updateAttribute)
         .forEach(attribute => updateAttribute[attribute](root, this[attribute]));
-      const input = root.querySelector('input[type="file"]');
-      input.addEventListener('change', e => this.event('files', e.target.files));
     }
 
   /** */
@@ -46,10 +46,10 @@ const updateAttribute = {
     * @return {boolean} node instanceof MaterialButtonTooltip
     */
     static is(node) {
-      return Material.is(node, MaterialButtonUpload);
+      return Material.is(node, MaterialButtonUploadIcon);
     }
   }
 
-Material.attributes(MaterialButtonUpload, 'text', 'accept');
-Material.properties(MaterialButtonUpload, 'multiple', 'disabled');
-Material.define(component, MaterialButtonUpload);
+Material.attributes(MaterialButtonUploadIcon, 'text', 'accept');
+Material.properties(MaterialButtonUploadIcon, 'multiple', 'disabled');
+Material.define(component, MaterialButtonUploadIcon);

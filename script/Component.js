@@ -89,7 +89,7 @@ import Template from './Template.js';
     static updateChildrenAttribute(root, selector, attribute, value) {
       const children = root.querySelector(selector);
       if (!children) return;
-      value == null
+      value === null || value === false // TODO: updateChildrenProperty
         ? children.removeAttribute(attribute)
         : children.setAttribute(attribute, value);
     }
@@ -121,7 +121,7 @@ import Template from './Template.js';
         },
         /** */
         set(value) {
-          value === ''
+          value === false
             ? this.removeAttribute(property)
             : this.setAttribute(property, '');
         }

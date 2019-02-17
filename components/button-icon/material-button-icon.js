@@ -1,4 +1,5 @@
 import Material from '../../script/Material.js';
+import '/material/components/button/material-button.js';
 import '/material/components/icon/material-icon.js';
 
 const component = Material.meta(import.meta.url, 'material-button-icon');
@@ -11,9 +12,11 @@ const updateAttribute = {
   */
   export default class MaterialButtonIcon extends Material {
   /** Создание элемента
+    * @param {string} icon название иконки
     */
-    constructor() {
+    constructor(icon) {
       super(component, 'closed');
+      if (icon) this.innerText = icon;
     }
 
   /** */

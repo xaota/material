@@ -188,7 +188,8 @@ slot {
   display: inline-block;
 }
 
-::slotted(material-icon) {
+::slotted(material-icon),
+::slotted(label) {
   margin-top:    -0.6em;
   margin-bottom: -0.4em;
 }
@@ -203,7 +204,8 @@ slot {
   margin-right: -0.6em;
 }
 
-::slotted(material-icon:only-child) {
+::slotted(material-icon:only-child),
+::slotted(label) {
   margin-left: -1.2em;
   margin-right: -1.2em;
 }

@@ -1,0 +1,25 @@
+@charset "utf-8";
+
+:host {
+  display: block;
+  --paper: 240px;
+}
+
+material-panel {
+  position: relative;
+  height: 100%;
+}
+
+::slotted(material-drawer-item) {
+  position: absolute;
+  top: 0;
+  bottom: 0;
+  left: 100%;
+  width: var(--paper);
+  display: none;
+  z-index: 1;
+}
+
+::slotted(material-drawer-item[expand]) {
+  display: block;
+}

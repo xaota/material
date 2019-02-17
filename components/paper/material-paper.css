@@ -21,6 +21,6 @@ slot {
   /* overflow: hidden; */
 }
 
-:host([x]) slot {
+:host([thin]) slot {
   padding: 8px 12px;
 }

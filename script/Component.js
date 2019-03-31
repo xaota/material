@@ -44,11 +44,20 @@ import Template from './Template.js';
   /** */
     async connectedCallback() {
       if (!this.ownerDocument.defaultView) return; // !
+      if (this.shadowRoot.firstChild) return; // ! loaded @TODO:
+
       const template = await Template(this.component);
       this.ready(template);
       this.render(template);
       this.mount(this.shadowRoot);
     }
+
+  /** */
+    // disconnectedCallback() {
+      // if (!this.ownerDocument.defaultView) return; // !
+      // const root = this.shadowRoot;
+      // while (root.firstChild) root.removeChild(root.firstChild);
+    // }
 
   /** @subsection @static */
   /** */

@@ -4,6 +4,7 @@
   --duration: .4s;
   --size: 200px;
   --fill-ripple: var(--color-default-light);
+  text-align: left;
 }
 
 :host, slot {
@@ -44,7 +45,7 @@ slot {
   background: rgba(0, 0, 0, 0.08);
 }
 
-:host ::slotted(*) {
+::slotted(*) {
   display: inline-block;
   text-decoration: none;
   padding: 16px 24px;

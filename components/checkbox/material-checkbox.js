@@ -13,6 +13,7 @@ const component = Material.meta(import.meta.url, 'material-checkbox');
       const checkbox = content.querySelector('input[type="checkbox"]');
       checkbox.checked = this.checked;
       checkbox.addEventListener('change', _ => this.checked = checkbox.checked);
+      content.addEventListener('click', _ => checkbox.dispatchEvent(new MouseEvent('click'))); // .checked = !.checked
     }
 
   /** */

@@ -101,45 +101,48 @@ import NewComponent from '/material/components/path/to/new-component.js';
 - [ ] [#12](//github.com/xaota/material/issues/12) Button | Кнопки
 - [ ] [#13](//github.com/xaota/material/issues/13) Input | Поля ввода
 - [ ] [#4](//github.com/xaota/material/issues/4) Select | Поле выбора из выпадающего списка
-- [ ] Switch | Выключатели
-- [ ] Checkbox | Флажки
-- [ ] Radio | Переключатели
-- [ ] Chips | Теги
-- [ ] Expand | Развороты
 - [ ] [#19](//github.com/xaota/material/issues/19) Tabs | Вкладки
 - [ ] [#8](//github.com/xaota/material/issues/8) Title (ApplicationBar) | Колонтитул
-- [ ] Paper (Panel) | Панель / Блок для размещения информации
 - [ ] [#15](//github.com/xaota/material/issues/15) List | Списки
-- [ ] Drop | Выпадающие блоки
 - [ ] [#16](//github.com/xaota/material/issues/16) Tooltip | Подсказки
 - [ ] [#20](//github.com/xaota/material/issues/20) BreadCrumbs | Следы
 - [ ] [#21](//github.com/xaota/material/issues/21) Message | Сообщения в чате
-- [ ] Badge | Счетчик уведомлений
 - [ ] [#22](//github.com/xaota/material/issues/22) Card | Карточка
-- [ ] Icon | Иконки
-- [ ] Blockquote | Цитаты
-- [ ] Figure | Рамки
 - [ ] [#10](//github.com/xaota/material/issues/10) Progress | Отображение уровня загрузки
 - [ ] [#9](//github.com/xaota/material/issues/9) Loader | Отображение бесконечной загрузки
-- [ ] Table | Отображение таблиц
 - [ ] [#11](//github.com/xaota/material/issues/11) Search | Строка поиска
 - [ ] [#14](//github.com/xaota/material/issues/14) Textarea | Многострочное поле ввода
 - [ ] Dialog | Диалог (чат)
-- [ ] Grid | Сетка - Structure-Grid
 - [ ] Header | Заголовок
 - [ ] Footer | Подвал (сводная информация)
-- [ ] Copyright | Авторские права
-- [ ] Parallax
-- [ ] Panorama | Панорамы и 360-градусные изображения
-- [ ] Payment | Платежи банковской картой
+- [ ] Switch | Выключатели
+- [ ] Expand | Развороты
+- [ ] Figure | Рамки
+- [ ] Drawer |
+- [ ] Banner | Баннеры
+- [ ] Avatar | Аватарки
+- [ ] Radio | Переключатели
+- [ ] Chips | Теги
+- [ ] Table | Отображение таблиц
+- [ ] Badge | Счетчик уведомлений
+- [ ] Icon | Иконки
+- [ ] Drop | Выпадающие блоки
 - [ ] Calendar | Календарь
-- [ ] Avatar
+- [ ] Checkbox | Флажки
+- [ ] Copyright | Авторские права
+- [ ] Paper (Panel) | Панель / Блок для размещения информации
 - [ ] Navigation (Navigation Bar) | Панель навигации
-- [ ] Sheet | Список элементов
+- [ ] Caption
 
 > Эти компоненты уже можно использовать в ваших проектах, со временем в них все будет доведено "до ума", не потребуется(?) дополнительных действий с вашей стороны
 
 ### ROADMAP (список компонент для реализации)
+- [ ] Blockquote | Цитаты
+- [ ] Parallax
+- [ ] Grid | Сетка - Structure-Grid
+- [ ] Sheet | Список элементов
+- [ ] Panorama | Панорамы и 360-градусные изображения
+- [ ] Payment | Платежи банковской картой
 - Structure
 - PickerDate | Выбор времени
 - PickerTime | Выбор даты (календарь)
@@ -153,7 +156,6 @@ import NewComponent from '/material/components/path/to/new-component.js';
 - BarSideNavigation
 - Toolbar
 - Charm
-- Drawer
 - Widget
 - Menu
 - MenuVertical
@@ -172,7 +174,6 @@ import NewComponent from '/material/components/path/to/new-component.js';
 - Upload
 - Typography
 - Link
-- Caption
 - Contents
 - Pagination
 - Slider
@@ -191,7 +192,6 @@ import NewComponent from '/material/components/path/to/new-component.js';
 - Video
 - Layer
 - Ad
-- Banner
 - Divider
 - Remark
 - Route

@@ -12,6 +12,10 @@ slot[name="description"] {
   padding: 0.4em 1em 1em;
 }
 
+slot[name="description"]:empty {
+  padding-bottom: 0;
+}
+
 ::slotted(img) {
   width: 100%;
 }

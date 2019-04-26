@@ -1,8 +1,9 @@
 <template>
-  <link rel="stylesheet" href="../../style/material.css" />
   <link rel="stylesheet" href="./material-header.css" />
 
   <div class="root">
+    <slot name="left"></slot>
     <slot></slot>
+    <slot name="right"></slot>
   </div>
 </template>

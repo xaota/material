@@ -1,0 +1,31 @@
+{
+  "name": "web-material",
+  "version": "1.0.0",
+  "description": "web components material-ui designed library",
+  "main": "index.js",
+  "scripts": {},
+  "repository": {
+    "type": "git",
+    "url": "git+https://github.com/xaota/material.git"
+  },
+  "keywords": [
+    "webcomponents",
+    "material",
+    "native",
+    "esmodules",
+    "javascript",
+    "browser",
+    "ui",
+    "library",
+    "clean"
+  ],
+  "author": "github.com/xaota",
+  "license": "Unlicense",
+  "bugs": {
+    "url": "https://github.com/xaota/material/issues"
+  },
+  "homepage": "https://github.com/xaota/material#readme",
+  "devDependencies": {
+    "babel-eslint": "^10.0.1"
+  }
+}

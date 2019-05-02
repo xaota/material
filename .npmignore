@@ -1,6 +1,10 @@
 .DS_store
 node_modules/
+contributing.md
 .eslintrc
 .babelrc
+
+.vscode/
+.github/
 
 .history/

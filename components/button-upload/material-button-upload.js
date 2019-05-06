@@ -27,6 +27,13 @@ const updateAttribute = {
     }
 
   /** */
+    get files() {
+      const root = this.shadowRoot;
+      const input = root.querySelector('input[type="file"]');
+      return input && input.files || [];
+    }
+
+  /** */
     mount(root) {
       Object
         .keys(updateAttribute)

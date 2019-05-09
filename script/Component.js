@@ -98,9 +98,25 @@ import Template from './Template.js';
     static updateChildrenAttribute(root, selector, attribute, value) {
       const children = root.querySelector(selector);
       if (!children) return;
-      value === null || value === false // TODO: updateChildrenProperty
+      value === null || value === false
         ? children.removeAttribute(attribute)
         : children.setAttribute(attribute, value);
+    }
+
+  /** */
+    static updateChildrenProperty(root, selector, property, value = false) {
+      const children = root.querySelector(selector);
+      if (!children) return;
+      value
+        ? children.setAttribute(property, '')
+        : children.removeAttribute(property)
+    }
+
+  /** */
+    static cssVariable(element, name, value) {
+      if (name.charAt(0) !== '-') name = '--' + name;
+      if (value) element.style.setProperty(name, value);
+      return getComputedStyle(element).getPropertyValue(name);
     }
   }
 

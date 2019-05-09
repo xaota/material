@@ -7,11 +7,11 @@ const updateAttribute = {
   /** */
       text(root, value) { Material.updateChildrenAttribute(root, 'material-button-upload', 'text',     value) },
   /** */
-  disabled(root, value) { Material.updateChildrenAttribute(root, 'material-button-upload', 'disabled', value) },
+  disabled(root, value) { Material.updateChildrenProperty(root, 'material-button-upload', 'disabled', value) },
   /** */
     accept(root, value) { Material.updateChildrenAttribute(root, 'material-button-upload', 'accept',   value) },
   /** */
-  multiple(root, value) { Material.updateChildrenAttribute(root, 'material-button-upload', 'multiple', value) }
+  multiple(root, value) { Material.updateChildrenProperty(root, 'material-button-upload', 'multiple', value) }
 };
 
 /** {MaterialButtonTooltip} Кнопка с подсказкой @class @extends {Material}

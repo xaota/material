@@ -20,11 +20,7 @@ div.root {
   font: normal 1em / normal Tahoma, sans-serif;
   transition: 0.3s all ease;
   position: relative;
-  /* overflow: hidden; */
-  /* outline: none; */
   padding: 1.8em 0 0;
-  /* border-bottom: 1px solid var(--stroke-static); */
-  /* background-repeat: no-repeat; */
 }
 
 div.root:hover {
@@ -46,7 +42,6 @@ div.root > input {
   outline: none;
   font: normal 1em / normal Tahoma, sans-serif;
   transition: 0.2s all ease;
-  /* overflow: hidden; */
   border-radius: 0; /* iOS */
 }
 
@@ -57,10 +52,8 @@ div.root > input::-webkit-slider-thumb {
   height: var(--size);
   border-radius: 50%;
   background: var(--stroke-active);
-  /* background: #4CAF50; */
-  cursor: pointer; /* Cursor on hover */
+  cursor: pointer;
   transition: .2s ease all;
-  /* box-shadow: -100vw 0 0 100vw dodgerblue; */
 }
 
 div.root > input::-moz-range-progress {
@@ -72,9 +65,7 @@ div.root > input::-moz-range-thumb {
   height: var(--size);
   border-radius: 50%;
   background: var(--stroke-active);
-  /* background: #4CAF50; */
-  cursor: pointer; /* Cursor on hover */
-  /* box-shadow: -100vw 0 0 100vw dodgerblue; */
+  cursor: pointer;
 }
 
 div.root > input::-webkit-slider-thumb:hover {
@@ -103,10 +94,7 @@ div.root > input + label {
   position: absolute;
   color: gray;
   left: 0.6em;
-  /* pointer-events: none; */
-  /* transition: 0.2s all ease; */
   top: 1.5em;
-  /* font: normal 1em / normal Tahoma, sans-serif; */
 }
 
 div.root > input:focus + label, div.root > input:valid + label {
@@ -120,14 +108,12 @@ slot {
   position: relative;
 }
 
-/* div.root:before, */
 div.root:after {
   content: '';
   position: absolute;
   display: block;
   height: 2px;
   width: var(--value);
-  /* width: calc(var(--value) - (var(--size) / 2)); */
   bottom: 0;
   left: 0;
   border: none;

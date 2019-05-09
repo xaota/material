@@ -5,14 +5,20 @@ import '/material/components/tooltip/material-tooltip.js';
 
 const component = Material.meta(import.meta.url, 'material-button-upload-tooltip-icon');
 const updateAttribute = {
-      text(root, value) {Material.updateChildrenAttribute(root, 'material-button-upload',  'text',     value)},
-  disabled(root, value) { Material.updateChildrenAttribute(root, 'material-button-upload', 'disabled', value) },
-    accept(root, value) {Material.updateChildrenAttribute(root, 'material-button-upload',  'accept',   value)},
   /** */
-  multiple(root, value) { Material.updateChildrenAttribute(root, 'material-button-upload', 'multiple', value) },
-   content(root, value) {Material.updateChildrenAttribute(root, 'material-tooltip', 'content',  value)},
-         x(root, value) {Material.updateChildrenAttribute(root, 'material-tooltip', 'x',        value)},
-         y(root, value) {Material.updateChildrenAttribute(root, 'material-tooltip', 'y',        value)}
+      text(root, value) { Material.updateChildrenAttribute(root, 'material-button-upload',  'text',     value) },
+  /** */
+  disabled(root, value) { Material.updateChildrenProperty(root, 'material-button-upload',  'disabled', value) },
+  /** */
+    accept(root, value) { Material.updateChildrenAttribute(root, 'material-button-upload',  'accept', value) },
+  /** */
+  multiple(root, value) { Material.updateChildrenProperty(root, 'material-button-upload', 'multiple', value) },
+  /** */
+   content(root, value) { Material.updateChildrenAttribute(root, 'material-tooltip', 'content',  value) },
+  /** */
+         x(root, value) { Material.updateChildrenAttribute(root, 'material-tooltip', 'x',        value) },
+  /** */
+         y(root, value) { Material.updateChildrenAttribute(root, 'material-tooltip', 'y',        value) }
 };
 
 /** {MaterialButtonTooltipIcon} Кнопка с подсказкой @class @extends {Material}

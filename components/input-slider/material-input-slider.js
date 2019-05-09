@@ -8,7 +8,7 @@ const updateAttribute = {
     disabled(root, value) { Material.updateChildrenProperty(root, 'input[type="range"]', 'disabled', value) }
 };
 
-/** @class MaterialInputSlider @extends {Material}
+/** Ползунок @class MaterialInputSlider @extends {Material}
   */
   export default class MaterialInputSlider extends Material {
   /**
@@ -24,12 +24,10 @@ const updateAttribute = {
         .keys(updateAttribute)
         .forEach(attribute => updateAttribute[attribute](content, this[attribute]));
       const input = content.querySelector('input[type="range"]');
-      // const root  = content.querySelector('div.root');
       input.addEventListener('input', _ => {
         const value = input.value;
         this.value = value;
         Material.cssVariable(this, 'value', value + '%');
-        // root.setAttribute('value', value);
       });
       Material.cssVariable(this, 'value', this.value + '%');
     }

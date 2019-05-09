@@ -22,8 +22,8 @@ div.root {
   top: calc(var(--indent));
 }
 :host([y="bottom"]) ::slotted(material-drop) {
-  bottom: calc(100% + var(--indent));
-  /* top: auto; */
+  top: auto;
+  bottom: var(--indent);
 }
 /*
 :host([y="center"]) ::slotted(material-drop) {
@@ -60,8 +60,7 @@ div.root {
   bottom: auto;
 }*/
 :host([outset][y="bottom"]) ::slotted(material-drop) {
-  top: calc(100% + var(--indent));
-  bottom: auto;
+  bottom: calc(100% + var(--indent));
 }
 /*:host([outset][y="center"]) ::slotted(material-drop) {
   top: 50%;

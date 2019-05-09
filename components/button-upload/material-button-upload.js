@@ -5,11 +5,11 @@ const updateAttribute = {
   /** */
       text(root, value) { Material.updateChildrenAttribute(root, 'material-button',  'text',     value) },
   /** */
-  disabled(root, value) { Material.updateChildrenAttribute(root, 'material-button',  'disabled', value) },
+  disabled(root, value) { Material.updateChildrenProperty(root, 'material-button',  'disabled', value) },
   /** */
     accept(root, value) { Material.updateChildrenAttribute(root, 'input[type="file"]', 'accept', value) },
   /** */
-  multiple(root, value) { Material.updateChildrenAttribute(root, 'input[type="file"]', 'multiple', value) }
+  multiple(root, value) { Material.updateChildrenProperty(root, 'input[type="file"]', 'multiple', value) }
 };
 
 /** {MaterialButtonTooltip} Кнопка с подсказкой @class @extends {Material}

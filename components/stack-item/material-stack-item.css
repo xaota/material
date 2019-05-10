@@ -1,0 +1,12 @@
+@charset "utf-8";
+
+:host {
+  width: 100%;
+  font-family: var(--font);
+}
+
+slot {
+  display: block;
+  padding: 0;
+  margin: 0;
+}

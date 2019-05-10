@@ -113,6 +113,20 @@ import Template from './Template.js';
     }
 
   /** */
+    static updateChildrenHTML(root, selector, value = '') {
+      const children = root.querySelector(selector);
+      if (!children) return;
+      children.innerHTML = value;
+    }
+
+  /** */
+    static updateChildrenText(root, selector, value = '') {
+      const children = root.querySelector(selector);
+      if (!children) return;
+      children.innerText = value;
+    }
+
+  /** */
     static cssVariable(element, name, value) {
       if (name.charAt(0) !== '-') name = '--' + name;
       if (value) element.style.setProperty(name, value);

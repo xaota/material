@@ -1,0 +1,44 @@
+@charset "utf-8";
+
+:host {
+  display: block;
+  border: none;
+  padding-bottom: 0.5em;
+}
+
+:host([fold]) {
+  padding-bottom: 0;
+}
+
+header {
+  display: block;
+  background: #eee;
+  font: var(--font);
+  cursor: pointer;
+  padding: 0.25em;
+  padding-left: 1.5em;
+  font-weight: 400;
+  transition: 0.3s ease background-color;
+}
+
+:host([fold]) header {
+  margin: 0;
+  text-decoration: none;
+}
+
+header:hover {
+  background: #e8e8e8;
+}
+
+slot {
+  display: block;
+  border-right: 2px solid #eee;
+  margin-right: 0.5em;
+  padding: 0.5em;
+  padding-bottom: 0;
+}
+
+:host([fold]) slot {
+  display: none;
+  padding: 0;
+}

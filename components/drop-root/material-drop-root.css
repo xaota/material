@@ -55,12 +55,13 @@ div.root {
 } */
 
 /* OUTSET */
-/* :host([outset]) ::slotted(material-drop), :host([outset][y="top"]) ::slotted(material-drop) {
-  top: var(--indent);
+:host([outset]) ::slotted(material-drop), :host([outset][y="top"]) ::slotted(material-drop) {
+  top: calc(100% + var(--indent));
   bottom: auto;
-}*/
+}
 :host([outset][y="bottom"]) ::slotted(material-drop) {
   bottom: calc(100% + var(--indent));
+  top: auto;
 }
 /*:host([outset][y="center"]) ::slotted(material-drop) {
   top: 50%;

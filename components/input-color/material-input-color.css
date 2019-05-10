@@ -96,13 +96,13 @@ div.root:before {
   padding-right: 2em;
 }
 
-:host-context([fold]) div.root > input:not(:valid) {
+:host([fold]) div.root > input:not(:valid) {
   width: 0;
 }
-:host-context([fold]) div.root > input:focus {
+:host([fold]) div.root > input:focus {
   width: 100%;
 }
-:host-context([fold]) div.root > input:not(:focus):not(:valid) + label {
+:host([fold]) div.root > input:not(:focus):not(:valid) + label {
   display: none;
 }
 

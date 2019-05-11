@@ -9,11 +9,11 @@ slot {
 }
 
 slot[name="description"] {
-  padding: 0.4em 1em 1em;
+  padding: 0.4em 1em 0;
 }
 
-slot[name="description"]:empty {
-  padding-bottom: 0;
+slot[name="description"]::slotted(*) {
+  padding-bottom: 8px;
 }
 
 ::slotted(img) {

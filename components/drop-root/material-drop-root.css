@@ -2,18 +2,18 @@
 
 :host {
   display: inline-block;
-  --indent: 8px;
-}
-
-div.root {
-  /* display: inline-block; */
   position: relative;
+  --indent: 8px;
 }
 
 ::slotted(material-drop) {
   position: absolute;
   /* top: var(--indent);
   left: var(--indent); */
+}
+
+:host(:focus-within) ::slotted(material-drop) {
+  transform: scaleY(1);
 }
 
 /* #region [Layout] Положение подсказки @TODO: */

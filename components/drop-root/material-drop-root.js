@@ -13,18 +13,11 @@ const component = Material.meta(import.meta.url, 'material-drop-root');
       super(component);
     }
 
-  /**
-    *
-    */
-    mount(content) {
-      const root = content.querySelector('div.root');
-      const slot = content.querySelector('slot');
-      const nodes = [...slot.assignedNodes()];
-      const drop = nodes.filter(e => MaterialDrop.is(e))[0];
-      if (!drop) return this;
-      root.addEventListener('click', () => {
-        drop.visible = !drop.visible;
-      });
+  /** */
+    mount(root) {
+      const drop = [...root.querySelector('slot').assignedNodes()].filter(e => MaterialDrop.is(e));
+      if (drop.length === 0) return this;
+      root.addEventListener('click', _ => drop.forEach(e => e.style.display = 'block'), {once: true});
       return this;
     }
   }

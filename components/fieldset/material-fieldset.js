@@ -3,7 +3,7 @@ import Material from '../../script/Material.js'
 const component = Material.meta(import.meta.url, 'material-fieldset');
 const updateAttribute = {
   /** */
-    chaption: (root, value) => Material.updateChildrenText(root, 'header', value)
+    caption: (root, value) => Material.updateChildrenText(root, 'header', value)
 };
 
 /**
@@ -51,6 +51,6 @@ const updateAttribute = {
     }
   }
 
-Material.attributes(MaterialFieldset, 'chaption');
+Material.attributes(MaterialFieldset, 'caption');
 Material.properties(MaterialFieldset, 'fold');
 Material.define(component, MaterialFieldset);

@@ -1,9 +1,50 @@
 @charset "utf-8";
 
 :host {
+  display: inline-block;
+  min-width: 320px;
+  background: #fff; /* ! */
+  color: var(--color-text);
+  box-sizing: border-box;
+  box-shadow: 0px 11px 15px -7px rgba(0,0,0,0.2), 0px 24px 38px 3px rgba(0,0,0,0.14), 0px 9px 46px 8px rgba(0,0,0,0.12);
+  border-radius: 4px;
+}
+
+:host(.animated) {
+  margin: auto;
+  transition: 0.4s ease transform, 0.4s ease opacity;
+  transform: translateY(-10%);
+}
+
+material-caption {
+  display: block;
+  color: black;
+}
+
+material-caption:not(:empty) {
+  padding: 24px;
+  padding-bottom: 20px;
+}
+
+slot:not([name]) {
   display: block;
 }
 
-div.root slot {
+slot:not([name])::slotted(material-text) {
+  padding: 24px;
+  padding-top: 0;
+}
+
+slot[name="action"] {
   display: flex;
+  flex-direction: row-reverse;
+  padding: 0 4px 8px;
+}
+
+slot[name="action"]::slotted(*) {
+  display: none;
+}
+
+slot[name="action"]::slotted(material-button) {
+  display: inline-block;
 }

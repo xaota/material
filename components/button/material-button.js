@@ -1,18 +1,27 @@
 import Material, {drawRipple, pointerOffset} from '../../script/Material.js';
 
 const component = Material.meta(import.meta.url, 'material-button');
+
 /** {MaterialButton} Кнопка @class @extends {Material}
   */
   export default class MaterialButton extends Material {
-  /** Создание элемента
+  /** Создание элемента {MaterialButton} @constructor
+    * @param {object|string} content? название кнопки
     */
-    constructor() {
+    constructor(content) {
       super(component, 'closed');
+      if (content === undefined) return;
+      if (typeof content !== 'object') content = {label: content};
+      if ('label' in content) this.innerHTML = content.label;
+      if ('mode'  in content) this.mode = content.mode;
+      if ('text'  in content) this.text = content.text;
     }
 
-  /** */
+  /**
+    * @return {array} список изменяемых атрибутов компонента
+    */
     static get observedAttributes() {
-      return ['disabled'];
+      return ['disabled', 'mode', 'text']; // Object.keys(updateAttribute);
     }
 
   /**
@@ -36,7 +45,8 @@ const component = Material.meta(import.meta.url, 'material-button');
     }
   }
 
-Material.properties(MaterialButton);
+Material.attributes(MaterialButton, 'mode', 'text');
+Material.properties(MaterialButton, 'disabled');
 Material.define(component, MaterialButton);
 
 // #region [Private]

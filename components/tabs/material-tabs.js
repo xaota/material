@@ -14,19 +14,19 @@ const component = Material.meta(import.meta.url, 'material-tabs');
       const root = content.querySelector('div.root');
       const links = root.querySelector('#links');
 
-      const tabs  = content.querySelector('slot').assignedNodes().filter(e => e.chaption);
+      const tabs  = content.querySelector('slot').assignedNodes().filter(e => e.caption);
       tabs.forEach(item => {
-        const chaption = item.chaption;
-        const radio = createRadio(chaption);
+        const caption = item.caption;
+        const radio = createRadio(caption);
         prepend(root, radio);
-        const label = createLabel(chaption);
+        const label = createLabel(caption);
         links.appendChild(label);
         // items.appendChild(item.cloneNode(true));
-        radio.addEventListener('change', _ => changeTab(links, tabs, chaption));
+        radio.addEventListener('change', _ => changeTab(links, tabs, caption));
       });
 
       const selected = tabs.findIndex(e => e.classList.contains('selected'))[0] || 0;
-      changeTab(links, tabs, tabs[selected].chaption);
+      changeTab(links, tabs, tabs[selected].caption);
     }
   }
 
@@ -34,11 +34,11 @@ Material.define(component, MaterialTabs);
 
 // #region [Private]
 /** */
-  function changeTab(links, tabs, chaption) {
-    const selector = `[for="tab-${chaption.replace(/\s+/, '-')}"]`;
+  function changeTab(links, tabs, caption) {
+    const selector = `[for="tab-${caption.replace(/\s+/, '-')}"]`;
 
     onceClass([...links.children], links.querySelector(selector), 'selected');
-    onceClass(tabs,  tabs.filter(e => e.chaption === chaption)[0], 'selected');
+    onceClass(tabs,  tabs.filter(e => e.caption === caption)[0], 'selected');
   }
 
 /** */
@@ -47,19 +47,19 @@ Material.define(component, MaterialTabs);
   }
 
 /** */
-  function createRadio(chaption) {
+  function createRadio(caption) {
     const input = document.createElement('input');
     input.type = 'radio';
     input.name = 'tabs';
-    input.id   = 'tab-' + chaption.replace(/\s+/, '-');
+    input.id   = 'tab-' + caption.replace(/\s+/, '-');
     return input;
   }
 
 /** */
-  function createLabel(chaption) {
+  function createLabel(caption) {
     const label = document.createElement('label');
-    label.setAttribute('for', 'tab-' + chaption.replace(/\s+/, '-'));
-    label.innerText = chaption;
+    label.setAttribute('for', 'tab-' + caption.replace(/\s+/, '-'));
+    label.innerText = caption;
     return label;
   }
 

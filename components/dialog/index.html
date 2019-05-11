@@ -1,8 +1,7 @@
 <template>
-  <link rel="stylesheet" href="../../style/material.css" />
   <link rel="stylesheet" href="./material-dialog.css" />
 
-  <div class="root">
-    <slot></slot>
-  </div>
+  <material-caption></material-caption>
+  <slot></slot>
+  <slot name="action"></slot>
 </template>

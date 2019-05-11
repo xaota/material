@@ -8,8 +8,9 @@ const component = Material.meta(import.meta.url, 'material-text');
   /**
     *
     */
-    constructor() {
+    constructor(html) {
       super(component);
+      if (html !== undefined) this.innerHTML = html;
     }
 
   /** Является ли узел элементом {MaterialText} @static

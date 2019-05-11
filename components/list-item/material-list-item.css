@@ -46,7 +46,7 @@ slot {
 }
 
 ::slotted(*) {
-  display: inline-block;
+  display: block;
   text-decoration: none;
   padding: 16px 24px;
   white-space: nowrap;

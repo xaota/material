@@ -77,8 +77,8 @@ const updateAttribute = {
 
       // this.style.width = '400px';
       this.classList.add('animated');
-      this.splash.appendChild(this);
       root.appendChild(this.splash);
+      this.splash.appendChild(this);
 
       if (this.settings.scroll === false) {
         this.cache.scroll = getComputedStyle(root).overflow;
@@ -108,14 +108,16 @@ const updateAttribute = {
     }
 
   /** */
-    resolve(data) {
+    resolve(data, close) {
       if (this.promise) this.promise.resolve(data);
+      if (close) this.close();
       return this;
     }
 
   /** */
-    reject(data) {
+    reject(data, close) {
       if (this.promise) this.promise.reject(data);
+      if (close) this.close();
       return this;
     }
 
@@ -128,18 +130,18 @@ const updateAttribute = {
     }
 
   /** */
-    static resolve(data) {
+    static resolve(data, close = false) {
     /** */
       return function() {
-        this.resolve(data);
+        this.resolve(data, close);
       }
     }
 
   /** */
-    static reject(data) {
+    static reject(data, close = false) {
       /** */
       return function() {
-        this.reject(data);
+        this.reject(data, close);
       }
     }
   }

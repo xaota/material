@@ -5,20 +5,22 @@
   /* box-sizing: content-box; */
   background: #fff;
   border: 1px solid #eee;
-  box-shadow: 0px 4px 5px 0px rgba(0, 0, 0, 0.14), 0px 1px 10px 0px rgba(0, 0, 0, 0.12);
-  min-height: 64px;
+  /* box-shadow: 0px 4px 5px 0px rgba(0, 0, 0, 0.14), 0px 1px 10px 0px rgba(0, 0, 0, 0.12); */
+  box-shadow: 0 1px 15px 0 hsla(0,0%,48.2%,.05);
   position: sticky;
-  top:0;
+  top: 0;
 }
 
 div.root {
   /* @TODO: responsive! */
   max-width: var(--width);
   margin: 0 auto;
+  display: flex;
+  justify-content: space-between;
+  align-items: center;
 }
 
 slot {
-  display: inline-block;
   margin: 1em;
 }
 

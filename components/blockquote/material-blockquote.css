@@ -2,8 +2,12 @@
 
 :host {
   display: block;
+  padding-left: 23px;
+  box-shadow: inset 3px 0 0 0 var(--color-text-addition);
 }
 
-div.root slot {
-  display: flex;
+slot {
+  display: block;
+  font-style: italic;
+  font-family: var(--font);
 }

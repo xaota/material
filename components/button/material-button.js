@@ -9,7 +9,7 @@ const component = Material.meta(import.meta.url, 'material-button');
     * @param {object|string} content? название кнопки
     */
     constructor(content) {
-      super(component, 'closed');
+      super(component);
       if (content === undefined) return;
       if (typeof content !== 'object') content = {label: content};
       if ('label' in content) this.innerHTML = content.label;
@@ -37,7 +37,7 @@ const component = Material.meta(import.meta.url, 'material-button');
     }
 
   /** Является ли узел элементом {MaterialButton} @static
-    * @param {HTMLElament} node проверяемый узел
+    * @param {HTMLElement} node проверяемый узел
     * @return {boolean} node instanceof MaterialButton
     */
     static is(node) {

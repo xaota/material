@@ -29,8 +29,9 @@ const component = Material.meta(import.meta.url, 'material-select');
       input.innerHTML = this.label;
 
       list.addEventListener('click', event => {
-        const item = event.path
-          .slice(0, event.path.indexOf(list))
+        const path = event.composedPath();
+        const item = path
+          .slice(0, path.indexOf(list))
           .filter(e => MaterialListItem.is(e))
           .reverse()[0];
         if (!item) return;
@@ -82,7 +83,7 @@ const component = Material.meta(import.meta.url, 'material-select');
     // }
 
   /** Является ли узел элементом {MaterialSelect} @static
-    * @param {HTMLElament} node проверяемый узел
+    * @param {HTMLElement} node проверяемый узел
     * @return {boolean} node instanceof MaterialSelect
     */
     static is(node) {

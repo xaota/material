@@ -31,6 +31,18 @@ const updateAttribute = {
       Object
         .keys(updateAttribute)
         .forEach(attribute => updateAttribute[attribute](root, this[attribute]));
+
+      // var observer = new MutationObserver(function(mutations) {
+      //   mutations.forEach(function(mutation) {
+      //     console.log('mutation', mutation);
+      //     // debugger;
+      //     //Detect <img> insertion
+      //     // if (mutation.addedNodes.length)
+      //     //   console.info('Node added: ', mutation.addedNodes[0])
+      //   });
+      // });
+
+      // observer.observe(this, {childList: true});
     }
 
   /**
@@ -47,7 +59,7 @@ const updateAttribute = {
     }
 
   /** Является ли узел элементом {MaterialTimelineItem} @static
-    * @param {HTMLElament} node проверяемый узел
+    * @param {HTMLElement} node проверяемый узел
     * @return {boolean} node instanceof MaterialTimelineItem
     */
     static is(node) {

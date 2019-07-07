@@ -13,7 +13,7 @@ const component = Material.meta(import.meta.url, 'material-navigation');
     }
 
   /** Является ли узел элементом {MaterialNavigation} @static
-    * @param {HTMLElament} node проверяемый узел
+    * @param {HTMLElement} node проверяемый узел
     * @return {boolean} node instanceof MaterialNavigation
     */
     static is(node) {

@@ -13,7 +13,7 @@ const component = Material.meta(import.meta.url, 'material-camera');
     }
 
   /** Является ли узел элементом {MaterialCamera} @static
-    * @param {HTMLElament} node проверяемый узел
+    * @param {HTMLElement} node проверяемый узел
     * @return {boolean} node instanceof MaterialCamera
     */
     static is(node) {

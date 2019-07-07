@@ -1,0 +1,65 @@
+@charset "utf-8";
+
+:host {
+  display: inline-block;
+  --size: 48px;
+  --stroke: 4px;
+  --angle: 45deg;
+  --fill: 40;
+  --font-weight: 700;
+  --text: '65%';
+  --background: transparent;
+  --color: var(--color-details);
+}
+
+/* #region [Clear] */
+  meter {
+    -webkit-appearance: none;
+    appearance: none;
+  }
+  ::-webkit-meter-bar, ::-webkit-meter-optimum-value, ::-webkit-meter-suboptimum-value, ::-webkit-meter-even-less-good-value {
+    display: none;
+  }
+/* #endregion */
+
+meter {
+  position: relative;
+  width: var(--size);
+  height: var(--size);
+  text-align: center;
+
+  animation: progress-circular-rotate 1.4s linear infinite;
+}
+
+meter:before {
+  content: "";
+  position: absolute;
+  top: 0;
+  left: 0;
+  right: 0;
+  bottom: 0;
+  border-radius: 50%;
+  /* background: conic-gradient(CornflowerBlue var(--fill), lightgrey 0); */
+  --edge: calc(100% - var(--stroke));
+  -webkit-mask: radial-gradient(closest-side, transparent var(--edge), black var(--edge));
+  background: conic-gradient(from var(--angle), var(--color) var(--fill), var(--background) 0);
+}
+/* overlays text*/
+/* meter:after {
+  content: var(--text);
+  position: absolute;
+  top: 0;
+  right: 0;
+  bottom: 0;
+  left: 0;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  font-weight: var(--font-weight);
+} */
+
+@keyframes progress-circular-rotate {
+  100% {
+    transform: rotate(360deg)
+  }
+}

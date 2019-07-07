@@ -42,7 +42,7 @@ const component = Material.meta(import.meta.url, 'material-list-item');
     }
 
   /** Является ли узел элементом {MaterialListItem} @static
-    * @param {HTMLElament} node проверяемый узел
+    * @param {HTMLElement} node проверяемый узел
     * @return {boolean} node instanceof MaterialListItem
     */
     static is(node) {

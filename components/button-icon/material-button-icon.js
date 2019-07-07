@@ -38,7 +38,7 @@ const updateAttribute = {
     }
 
   /** Является ли узел элементом {MaterialButtonIcon} @static
-    * @param {HTMLElament} node проверяемый узел
+    * @param {HTMLElement} node проверяемый узел
     * @return {boolean} node instanceof MaterialButtonIcon
     */
     static is(node) {

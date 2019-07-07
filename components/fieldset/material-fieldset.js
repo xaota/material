@@ -43,7 +43,7 @@ const updateAttribute = {
     }
 
   /** Является ли узел элементом {MaterialFieldset} @static
-    * @param {HTMLElament} node проверяемый узел
+    * @param {HTMLElement} node проверяемый узел
     * @return {boolean} node instanceof MaterialFieldset
     */
     static is(node) {

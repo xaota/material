@@ -13,7 +13,7 @@ const component = Material.meta(import.meta.url, 'material-panel');
     }
 
   /** Является ли узел элементом {MaterialPanel} @static
-    * @param {HTMLElament} node проверяемый узел
+    * @param {HTMLElement} node проверяемый узел
     * @return {boolean} node instanceof MaterialPanel
     */
     static is(node) {

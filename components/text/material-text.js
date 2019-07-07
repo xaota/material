@@ -14,7 +14,7 @@ const component = Material.meta(import.meta.url, 'material-text');
     }
 
   /** Является ли узел элементом {MaterialText} @static
-    * @param {HTMLElament} node проверяемый узел
+    * @param {HTMLElement} node проверяемый узел
     * @return {boolean} node instanceof MaterialText
     */
     static is(node) {

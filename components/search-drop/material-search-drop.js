@@ -75,7 +75,7 @@ const component = Material.meta(import.meta.url, 'material-search-drop');
     }
 
   /** Является ли узел элементом {MaterialSearchDrop} @static
-    * @param {HTMLElament} node проверяемый узел
+    * @param {HTMLElement} node проверяемый узел
     * @return {boolean} node instanceof MaterialSearchDrop
     */
     static is(node) {

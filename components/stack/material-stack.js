@@ -47,7 +47,7 @@ const updateAttribute = {
     }
 
   /** Является ли узел элементом {MaterialStack} @static
-    * @param {HTMLElament} node проверяемый узел
+    * @param {HTMLElement} node проверяемый узел
     * @return {boolean} node instanceof MaterialStack
     */
     static is(node) {

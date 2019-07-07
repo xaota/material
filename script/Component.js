@@ -28,6 +28,11 @@ import Template from './Template.js';
       return this;
     }
 
+  /** */
+    unmount() {
+      return this;
+    }
+
   /** Отправка событий во внешний DOM @event / event
     * @param {string} event Название события
     * @param {any} detail Передаваемые параметры
@@ -50,22 +55,32 @@ import Template from './Template.js';
       this.ready(template);
       this.render(template);
       this.mount(this.shadowRoot);
+      this.mounted = true;
+      this.event('load');
     }
 
   /** */
-    // disconnectedCallback() {
+    disconnectedCallback() {
+      this.unmount();
+      // this.mounted = false;
+      this.event('unload');
       // if (!this.ownerDocument.defaultView) return; // !
       // const root = this.shadowRoot;
       // while (root.firstChild) root.removeChild(root.firstChild);
-    // }
+    }
 
   /** @subsection @static */
   /** */
-    static is(node, constructor) {
-      if (!isString(constructor)) return node instanceof constructor;
-      // !
-      const tag = node && node.nodeName && node.nodeName.toLowerCase();
-      return tag === constructor.toLowerCase();
+    static is(component, constructor) {
+      // if (!isString(constructor)) return node instanceof constructor;
+      // // !
+      // const tag = node && node.nodeName && node.nodeName.toLowerCase();
+      // return tag === constructor.toLowerCase();
+
+      if (typeof component !== 'object') component = document.createElement(component);
+      return constructor
+        ? component instanceof constructor
+        : Object.getPrototypeOf(component.constructor) !== HTMLElement && component.constructor !== HTMLElement;
     }
 
   /** */
@@ -132,48 +147,104 @@ import Template from './Template.js';
       if (value) element.style.setProperty(name, value);
       return getComputedStyle(element).getPropertyValue(name);
     }
+
+  /** / defined */
+    static defined(components = []) {
+      return Promise.all(components.map(e => customElements.whenDefined(e)));
+    }
+
+  /** */
+    static exist(component) {
+      return Boolean(customElements.get(component));
+    }
+
+  /** */
+    static custom(root) {
+      return [...root.querySelectorAll('*')]
+        .map(e => e.nodeName.toLowerCase())
+        .filter((e, i, l) => l.indexOf(e) === i)
+        .filter(e => Component.is(e));
+    }
+
+  /** */
+    static items(root) {
+      // console.log(root);
+      return [root, ...root.querySelectorAll('*')]
+        .filter(e => Component.is(e));
+    }
+
+  /** */
+    static onload(root = document.body, deep = true) {
+      const elements = Component.items(root);
+      // console.log('x', elements);
+      return Promise
+        .all(elements.map(e => mounted(e, deep)))
+        .then(loaded => loaded.flat(Infinity));
+    }
   }
 
 // #region [Private]
-  /** */
-    function setAttribute(prototype, attribute) {
-      Object.defineProperty(prototype, attribute, {
-        /** */
-        get() {
-          return this.getAttribute(attribute);
-        },
-        /** */
-        set(value) {
-          value === null
-            ? this.removeAttribute(attribute)
-            : this.setAttribute(attribute, value);
-        }
-      });
-    }
+/** */
+  function setAttribute(prototype, attribute) {
+    Object.defineProperty(prototype, attribute, {
+      /** */
+      get() {
+        return this.getAttribute(attribute);
+      },
+      /** */
+      set(value) {
+        value === null
+          ? this.removeAttribute(attribute)
+          : this.setAttribute(attribute, value);
+      }
+    });
+  }
 
-  /** */
-    function setProperty(prototype, property) {
-      Object.defineProperty(prototype, property, {
-        /** */
-        get() {
-          return this.hasAttribute(property);
-        },
-        /** */
-        set(value) {
-          value === false
-            ? this.removeAttribute(property)
-            : this.setAttribute(property, '');
-        }
-      });
-    }
+/** */
+  function setProperty(prototype, property) {
+    Object.defineProperty(prototype, property, {
+      /** */
+      get() {
+        return this.hasAttribute(property);
+      },
+      /** */
+      set(value) {
+        value === false
+          ? this.removeAttribute(property)
+          : this.setAttribute(property, '');
+      }
+    });
+  }
 
-  /** @subsection @common */
-  /** */
-    function isString(val) { // @lodash
-      const string    = typeof val === 'string';
-      const object    = typeof val === 'object';
-      const boolean   = Boolean(val);
-      const prototype = Object.prototype.toString.call(val);
-      return string || ((boolean && object) && prototype === '[object String]');
-    }
+/** */
+  function mounted(element, deep, timeout = 5000) {
+    // console.log('y', element, element.nodeType);
+    return new Promise(async (resolve, reject) => {
+      if (element.mounted === true) return resolve(element);
+      if (element.nodeType !== 11) { // document-fragment
+        element.addEventListener('load', async () => await loaded(element, resolve, deep));
+      } else {
+        // console.log('df', element.children.length, element.children);
+        // debugger;
+        await Promise.all([...element.children].map(Component.items).flat(Infinity).map(e => Component.onload(e, deep)));
+        resolve(element);
+      }
+    });
+  }
+
+/** */
+  async function loaded(element, resolve, deep) {
+    // element.addEventListener('load', async _ => {
+      const result = [];
+
+      if (deep) {
+        const items = await Component.onload(element.shadowRoot);
+        items.forEach(c => result.push(c));
+      }
+
+      result.push(element);
+      resolve(result);
+    // });
+    // setTimeout(() => reject(element), timeout);
+  }
 // #endregion

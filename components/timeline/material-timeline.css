@@ -2,13 +2,159 @@
 
 :host {
   display: block;
+  position: relative;
+
+  /* display: flex;
+  flex-direction: column; */
+  /* flex-flow: column wrap; */
+  /* flex-wrap: wrap;
+  align-items: flex-start; */
+  /* flex-direction: row; */
+  /* flex-wrap: wrap; */
+  /* flex-flow: row wrap; */
+  /* align-content: flex-end; */
+
+  /* -webkit-column-count: 3;
+  -moz-column-count: 3; */
+  /* column-count: 2; */
+
+  /* -webkit-column-width: 200px;
+    -moz-column-width: 200px;
+    column-width: 200px;
+    -webkit-column-gap: 30px;
+    -moz-column-gap: 30px;
+    column-gap: 30px;
+    -webkit-column-rule: 1px solid #ccc;
+    -moz-column-rule: 1px solid #ccc;
+    column-rule: 1px solid #ccc; */
+
+/*
+    -moz-column-width: 260px;
+    -webkit-column-width: 260px;
+     column-width: 260px;
+    -moz-column-gap: 15px;
+    -webkit-column-gap: 15px;
+  width: 90%;
+    max-width: 1240px;
+    margin: 50px auto; */
 }
 
-* {
+:host:before {
+  position: absolute;
+  content: "";
+  position: absolute;
+  top: 0;
+  bottom: 0;
+  left: 50%;
+  border-left: 1px solid rgba(191, 191, 191, 0.4);
+  /* 1px solid #bdbdbd */
+}
+
+:host:after {
+  content: "";
+  flex: auto;
+}
+
+slot {
+  /* display: block; */
+
+  display: flex;
+	flex-flow: column wrap;
+  max-width:100%;
+
   box-sizing: border-box;
 }
 
-div.root {
+::slotted(material-timeline-item) {
+  /* display: inline-block;
+  display: box; */
+  width: 40%;
+  /* box-sizing: border-box; */
+  /* min-height: 100px; */
+
+  /* padding:20px; */
+  flex: 1 0 auto;
+  margin-top: 40px;
+  margin-left: 5%;
+  /* margin-top: 10px; */
+  position: relative;
+  /* overflow:hidden; */
+
+  /* background: #fefefe;
+    border: 0px solid #fcfcfc;
+    box-shadow: 0 1px 2px rgba(34, 25, 25, 0.4);
+    margin: 0 2px 14px;
+    padding: 0px 0px 13px 0px;
+    transition: opacity .4s ease-in-out;
+    width: 100%;
+  display: inline-block;
+  column-break-inside: avoid;
+  border-radius: 3px;
+  -moz-border-radius: 3px;
+  -webkit-border-radius: 3px; */
+}
+
+::slotted(material-timeline-item:first-of-type) {
+  margin-top: 0;
+}
+
+::slotted(material-timeline-item[left]) {
+  /* margin-left: 5%; */
+}
+
+::slotted(material-timeline-item[right]) {
+  /* margin-left: 5%; */
+}
+
+
+::slotted(material-timeline-item)::before {
+  display: block;
+  border: 5px solid #bfbfbf;
+  width: 0;
+  height: 0;
+  position: absolute;
+  top: 26px;
+  content: '';
+  border-radius: 50%;
+}
+
+::slotted(material-timeline-item[left])::before {
+  left:110%;
+  transform: translateX(50%);
+}
+
+::slotted(material-timeline-item[right])::before {
+  right:110%;
+  transform: translateX(-50%);
+}
+
+::slotted(material-timeline-item)::after {
+  display: block;
+  border: 32px solid #bfbfbf;
+  width: 0;
+  height: 0;
+  position: absolute;
+  top:0;
+  content: '';
+  border-top-color: transparent;
+  border-bottom-color: transparent;
+}
+
+::slotted(material-timeline-item[left])::after {
+  left:100%;
+  border-right-color: transparent;
+}
+
+::slotted(material-timeline-item[right])::after {
+  right:100%;
+  border-left-color: transparent;
+}
+
+/* * {
+  box-sizing: border-box;
+} */
+
+/* div.root {
   position: relative;
   margin: auto;
 }
@@ -35,7 +181,7 @@ div.root::after {
 @media (min-width: 1000px) {
   div.root::after {
     border-left: 1px solid #bdbdbd;
-  }
+  } */
 
   /* #timeline .demo-card:nth-child(odd) .head::after, #timeline .demo-card:nth-child(even) .head::after {
     position: absolute;
@@ -57,9 +203,9 @@ div.root::after {
   } */
 
   /* */
-  ::slotted(material-timeline-item:nth-child(odd)) {
+  /* ::slotted(material-timeline-item:nth-child(odd)) {
     margin-right: 45px;
-  }
+  } */
   /* div.root:nth-child(odd) .head::after {
     border-left-width: 15px;
     border-left-style: solid;
@@ -68,9 +214,9 @@ div.root::after {
   div.root:nth-child(odd) .head::before {
     left: 491.5px;
   } */
-  ::slotted(material-timeline-item:nth-child(odd)) {
+  /* ::slotted(material-timeline-item:nth-child(odd)) {
     margin-left: 45px;
-  }
+  } */
 
   /* div.root:nth-child(even) .head::after {
     border-right-width: 15px;
@@ -80,11 +226,7 @@ div.root::after {
   div.root:nth-child(even) .head::before {
     right: 489.5px;
   } */
-  ::slotted(material-timeline-item:nth-child(2)) {
+  /* ::slotted(material-timeline-item:nth-child(2)) {
     margin-top: 180px;
   }
-}
-
-div.root slot {
-
-}
+} */

@@ -13,7 +13,7 @@ const component = Material.meta(import.meta.url, 'material-caption');
     }
 
   /** Является ли узел элементом {MaterialCaption} @static
-    * @param {HTMLElament} node проверяемый узел
+    * @param {HTMLElement} node проверяемый узел
     * @return {boolean} node instanceof MaterialCaption
     */
     static is(node) {

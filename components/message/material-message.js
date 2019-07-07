@@ -13,7 +13,7 @@ const component = Material.meta(import.meta.url, 'material-message');
     }
 
   /** Является ли узел элементом {MaterialMessage} @static
-    * @param {HTMLElament} node проверяемый узел
+    * @param {HTMLElement} node проверяемый узел
     * @return {boolean} node instanceof MaterialMessage
     */
     static is(node) {

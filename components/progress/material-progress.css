@@ -7,3 +7,19 @@
 div.root slot {
   display: flex;
 }
+
+progress {
+  -webkit-appearance: none;
+  appearance: none;
+  position: relative;
+  width: 100px;
+  height: 100px;
+  text-align: center;
+}
+
+/*gets rid of all pseudo elements*/
+::-webkit-progress-inner-element,
+::-webkit-progress-bar,
+::-webkit-progress-value {
+  display: none;
+}

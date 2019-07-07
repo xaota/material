@@ -6,6 +6,9 @@ const speed = 1400;
 const component = Material.meta(import.meta.url, 'material-meter');
 const updateAttribute = {
   /** */
+  value() {
+    this.increase = false
+  }
     // min(root, value) { Material.updateChildrenAttribute(root, 'material-button-upload',  'text',     value) }
 };
 
@@ -29,10 +32,11 @@ const updateAttribute = {
     mount(root) {
       Object
         .keys(updateAttribute)
-        .forEach(attribute => updateAttribute[attribute](root, this[attribute]));
+        .forEach(attribute => {
+          updateAttribute[attribute].bind(this, root, this[attribute])
+        });
 
-      let increase = true;
-      const value = Number(this.getAttribute('value'));
+      this.increase = true;
       // console.log('value', value);
       let current = 0;
       // duration
@@ -41,11 +45,9 @@ const updateAttribute = {
       // var start = performance.now();
       var previous;
       const frame = callback.bind(this);
-      let animation = window.requestAnimationFrame(frame);
+      this.animation = window.requestAnimationFrame(frame);
       root.addEventListener('click', () => {
-        console.log('click remove', this);
-        window.cancelAnimationFrame(animation);
-        this.remove();
+        this.value = 20;
       });
 
       /** */
@@ -56,29 +58,35 @@ const updateAttribute = {
 
         const increment = delay * 100 / speed;
 
-        if (increase && current === value || !increase && current === 0) {
+        const value = this.value;
+        let increase = this.increase;
+
+        if (increase && current >= value || !increase && current <= 0) {
           increase = !increase;
           if (increase) Material.cssVariable(this, 'color', colors.reverse().join(','));
         }
+        this.increase = increase;
         current += increase ? increment : -increment / 2;
         if (current < 0) current = 0;
-        if (current > value) current = value;
+        // if (current > value) current = value;
         // console.log(delay, current, increment);
         Material.cssVariable(this, 'fill', current + '%');
 
-        animation = window.requestAnimationFrame(frame);
+        this.animation = window.requestAnimationFrame(frame);
       }
     }
 
   /** */
     unmount() {
-      console.log('unmount', this);
+      window.cancelAnimationFrame(this.animation);
     }
 
   /** */
     attributeChangedCallback(name, previous, current) {
       const root = this.shadowRoot;
-      if (current !== previous) updateAttribute[name](root, current);
+      if (current !== previous) {
+        updateAttribute[name].call(this, root, current);
+      }
     }
 
 
@@ -90,6 +98,8 @@ const updateAttribute = {
       return Material.is(node, MaterialMeter);
     }
   }
+
+  Material.attributes(MaterialMeter, 'value');
 
 // Material.attributes(MaterialMeter, 'min', 'max', 'value', 'mode', 'color', 'background', 'size', 'angle', 'low', 'high', 'optium', 'stroke', 'speed');
 // Material.properties(MaterialMeter, 'disabled', 'linear', 'fill', 'reverse');

@@ -2,7 +2,25 @@
   <!-- <link rel="stylesheet" href="../../style/material.css" /> -->
   <link rel="stylesheet" href="./material-timepicker.css" />
 
-  <div class="root">
-    <slot></slot>
-  </div>
+  <material-drop-root>
+    <div id="icon"></div><material-input></material-input>
+    <material-drop>
+      <material-list>
+        <material-list-item>
+          <slot>
+            <div id="clock">
+              ЧАСЫЧАСЫЧАСЫЧАСЫЧАСЫ
+              ЧАСЫЧАСЫЧАСЫЧАСЫ
+              ЧАСЫЧАСЫЧАСЫ
+              ЧАСЫЧАСЫ
+              ЧАСЫ
+              ЧАСЫЧАСЫ
+              ЧАСЫЧАСЫЧАСЫ
+              ЧАСЫЧАСЫЧАСЫЧАСЫ
+              ЧАСЫЧАСЫЧАСЫЧАСЫЧАСЫ</div>
+          </slot>
+        </material-list-item>
+      </material-list>
+    </material-drop>
+  </material-drop-root>
 </template>

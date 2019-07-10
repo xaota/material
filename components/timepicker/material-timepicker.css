@@ -1,9 +1,28 @@
 @charset "utf-8";
 
 :host {
+  display: inline-block;
+}
+
+material-drop-root {
   display: block;
 }
 
-div.root slot {
+material-input {
+  width: 80%;
+  display: inline-block;
+}
 
+#icon {
+  content: url('../../icons/light/timer.svg');
+  display: inline-block;
+}
+
+material-list-item {
+  display: block;
+  width: 100%;
+}
+
+#clock {
+  width: 100%;
 }

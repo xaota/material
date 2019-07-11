@@ -9,20 +9,10 @@ material-drop-root {
 }
 
 material-input {
-  width: 80%;
-  display: inline-block;
-}
-
-#icon {
-  content: url('../../icons/light/timer.svg');
-  display: inline-block;
+  width: 100%;
 }
 
 material-list-item {
   display: block;
-  width: 100%;
-}
-
-#clock {
   width: 100%;
 }

@@ -102,107 +102,106 @@ import NewComponent from '/material/components/path/to/new-component.js';
 > Около названий некоторых компонент есть сылки на задачу (типа тз) для просмотра подробностей
 
 ### Готово / В процессе улучшения
-- [ ] [#12](//github.com/xaota/material/issues/12) Button | Кнопки
-- [ ] [#13](//github.com/xaota/material/issues/13) Input | Поля ввода
-- [ ] [#4](//github.com/xaota/material/issues/4) Select | Поле выбора из выпадающего списка
-- [ ] [#19](//github.com/xaota/material/issues/19) Tabs | Вкладки
-- [ ] [#8](//github.com/xaota/material/issues/8) Title (ApplicationBar) | Колонтитул
-- [ ] [#15](//github.com/xaota/material/issues/15) List | Списки
-- [ ] [#16](//github.com/xaota/material/issues/16) Tooltip | Подсказки
-- [ ] [#20](//github.com/xaota/material/issues/20) BreadCrumbs | Следы
-- [ ] [#21](//github.com/xaota/material/issues/21) Message | Сообщения в чате
-- [ ] [#22](//github.com/xaota/material/issues/22) Card | Карточка
+- [x] [#12](//github.com/xaota/material/issues/12) Button | Кнопки
+- [x] [#13](//github.com/xaota/material/issues/13) Input | Поля ввода
+- [x] [#4](//github.com/xaota/material/issues/4) Select | Поле выбора из выпадающего списка
+- [x] [#19](//github.com/xaota/material/issues/19) Tabs | Вкладки
+- [x] [#8](//github.com/xaota/material/issues/8) Title (ApplicationBar) | Колонтитул
+- [x] [#15](//github.com/xaota/material/issues/15) List | Списки
+- [x] [#16](//github.com/xaota/material/issues/16) Tooltip | Подсказки
+- [x] [#20](//github.com/xaota/material/issues/20) BreadCrumbs | Следы
+- [x] [#21](//github.com/xaota/material/issues/21) Message | Сообщения в чате
+- [x] [#22](//github.com/xaota/material/issues/22) Card | Карточка
 - [ ] [#10](//github.com/xaota/material/issues/10) Progress | Отображение уровня загрузки
 - [ ] [#9](//github.com/xaota/material/issues/9) Loader | Отображение бесконечной загрузки
-- [ ] [#11](//github.com/xaota/material/issues/11) Search | Строка поиска
-- [ ] [#14](//github.com/xaota/material/issues/14) Textarea | Многострочное поле ввода
-- [ ] Dialog | Диалог (чат)
-- [ ] Header | Заголовок
+- [x] [#11](//github.com/xaota/material/issues/11) Search | Строка поиска
+- [x] [#14](//github.com/xaota/material/issues/14) Textarea | Многострочное поле ввода
+- [x] [#36](//github.com/xaota/material/issues/36) Expand | Развороты
+- [x] Dialog | Диалоговое окно
+- [x] Header | Заголовок
+- [x] Switch | Выключатели
+- [x] Figure | Рамки
+- [x] Banner | Баннеры
+- [x] Avatar | Аватарки
+- [x] Radio | Переключатели
+- [x] Chips | Теги
+- [x] Icon | Иконки
+- [x] Drop | Выпадающие блоки
+- [x] Checkbox | Флажки
+- [x] Copyright | Авторские права
+- [x] Paper (Panel) | Панель / Блок для размещения информации
+- [x] Navigation (Navigation Bar) | Панель навигации
+- [x] Caption
+- [x] Blockquote | Цитаты
 - [ ] Footer | Подвал (сводная информация)
-- [ ] Switch | Выключатели
-- [ ] Expand | Развороты
-- [ ] Figure | Рамки
 - [ ] Drawer |
-- [ ] Banner | Баннеры
-- [ ] Avatar | Аватарки
-- [ ] Radio | Переключатели
-- [ ] Chips | Теги
 - [ ] Table | Отображение таблиц
 - [ ] Badge | Счетчик уведомлений
-- [ ] Icon | Иконки
-- [ ] Drop | Выпадающие блоки
 - [ ] Calendar | Календарь
-- [ ] Checkbox | Флажки
-- [ ] Copyright | Авторские права
-- [ ] Paper (Panel) | Панель / Блок для размещения информации
-- [ ] Navigation (Navigation Bar) | Панель навигации
-- [ ] Caption
+- [ ] Timeline
 
 > Эти компоненты уже можно использовать в ваших проектах, со временем в них все будет доведено "до ума", не потребуется(?) дополнительных действий с вашей стороны
 
 ### ROADMAP (список компонент для реализации)
-- [ ] Blockquote | Цитаты
 - [ ] Parallax
 - [ ] Grid | Сетка - Structure-Grid
 - [ ] Sheet | Список элементов
 - [ ] Panorama | Панорамы и 360-градусные изображения
 - [ ] Payment | Платежи банковской картой
-- Structure
-- PickerDate | Выбор времени
-- PickerTime | Выбор даты (календарь)
-- PickerDateTime | Выбор даты и времени
-- Countdown
-- Rating | Рейтинг (звездочки)
-- Reaction | Кнопки Like/Dislike и другие
-- Counter?
-- Bar
-- BarSide
-- BarSideNavigation
-- Toolbar
-- Charm
-- Widget
-- Menu
-- MenuVertical
-- MenuHorizontal
-- Notify
-- Toast
-- Snack
-- Hint
-- Stepper
-- Master
-- Wizard
-- Popup
-- Modal
-- Snippet
-- Code(?) (Source)
-- Upload
-- Typography
-- Link
-- Contents
-- Pagination
-- Slider
-- SliderRange
-- Tile
-- Carousel
-- TreeView
-- InfoBox
-- KeyPad (pin-code)
-- Ribbon
-- Emotion
-- Smile
-- Sticker
-- Player
-- Audio
-- Video
-- Layer
-- Ad
-- Divider
-- Remark
-- Route
-- Timeline
-- Map
-- Address
-
+- [ ] Structure
+- [ ] PickerDate | Выбор времени
+- [ ] PickerTime | Выбор даты (календарь)
+- [ ] PickerDateTime | Выбор даты и времени
+- [ ] Countdown
+- [ ] Rating | Рейтинг (звездочки)
+- [ ] Reaction | Кнопки Like/Dislike и другие
+- [ ] Counter?
+- [ ] Bar
+- [ ] BarSide
+- [ ] BarSideNavigation
+- [ ] Toolbar
+- [ ] Charm
+- [ ] Widget
+- [ ] Menu
+- [ ] MenuVertical
+- [ ] MenuHorizontal
+- [ ] Notify
+- [ ] Toast
+- [ ] Snack
+- [ ] Hint
+- [ ] Stepper
+- [ ] Master
+- [ ] Wizard
+- [ ] Popup
+- [ ] Modal
+- [ ] Snippet
+- [ ] Code(?) (Source)
+- [ ] Upload
+- [ ] Typography
+- [ ] Link
+- [ ] Contents
+- [ ] Pagination
+- [ ] Slider
+- [ ] SliderRange
+- [ ] Tile
+- [ ] Carousel
+- [ ] TreeView
+- [ ] InfoBox
+- [ ] KeyPad (pin-code)
+- [ ] Ribbon
+- [ ] Emotion
+- [ ] Smile
+- [ ] Sticker
+- [ ] Player
+- [ ] Audio
+- [ ] Video
+- [ ] Layer
+- [ ] Ad
+- [ ] Divider
+- [ ] Remark
+- [ ] Route
+- [ ] Map
+- [ ] Address
 
 и так далее...)
 

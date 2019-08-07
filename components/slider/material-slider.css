@@ -1,0 +1,13 @@
+@charset "utf-8";
+
+:host {
+  display: block;
+  padding-left: 23px;
+  box-shadow: inset 3px 0 0 0 var(--color-text-addition);
+}
+
+slot {
+  display: block;
+  font-style: italic;
+  font-family: var(--font);
+}

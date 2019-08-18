@@ -44,59 +44,7 @@ import MaterialButton from '/material/components/button/material-button.js';
 ## Для разработки
 > - [Панель задач для разработчиков](//github.com/xaota/material/projects/1?fullscreen=true)
 > - [Вехи развития](//github.com/xaota/material/milestones)
-
-## Как добавить новый компонент
-1. В папке `/components` создайте папку для вашего компонента (список возможных компонент ниже).\
-По стандарту, название `custom`-элемента должно содержать `-` (тире), поэтому мы используем префикс `material-`.
-2. Создайте файлы для разметки, стилей и скрипта.
-3. Создайте разметку для нового компонента
-```html
-<template>
-  <link rel="stylesheet" href="./new-component.css" />
-
-  <!-- тут разметка для вашего компонента -->
-  <!-- корневой тег для удобства лучше пометить классом `root` -->
-</template>
-```
-4. Добавьте логику и подключение вашего компонента (`new-component.js`)
-```javascript
-import Material from '../Material.js';
-const component = Material.meta(import.meta.url, 'new-component');
-
-/** {NewComponent} Ваш компонент @class @extends {Material}
-  */
-  class NewComponent extends Material {
-  /** Создание компонента
-    */
-    constructor() {
-      super(element);
-    }
-
-    // ... тут логика компонента (если нужно)
-  }
-
-Material.define(element, NewComponent);
-```
-5. Подключите класс, описывающий ваш компонент, в скрипт, обрабатывающий логику страницы
-```js
-import NewComponent from '/material/components/path/to/new-component.js';
-```
-*__Примечание__*. Достаточно сделать это в одном месте.
-6. Добавьте стили к вашему компоненту (`new-component.css`).
-7. Примените компонент на странице `/index.html` (это такая свалка для предпросмотра).
-8. Напишите `readme.md` для вашего компонента.
-
-## Примечания
-1. Используйте `es-imports` и подключайте все скрипты как модули.
-2. Используйте `css-custom-properties`, иначе говоря, `css-переменные`.\
-Они наследуются из внешних стилей, что позволит использовать темы с сайтов, на которые будут добавлены ваши компоненты.
-3. Для удобства помечайте корневой тег вашего элемента классом `root`.
-4. Внутренние события элементов лучше скрыть от внешней страницы, если ои не нужны.\
-"Наружу" можно "бросить" свое событие с помощью метода `this.event('new-event', data)`.
-6. Когда будет больше компонент, надо все отрефакторить.
-7. Для самоорганизации можно использовать `issue` и `projects` этого репозитория, а для общей документации - `wiki`.
-
-> Смело используйте новые технологии и не беспокойтесь об IE или браузерах, в которых что-то пока не работает. Скоро все будет топчик!
+> - [Инструкции для разработчиков](//github.com/xaota/material/blob/master/contributing.md)
 
 ## Список компонент
 > Около названий некоторых компонент есть сылки на задачу (типа тз) для просмотра подробностей
@@ -112,33 +60,37 @@ import NewComponent from '/material/components/path/to/new-component.js';
 - [x] [#20](//github.com/xaota/material/issues/20) BreadCrumbs | Следы
 - [x] [#21](//github.com/xaota/material/issues/21) Message | Сообщения в чате
 - [x] [#22](//github.com/xaota/material/issues/22) Card | Карточка
-- [ ] [#10](//github.com/xaota/material/issues/10) Progress | Отображение уровня загрузки
-- [ ] [#9](//github.com/xaota/material/issues/9) Loader | Отображение бесконечной загрузки
 - [x] [#11](//github.com/xaota/material/issues/11) Search | Строка поиска
 - [x] [#14](//github.com/xaota/material/issues/14) Textarea | Многострочное поле ввода
 - [x] [#36](//github.com/xaota/material/issues/36) Expand | Развороты
-- [x] Dialog | Диалоговое окно
-- [x] Header | Заголовок
-- [x] Switch | Выключатели
-- [x] Figure | Рамки
-- [x] Banner | Баннеры
-- [x] Avatar | Аватарки
-- [x] Radio | Переключатели
-- [x] Chips | Теги
-- [x] Icon | Иконки
-- [x] Drop | Выпадающие блоки
-- [x] Checkbox | Флажки
+- [x] [#30](//github.com/xaota/material/issues/30) Switch | Выключатели
+- [x] [#26](//github.com/xaota/material/issues/26) Figure | Рамки
+- [x] [#28](//github.com/xaota/material/issues/28) Avatar | Аватарки
+- [x] [#32](//github.com/xaota/material/issues/32) Radio | Переключатели
+- [x] [#33](//github.com/xaota/material/issues/33) Chips | Теги
+- [x] [#29](//github.com/xaota/material/issues/29) Icon | Иконки
+- [x] [#34](//github.com/xaota/material/issues/34) Drop | Выпадающие блоки
+- [x] [#31](//github.com/xaota/material/issues/31) Checkbox | Флажки
+- [x] [#35](//github.com/xaota/material/issues/35) Paper (Panel) | Панель / Блок для размещения информации
+- [x] [#27](//github.com/xaota/material/issues/27) Caption | Заголовок
+- [ ] [#10](//github.com/xaota/material/issues/10) Progress | Отображение уровня загрузки
+- [ ] [#9](//github.com/xaota/material/issues/9) Loader | Отображение бесконечной загрузки
+- [ ] [#39](//github.com/xaota/material/issues/39) Rating | Рейтинг (звездочки)
+- [ ] [#23](//github.com/xaota/material/issues/23) Drawer |
+- [ ] [#25](//github.com/xaota/material/issues/25) Badge | Счетчик уведомлений
+- [ ] [#37](//github.com/xaota/material/issues/37) Stack | Экраны и история переходов
 - [x] Copyright | Авторские права
-- [x] Paper (Panel) | Панель / Блок для размещения информации
 - [x] Navigation (Navigation Bar) | Панель навигации
-- [x] Caption
 - [x] Blockquote | Цитаты
-- [ ] Footer | Подвал (сводная информация)
-- [ ] Drawer |
-- [ ] Table | Отображение таблиц
-- [ ] Badge | Счетчик уведомлений
+- [x] Dialog | Диалоговое окно
+- [x] Header | Шапка страницы
+- [x] Banner | Баннеры
 - [ ] Calendar | Календарь
-- [ ] Timeline
+- [ ] Timeline | Хроника
+- [ ] Slider | Ползунок
+- [ ] Table | Отображение таблиц
+- [ ] Footer | Подвал (сводная информация)
+- [ ] #24 Charm | Выдвигаемая панель быстрых действий
 
 > Эти компоненты уже можно использовать в ваших проектах, со временем в них все будет доведено "до ума", не потребуется(?) дополнительных действий с вашей стороны
 
@@ -153,14 +105,12 @@ import NewComponent from '/material/components/path/to/new-component.js';
 - [ ] PickerTime | Выбор даты (календарь)
 - [ ] PickerDateTime | Выбор даты и времени
 - [ ] Countdown
-- [ ] Rating | Рейтинг (звездочки)
 - [ ] Reaction | Кнопки Like/Dislike и другие
 - [ ] Counter?
 - [ ] Bar
 - [ ] BarSide
 - [ ] BarSideNavigation
 - [ ] Toolbar
-- [ ] Charm
 - [ ] Widget
 - [ ] Menu
 - [ ] MenuVertical
@@ -181,7 +131,6 @@ import NewComponent from '/material/components/path/to/new-component.js';
 - [ ] Link
 - [ ] Contents
 - [ ] Pagination
-- [ ] Slider
 - [ ] SliderRange
 - [ ] Tile
 - [ ] Carousel
@@ -204,13 +153,6 @@ import NewComponent from '/material/components/path/to/new-component.js';
 - [ ] Address
 
 и так далее...)
-
-### Примеры
-Можно посмотреть на реализации Material элементов, например, тут\
-[https://material-ui.com/demos/buttons/](https://material-ui.com/demos/buttons/) (кнопки)
-
-### Икноки
-https://material.io/tools/icons
 
 ### TODO:
 e2e / Тестировние компонент

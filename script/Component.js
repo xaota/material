@@ -24,7 +24,10 @@ import Template from './Template.js';
     }
 
   /** */
-    mount(root) {
+    mount(root, attributes = {}) {
+      Object
+        .keys(attributes)
+        .forEach(attribute => attributes[attribute](root, this[attribute]));
       return this;
     }
 

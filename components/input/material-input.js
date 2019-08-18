@@ -44,10 +44,11 @@ const updateAttribute = {
     mount(content) {
       const root  = content.querySelector('div.root');
       const input = content.querySelector('input');
-      Object
-        .keys(updateAttribute)
-        .filter(attribute => attribute in updateAttribute)
-        .forEach(attribute => updateAttribute[attribute](root, this[attribute]));
+      super.mount(root, updateAttribute);
+      // Object
+      //   .keys(updateAttribute)
+        // .filter(attribute => attribute in updateAttribute)
+        // .forEach(attribute => updateAttribute[attribute](root, this[attribute]));
 
       input.addEventListener('input', _ => this.value = input.value);
     }

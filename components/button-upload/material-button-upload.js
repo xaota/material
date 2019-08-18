@@ -1,6 +1,8 @@
 import Material from '../../script/Material.js';
+import MaterialButton from '../button/material-button.js';
 
 const component = Material.meta(import.meta.url, 'material-button-upload');
+const types = {buffer, binary, data, text};
 const updateAttribute = {
   /** */
       text(root, value) { Material.updateChildrenAttribute(root, 'material-button',  'text',     value) },
@@ -38,8 +40,16 @@ const updateAttribute = {
       Object
         .keys(updateAttribute)
         .forEach(attribute => updateAttribute[attribute](root, this[attribute]));
+
       const input = root.querySelector('input[type="file"]');
-      input.addEventListener('change', e => this.event('files', e.target.files));
+      input.addEventListener('change', e => {
+        const files = [...e.target.files];
+        this.event('change', files);
+        files.forEach(async file => {
+          const value = await read(file);
+          this.event('file', value);
+        });
+      });
     }
 
   /** */
@@ -60,3 +70,52 @@ const updateAttribute = {
 Material.attributes(MaterialButtonUpload, 'text', 'accept');
 Material.properties(MaterialButtonUpload, 'multiple', 'disabled');
 Material.define(component, MaterialButtonUpload);
+
+// #region [Private]
+/** */
+  function read(file, type = 'text') {
+    return new Promise((resolve, reject) => {
+      const fr  = new FileReader();
+
+      fr.onload = async event => { // onload fires after reading is complete
+        const reader = event.target;
+        if (reader.readyState !== FileReader.DONE) reject(); // !
+        try {
+          const data = await types[type](reader);
+          resolve({data, name: file.name});
+        } catch (error) {
+          reject(error);
+        }
+      }
+
+      switch (type) {
+        case 'buffer': fr.readAsArrayBuffer(file);  break;
+        case 'binary': fr.readAsBinaryString(file); break;
+        case 'data'  : fr.readAsDataURL(file);      break;
+        case 'text'  : fr.readAsText(file);         break;
+      }
+    });
+  }
+
+/** */
+  function text(reader) {
+    return new Promise((resolve, reject) => {
+      resolve(reader.result);
+    });
+  }
+
+/** */
+  function binary(reader) {
+
+  }
+
+/** */
+  function buffer(reader) {
+
+  }
+
+/** */
+  function data(reader) {
+
+  }
+// #endregion

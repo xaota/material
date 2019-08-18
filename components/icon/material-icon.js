@@ -8,8 +8,9 @@ const component = Material.meta(import.meta.url, 'material-icon');
   /**
     *
     */
-    constructor() {
+    constructor(name) {
       super(component);
+      if (name) this.innerHTML = name;
     }
 
   /** */

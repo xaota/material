@@ -1,9 +1,63 @@
 @charset "utf-8";
 
 :host {
-  display: block;
+  display: inline-block;
 }
 
-div.root slot {
+div.root {
+  display: block;
+  font-size: 0;
+}
 
+div.item {
+  display: inline-block;
+  /* padding-left: 24px; */
+  background-position: left top;
+  background-repeat: no-repeat;
+  height: 24px;
+  cursor: pointer;
+}
+
+div.item > material-icon {
+  display: none;
+}
+
+div.item > material-icon.border {
+  display: inline-block;
+}
+
+:host(:not([disabled])) div.item:hover > material-icon.border {
+  display: none;
+}
+
+:host(:not([disabled])) div.item:hover > material-icon.active {
+  display: inline-block;
+}
+
+div.item.star > material-icon.border {
+  display: none;
+}
+
+:host(:not([disabled])) div.item.star:hover > material-icon.active {
+  display: none;
+}
+
+div.item.star > material-icon.star {
+  display: inline-block;
+}
+
+div.item.half > material-icon.border {
+  display: none;
+}
+
+/* div.item.half:hover > material-icon.active {
+  display: block;
+} */
+
+div.item.half > material-icon.half {
+  display: inline-block;
+}
+
+:host(:not([disabled])) div.item.half:hover > material-icon.half {
+  display: none;
 }

@@ -5,6 +5,12 @@ const updateAttribute = {
   /** */
     value(root, value) { Material.updateChildrenAttribute(root,   'input[type="range"]', 'value',    value) },
   /** */
+    min(root, value) { Material.updateChildrenAttribute(root,   'input[type="range"]', 'min',    value) },
+  /** */
+    max(root, value) { Material.updateChildrenAttribute(root,   'input[type="range"]', 'max',    value) },
+  /** */
+    step(root, value) { Material.updateChildrenAttribute(root,   'input[type="range"]', 'step',    value) },
+  /** */
     disabled(root, value) { Material.updateChildrenProperty(root, 'input[type="range"]', 'disabled', value) }
 };
 
@@ -14,8 +20,9 @@ const updateAttribute = {
   /**
     *
     */
-    constructor() {
+    constructor(label) {
       super(component, 'closed');
+      if (label) this.innerHTML = label;
     }
 
   /** */
@@ -25,11 +32,17 @@ const updateAttribute = {
         .forEach(attribute => updateAttribute[attribute](content, this[attribute]));
       const input = content.querySelector('input[type="range"]');
       input.addEventListener('input', _ => {
-        const value = input.value;
-        this.value = value;
-        Material.cssVariable(this, 'value', value + '%');
+        // const value = input.value || this.min || 0;
+        // this.value = value;
+        // const percent = parseFloat(this.value) / (parseFloat(this.max || 100) - parseFloat(this.min || 0)) * 100;
+        // Material.cssVariable(this, 'value', percent + '%');
+        // visualise.call(this, this.value || this.min || 0, this.max || 100, this.min || 100);
+        setValue.call(this, input.value);
       });
-      Material.cssVariable(this, 'value', this.value + '%');
+
+      // Material.cssVariable(this, 'value', this.value + '%');
+      // visualise.call(this, this.value || this.min || 0, this.max || 100, this.min || 100);
+      setValue.call(this, this.value);
     }
 
   /** */
@@ -54,6 +67,21 @@ const updateAttribute = {
   }
 
 
-Material.attributes(MaterialInputSlider, 'value');
+Material.attributes(MaterialInputSlider, 'value', 'max', 'min', 'step');
 Material.properties(MaterialInputSlider, 'disabled');
 Material.define(component, MaterialInputSlider);
+
+// #region [Private]
+/** */
+  function setValue(data) {
+    const value = data || this.min || 0;
+    this.value = value;
+    visualise.call(this, this.value || this.min || 0, this.max || 100, this.min || 100);
+  }
+
+/** */
+  function visualise(value = 0, max = 100, min = 0) {
+    const percent = parseFloat(value) / (parseFloat(max) - parseFloat(min)) * 100;
+    Material.cssVariable(this, 'value', percent + '%');
+  }
+// #endregion

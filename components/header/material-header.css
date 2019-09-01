@@ -20,19 +20,25 @@
 }
 
 slot[name="logo"] {
-    display: flex;
+	display: flex;
 	align-items: center;
 	padding-right: 32px;
 	font-family: 'Billabong';
-	font-size: 46px;
+	font-size: 48px;
 	border-right: 1px solid #e9ecef;
+}
+
+::slotted(*) {
+	vertical-align: bottom;
+	line-height: 56px;
+	height: 48px;
 }
 
 slot[name="center"] {
 	display: flex;
 	justify-content: space-between;
-    align-items: center;
-    flex-grow: 1;
+	align-items: center;
+	flex-grow: 1;
 	padding: 0 32px;
 }
 

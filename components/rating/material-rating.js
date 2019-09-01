@@ -15,6 +15,7 @@ const updateAttribute = {
   */
   export default class MaterialRating extends Material {
   /** Создание элемента {MaterialRating} @constructor
+    * @param {number} value значение оценки
     */
     constructor(value) {
       super(component);
@@ -45,26 +46,9 @@ const updateAttribute = {
       const root = node.querySelector('div.root');
       root.innerHTML = '';
 
-      // const urls = {
-      //   border: MaterialIcon.src('star_border'),
-      //   star:   MaterialIcon.src('star'),
-      //   half:   MaterialIcon.src('star_half'),
-      //   active: MaterialIcon.src('star-active')
-      // };
-
-      // Array.from({length}, _ => document.createElement('div'))
-      //   .reduce((root, div) => {
-      //     div.classList.add('item');
-      //     div.style.backgroundImage = 'url(' + urls.border + ')';
-      //     root.appendChild(div);
-      //     return div;
-      //   }, root);
-      // stars.forEach(star => root.appendChild(star));
-
       Array.from({length}, _ => document.createElement('div'))
         .reduce((root, div, index) => {
           div.classList.add('item');
-          // div.style.backgroundImage = 'url(' + urls.border + ')';
           const border = new MaterialIcon('star_border');
           const star =   new MaterialIcon('star');
           const half =   new MaterialIcon('star_half');
@@ -79,7 +63,6 @@ const updateAttribute = {
           div.appendChild(active);
           root.appendChild(div);
           if (!this.disabled) div.addEventListener('click', e => {
-            // setValue(node, index + 1);
             this.value = index + 1;
             // e.cancelBubble = true;
             // e.preventDefault();
@@ -119,22 +102,15 @@ Material.define(component, MaterialRating);
 /** */
   function setValue(node, value, item) {
     if (isNaN(value)) return;
-    // alert(value);
     const items = [...node.querySelectorAll('div.item')];
-    // console.log(items);
     items.forEach(div => div.classList.remove('star', 'half'));
-    // if (item) item.classList.add('star');
-    // const
     depth(node, value);
   }
 
 /** */
   function depth(root, count) {
-    console.log(count);
     const item = root.querySelector('div.item');
     if (!item) return;
-    // if (count) count -= 1;
-    // if (typeof count === 'number' && count === 0) return;
     item.classList.add(count >= 1 ? 'star' : 'half');
     count -= 1;
     if (count <= 0) return;

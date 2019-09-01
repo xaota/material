@@ -31,17 +31,8 @@ const updateAttribute = {
         .keys(updateAttribute)
         .forEach(attribute => updateAttribute[attribute](content, this[attribute]));
       const input = content.querySelector('input[type="range"]');
-      input.addEventListener('input', _ => {
-        // const value = input.value || this.min || 0;
-        // this.value = value;
-        // const percent = parseFloat(this.value) / (parseFloat(this.max || 100) - parseFloat(this.min || 0)) * 100;
-        // Material.cssVariable(this, 'value', percent + '%');
-        // visualise.call(this, this.value || this.min || 0, this.max || 100, this.min || 100);
-        setValue.call(this, input.value);
-      });
+      input.addEventListener('input', _ => setValue.call(this, input.value));
 
-      // Material.cssVariable(this, 'value', this.value + '%');
-      // visualise.call(this, this.value || this.min || 0, this.max || 100, this.min || 100);
       setValue.call(this, this.value);
     }
 

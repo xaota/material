@@ -1,77 +1,73 @@
 import Material from '../../script/Material.js';
 
 const component = Material.meta(import.meta.url, 'material-expand');
-/** */
-  export default class MaterialExpand extends Material {
+const updateAttribute = {
+  // disabled(root, value) {Material.updateChildrenAttribute(root, '*', 'disabled', value)}
   /** */
+       expand(root, value) { Material.updateChildrenClass(root, 'div.root', {expand: value === ''}) },
+  /** */
+      summary(root, value) { Material.updateChildrenText(root, 'header > p.summary', value) },
+  /** */
+  description(root, value) { Material.updateChildrenText(root, 'header > p.description', value) }
+};
+
+/** {MaterialExpand} Разворачивающаяся панель @class @extends {Material}
+  */
+  export default class MaterialExpand extends Material {
+  /** Создание элемента
+    */
     constructor() {
       super(component);
     }
 
-  /** */
-    mount(content) {
-      const root = content.querySelector('div.root');
-      root.querySelector('header > p.summary')    .innerText = this.summary;
-      root.querySelector('header > p.description').innerText = this.description;
+  /** Отслеживаемые атрибуты элемента / observedAttributes @readonly
+    * @return {array} список изменяемых атрибутов компонента
+    */
+    static get observedAttributes() {
+      return Object.keys(updateAttribute);
+    }
+
+  /** Создание элемента в DOM (DOM доступен) / mount @lifecycle
+    * @param {HTMLElement} node ShadowRoot узел элемента
+    * @return {MaterialExpand} @this
+    */
+    mount(node) {
+      const root = node.querySelector('div.root');
+      super.mount(root, updateAttribute);
       root.querySelector('header').addEventListener('click', event => {
-        const expanded = expand(root);
+        this.expand = !this.expand;
         event.stopPropagation();
         event.cancelBubble = true;
         event.preventDefault();
-        this.event('expand-event', {content: expanded});
+        this.event('expand', {expanded: this.expand});
         return false;
       });
+      return this;
     }
 
-  /** */
-    get summary() {
-      return this.getAttribute("summary");
+  /** Изменение отслеживаемого атрибута / attributeChangedCallback @lifecycle
+    * @param {string} name название изменяемого атрибута
+    * @param {string} previous предыдущее значение ?null
+    * @param {string} current устанавливаемое значение
+    */
+    attributeChangedCallback(name, previous, current) {
+      const root = this.shadowRoot;
+      if (current !== previous && name in updateAttribute) updateAttribute[name](root, current);
     }
 
-  /** */
-    set summary(value) {
-      !!value
-        ? this.setAttribute("summary", value)
-        : this.removeAttribute("summary");
-    }
-
-  /** */
-    get description() {
-      return this.getAttribute("description");
-    }
-
-  /** */
-    set description(value) {
-      !!value
-        ? this.setAttribute("description", value)
-        : this.removeAttribute("description");
-    }
-
-  /** */
-    get expand() {
-      return this.hasAttribute('expand');
-    }
-
-  /** */
-    set expand(value = '') {
-      !!value
-        ? this.setAttribute('expand', '')
-        : this.removeAttribute('expand');
+  /** Является ли узел элементом {MaterialExpand} @static
+    * @param {HTMLElement} node проверяемый узел
+    * @return {boolean} node instanceof MaterialExpand
+    */
+    static is(node) {
+      return Material.is(node, MaterialExpand);
     }
   }
 
+Material.attributes(MaterialExpand, 'summary', 'description');
+Material.properties(MaterialExpand, 'expand');
 Material.define(component, MaterialExpand);
 
 // #region [Private]
-  /** */
-    function expand(root) {
-      // const slot = root.querySelector('slot');
-      const className = 'expand';
-      const expanded = root.classList.contains(className);
-      root.classList.toggle(className);
-      // slot.style.maxHeight = expanded
-      //   ? null
-      //   : slot.scrollHeight + "px";
-      return !expanded;
-    }
+
 // #endregion

@@ -17,33 +17,45 @@ const updateAttribute = {
   */
   export default class MaterialInput extends Material {
   /** Создание элемента
-    *
+    * @param {string} label название поля
     */
-    constructor() {
+    constructor(label) {
       super(component, 'closed');
+      if (label) this.innerHTML = label;
     }
 
-  /**
-    *
+  /** Отслеживаемые атрибуты элемента / observedAttributes @readonly
+    * @return {array} список изменяемых атрибутов компонента
     */
-    ready(content) {
-      this;
-      const root = content.querySelector('div.root');
+    static get observedAttributes() {
+      return [...Object.keys(updateAttribute), 'right', 'disabled'];
+    }
+
+  /** Создание элемента в DOM (DOM не доступен) / ready @lifecycle
+    * @param {HTMLElement} node ShadowRoot узел элемента
+    * @return {MaterialInput} @this
+    */
+    ready(node) {
+      const root = node.querySelector('div.root');
       root.addEventListener('click', event => {
         const position = pointerOffset(root, event);
         root.style.setProperty('--position', position.x + 'px');
         drawRipple.call(root, position);
       });
-      const input = content.querySelector('div.root > input');
+      const input = node.querySelector('div.root > input');
       input.addEventListener('blur', _ => {
         root.style.setProperty('--position', '50%');
       });
+      return this;
     }
 
-  /** */
-    mount(content) {
-      const root  = content.querySelector('div.root');
-      const input = content.querySelector('input');
+  /** Создание элемента в DOM (DOM доступен) / mount @lifecycle
+    * @param {HTMLElement} node ShadowRoot узел элемента
+    * @return {MaterialInput} @this
+    */
+    mount(node) {
+      const root  = node.querySelector('div.root');
+      const input = node.querySelector('input');
       super.mount(root, updateAttribute);
       // Object
       //   .keys(updateAttribute)
@@ -51,17 +63,17 @@ const updateAttribute = {
         // .forEach(attribute => updateAttribute[attribute](root, this[attribute]));
 
       input.addEventListener('input', _ => this.value = input.value);
+      return this;
     }
 
-  /** */
-    static get observedAttributes() {
-      return [...Object.keys(updateAttribute), 'right', 'disabled'];
-    }
-
-  /** */
-    attributeChangedCallback(attribute, previous, current) {
+  /** Изменение отслеживаемого атрибута / attributeChangedCallback @lifecycle
+    * @param {string} name название изменяемого атрибута
+    * @param {string} previous предыдущее значение ?null
+    * @param {string} current устанавливаемое значение
+    */
+    attributeChangedCallback(name, previous, current) {
       const root = this.shadowRoot;
-      if (current !== previous && attribute in updateAttribute) updateAttribute[attribute](root, current);
+      if (current !== previous && name in updateAttribute) updateAttribute[name](root, current);
     }
 
   /** Является ли узел элементом {MaterialInput} @static

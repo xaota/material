@@ -4,8 +4,9 @@ const component = Material.meta(import.meta.url, 'material-chip');
 /** */
   export default class MaterialChip extends Material {
     /** */
-      constructor() {
+      constructor(value) {
         super(component);
+        if (value) this.innerHTML = value;
       }
   }
 

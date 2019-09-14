@@ -100,14 +100,14 @@ import Template from './Template.js';
 
   /** */
     static attributes(constructor, ...list) {
-      const attributes = constructor.observedAttributes;
+      const attributes = constructor.observedAttributes || [];
       if (list.length === 0 && attributes) list = attributes;
       list.forEach(attribute => setAttribute(constructor.prototype, attribute));
     }
 
   /** */
     static properties(constructor, ...list) {
-      const attributes = constructor.observedAttributes;
+      const attributes = constructor.observedAttributes || [];
       if (list.length === 0 && attributes) list = attributes;
       list.forEach(property => setProperty(constructor.prototype, property));
     }
@@ -142,6 +142,13 @@ import Template from './Template.js';
       const children = root.querySelector(selector);
       if (!children) return;
       children.innerText = value;
+    }
+
+  /** */
+    static updateChildrenClass(root, selector, value = {}) {
+      const children = root.querySelector(selector);
+      if (!children) return;
+      Object.keys(value).forEach(c => children.classList[value[c] ? 'add' : 'remove'](c));
     }
 
   /** */

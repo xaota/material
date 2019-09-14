@@ -75,7 +75,7 @@ const updateAttribute = {
       return this;
     }
 
-  /** Изменение отследживаемого атрибута / attributeChangedCallback @lifecycle
+  /** Изменение отслеживаемого атрибута / attributeChangedCallback @lifecycle
     * @param {string} name название изменяемого атрибута
     * @param {string} previous предыдущее значение ?null
     * @param {string} current устанавливаемое значение

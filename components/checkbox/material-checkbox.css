@@ -8,6 +8,10 @@ label {
   display: flex;
 }
 
+slot {
+  font-family: var(--font);
+}
+
 label:before {
   display: inline-block;
   content: '';

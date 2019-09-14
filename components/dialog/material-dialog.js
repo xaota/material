@@ -6,16 +6,15 @@ import MaterialButton from '../button/material-button.js';
 
 const component = Material.meta(import.meta.url, 'material-dialog');
 const updateAttribute = {
-  /** */
-    caption: (root, value) => Material.updateChildrenText(root, 'material-caption', value)
+/** */
+  caption(root, value) { Material.updateChildrenText(root, 'material-caption', value) }
 };
 
-/**
-  *
+/** {MaterialDialog} Диалоговое окно @class @extends {Material}
   */
   export default class MaterialDialog extends Material {
-  /**
-    *
+  /** Создание элемента
+    * @param {string} caption название диалогового окна
     */
     constructor(caption) {
       super(component);
@@ -24,18 +23,20 @@ const updateAttribute = {
       this.cache = {};
     }
 
-  /**
+  /** Отслеживаемые атрибуты элемента / observedAttributes @readonly
     * @return {array} список изменяемых атрибутов компонента
     */
     static get observedAttributes() {
       return Object.keys(updateAttribute);
     }
 
-  /** */
-    mount(content) {
-      Object
-        .keys(updateAttribute)
-        .forEach(attribute => updateAttribute[attribute](content, this[attribute]));
+  /** Создание элемента в DOM (DOM доступен) / mount @lifecycle
+    * @param {HTMLElement} node ShadowRoot узел элемента
+    * @return {MaterialDialog} @this
+    */
+    mount(node) {
+      super.mount(node, updateAttribute);
+      return this;
     }
 
   /** */
@@ -119,6 +120,16 @@ const updateAttribute = {
       if (this.promise) this.promise.reject(data);
       if (close) this.close();
       return this;
+    }
+
+  /** Изменение отслеживаемого атрибута / attributeChangedCallback @lifecycle
+    * @param {string} name название изменяемого атрибута
+    * @param {string} previous предыдущее значение ?null
+    * @param {string} current устанавливаемое значение
+    */
+    attributeChangedCallback(name, previous, current) {
+      const root = this.shadowRoot;
+      if (current !== previous) updateAttribute[name](root, current);
     }
 
   /** Является ли узел элементом {MaterialDialog} @static

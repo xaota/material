@@ -3,8 +3,7 @@ import Material from '../../script/Material.js';
 const component = Material.meta(import.meta.url, 'material-expand');
 const updateAttribute = {
   // disabled(root, value) {Material.updateChildrenAttribute(root, '*', 'disabled', value)}
-  /** */
-       expand(root, value) { Material.updateChildrenClass(root, 'div.root', {expand: value === ''}) },
+  expand,
   /** */
       summary(root, value) { Material.updateChildrenText(root, 'header > p.summary', value) },
   /** */
@@ -16,8 +15,9 @@ const updateAttribute = {
   export default class MaterialExpand extends Material {
   /** Создание элемента
     */
-    constructor() {
+    constructor(summary) {
       super(component);
+      if (summary) this.summary = summary;
     }
 
   /** Отслеживаемые атрибуты элемента / observedAttributes @readonly
@@ -39,7 +39,6 @@ const updateAttribute = {
         event.stopPropagation();
         event.cancelBubble = true;
         event.preventDefault();
-        this.event('expand', {expanded: this.expand});
         return false;
       });
       return this;
@@ -52,7 +51,7 @@ const updateAttribute = {
     */
     attributeChangedCallback(name, previous, current) {
       const root = this.shadowRoot;
-      if (current !== previous && name in updateAttribute) updateAttribute[name](root, current);
+      if (current !== previous && name in updateAttribute) updateAttribute[name].call(this, root, current);
     }
 
   /** Является ли узел элементом {MaterialExpand} @static
@@ -69,5 +68,9 @@ Material.properties(MaterialExpand, 'expand');
 Material.define(component, MaterialExpand);
 
 // #region [Private]
-
+/** */
+  function expand(root, value) {
+    Material.updateChildrenClass(root, 'div.root', {expand: value === ''})
+    this.event('expand', {expanded: this.expand});
+  }
 // #endregion

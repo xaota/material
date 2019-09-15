@@ -1,6 +1,6 @@
 {
   "name": "web-material",
-  "version": "1.4.2",
+  "version": "1.5.2",
   "description": "web components material-ui designed library",
   "main": "index.js",
   "scripts": {},

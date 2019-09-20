@@ -14,6 +14,7 @@ const updateAttribute = {
   */
   export default class MaterialExpand extends Material {
   /** Создание элемента
+    * @param {string} summary название блока
     */
     constructor(summary) {
       super(component);

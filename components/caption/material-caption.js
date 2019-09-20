@@ -8,8 +8,9 @@ const component = Material.meta(import.meta.url, 'material-caption');
   /**
     *
     */
-    constructor() {
+    constructor(label) {
       super(component);
+      if (label) this.innerHTML = label;
     }
 
   /** Является ли узел элементом {MaterialCaption} @static

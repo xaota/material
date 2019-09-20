@@ -14,7 +14,6 @@
 
 div.root {
   position: relative;
-  overflow: hidden;
 }
 
 div.ripple {
@@ -49,6 +48,5 @@ slot {
   display: block;
   text-decoration: none;
   padding: 16px 24px;
-  /* white-space: nowrap; */
   font-family: var(--font);
 }

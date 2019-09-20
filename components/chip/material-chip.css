@@ -25,3 +25,30 @@ div.root {
 div.root:hover {
   background-color: #f51c68;
 }
+
+button.action {
+  display: none;
+  height: 32px;
+  width: 32px;
+  margin: -6px -16px -6px 6px;
+  cursor: pointer;
+  border-radius: 16px;
+  border: none;
+  background-color: #f70c5e;
+  text-align: center;
+  outline: none;
+  vertical-align: bottom;
+  padding: 0 4px;
+}
+
+button.action:hover {
+  background-color: #cf0049;
+}
+
+button.action > material-icon {
+  display: block;
+}
+
+:host([action]) button.action {
+  display: inline-block;
+}

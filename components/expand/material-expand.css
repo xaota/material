@@ -10,23 +10,27 @@ div.root {
 }
 
 header {
-  display: block;
+  display: flex;
+  justify-content: space-between;
   position: relative;
   cursor: default;
 }
 
 header > p {
   display: inline-block;
+  white-space: nowrap;
   padding: 0 1em;
 }
 
 header p.summary {
-  width: 33%;
   color: black;
+  text-overflow: ellipsis;
+  overflow: auto;
 }
 
 header p.description {
   color: gray;
+  margin-right: 2em;
 }
 
 header:after {
@@ -58,4 +62,5 @@ div.root.expand > slot {
   padding: 1em;
   transform: scaleY(1);
   height: auto;
+  overflow: visible;
 }

@@ -12,6 +12,15 @@ import Template from './Template.js';
     }
 
   /** */
+    #store = {};
+
+  /** */
+    store(...data) {
+      Object.assign(this.#store, ...data);
+      return this.#store;
+    }
+
+  /** */
     ready(template) {
       this;
       return template;

@@ -4,25 +4,29 @@ import '/material/components/tooltip/material-tooltip.js';
 
 const component = Material.meta(import.meta.url, 'material-chip-tooltip');
 const updateAttribute = {
-  /** */
-    content(root, value) { Material.updateChildrenAttribute(root, 'material-tooltip', 'content',  value) },
-  /** */
-          x(root, value) { Material.updateChildrenAttribute(root, 'material-tooltip', 'x',        value) },
-  /** */
-          y(root, value) { Material.updateChildrenAttribute(root, 'material-tooltip', 'y',        value) }
+/** */
+   action(root, value) { Material.updateChildrenAttribute(root, 'material-chip',    'action', value) },
+/** */
+    value(root, value) { Material.updateChildrenAttribute(root, 'material-chip',    'value',  value) },
+/** */
+  content(root, value) { Material.updateChildrenAttribute(root, 'material-tooltip', 'content', value) },
+/** */
+        x(root, value) { Material.updateChildrenAttribute(root, 'material-tooltip', 'x',       value) },
+/** */
+        y(root, value) { Material.updateChildrenAttribute(root, 'material-tooltip', 'y',       value) }
 };
 
-/** {MaterialButtonTooltip} Кнопка с подсказкой @class @extends {Material}
+/** {MaterialChipTooltip} Фишка с подсказкой @class @extends {Material}
   */
   export default class MaterialChipTooltip extends Material {
   /** Создание элемента
-    * @param {string} value текст на фишке
-    * @param {string} tooltip текст подсказки на фишке
+    * @param {string} html текст на фишке
+    * @param {string} content текст подсказки на фишке
     */
-    constructor(value, tooltip) {
+    constructor(html, content) {
       super(component);
-      if (value)   this.innerHTML = value;
-      if (tooltip) this.content = tooltip;
+      if (html)    this.innerHTML = html;
+      if (content) this.content = content;
     }
 
   /** Отслеживаемые атрибуты элемента / observedAttributes @readonly
@@ -48,7 +52,7 @@ const updateAttribute = {
     */
     attributeChangedCallback(name, previous, current) {
       const root = this.shadowRoot;
-      if (current !== previous) updateAttribute[name](root, current);
+      if (current !== previous && name in updateAttribute) updateAttribute[name].call(this, root, current);
     }
 
   /** Является ли узел элементом {MaterialChipTooltip} @static

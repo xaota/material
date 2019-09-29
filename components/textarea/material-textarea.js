@@ -37,6 +37,7 @@ const component = Material.meta(import.meta.url, 'material-textarea');
       const textarea = content.querySelector('textarea');
       textarea.value = this.value;
       textarea.addEventListener('input', _ => this.value = textarea.value);
+      this.addEventListener('focus', _ => textarea.focus());
     }
 
   /** */

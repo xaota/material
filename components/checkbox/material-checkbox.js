@@ -1,36 +1,65 @@
 import Material from '../../script/Material.js';
 
 const component = Material.meta(import.meta.url, 'material-checkbox');
+const updateAttribute = {
 /** */
+  checked(root, value) { Material.updateChildrenProperty(root, 'input[type="checkbox"]', 'checked', value) }
+};
+
+/** Поле выбора флажком @class MaterialCheckbox @extends {Material}
+  */
   export default class MaterialCheckbox extends Material {
-  /** */
-    constructor() {
+  /** Создание элемента {MaterialCheckbox}
+    * @param {string} label название поля
+    */
+    constructor(label) {
       super(component);
+      if (label) this.innerHTML = label;
     }
 
-  /** */
-    mount(content) {
-      const checkbox = content.querySelector('input[type="checkbox"]');
-      checkbox.checked = this.checked;
-      checkbox.addEventListener('change', _ => this.checked = checkbox.checked);
-      content.addEventListener('click', _ => checkbox.dispatchEvent(new MouseEvent('click'))); // .checked = !.checked
+  /** Отслеживаемые атрибуты элемента / observedAttributes @readonly
+    * @return {array} список изменяемых атрибутов компонента
+    */
+    static get observedAttributes() {
+      return [...Object.keys(updateAttribute), 'right', 'disabled'];
     }
 
-  /** */
-    get checked() {
-      return this.hasAttribute('checked');
+  /** Создание элемента в DOM (DOM доступен) / mount @lifecycle
+    * @param {HTMLElement} node ShadowRoot узел элемента
+    * @return {MaterialCheckbox} @this
+    */
+    mount(node) {
+      const checkbox = node.querySelector('input[type="checkbox"]');
+      super.mount(node, updateAttribute);
+      checkbox.addEventListener('change', _ => {
+        this.checked = checkbox.checked;
+        this.event('change');
+      });
+      // node.addEventListener('click', _ => checkbox.dispatchEvent(new MouseEvent('click'))); // .checked = !.checked
+      return this;
     }
 
-  /** */
-    set checked(value) {
-      const checkbox = this.shadowRoot.querySelector('#checkbox');
-      if (checkbox) checkbox.checked = value;
-      value
-        ? this.setAttribute('checked', '')
-        : this.removeAttribute('checked');
-      this.event('change');
+  /** Изменение отслеживаемого атрибута / attributeChangedCallback @lifecycle
+    * @param {string} name название изменяемого атрибута
+    * @param {string} previous предыдущее значение ?null
+    * @param {string} current устанавливаемое значение
+    */
+    attributeChangedCallback(name, previous, current) {
+      const root = this.shadowRoot;
+      if (current !== previous && name in updateAttribute) updateAttribute[name].call(this, root, current);
+    }
+
+  /** Является ли узел элементом {MaterialCheckbox} @static
+    * @param {HTMLElement} node проверяемый узел
+    * @return {boolean} node instanceof MaterialCheckbox
+    */
+    static is(node) {
+      return Material.is(node, MaterialCheckbox);
     }
   }
+
+// Material.attributes(MaterialCheckbox, 'value');
+Material.properties(MaterialCheckbox, 'checked', 'right', 'disabled');
 Material.define(component, MaterialCheckbox);
 
 // #region [Private]

@@ -4,13 +4,13 @@ import MaterialIcon from '../icon/material-icon.js';
 const component = Material.meta(import.meta.url, 'material-input');
 
 const updateAttribute = {
-  // disabled(root, value) {Material.updateChildrenAttribute(root, '*', 'disabled', value)}
-  /** */
-    value(root, value) { Material.updateChildrenAttribute(root, 'input', 'value', value) },
-  /** */
+// disabled(root, value) {Material.updateChildrenAttribute(root, '*', 'disabled', value)}
+/** */
+        value(root, value) { Material.updateChildrenAttribute(root, 'input', 'value', value) },
+/** */
   placeholder(root, value) { Material.updateChildrenAttribute(root, 'input', 'placeholder', value) },
-  /** */
-    icon(root, value) { setIcon(value, root) }
+/** */
+         icon(root, value) { setIcon(value, root) }
 };
 
 /** Поле ввода текста @class MaterialInput @extends {Material}
@@ -63,6 +63,7 @@ const updateAttribute = {
         // .forEach(attribute => updateAttribute[attribute](root, this[attribute]));
 
       input.addEventListener('input', _ => this.value = input.value);
+      this.addEventListener('focus', _ => input.focus());
       return this;
     }
 
@@ -73,7 +74,7 @@ const updateAttribute = {
     */
     attributeChangedCallback(name, previous, current) {
       const root = this.shadowRoot;
-      if (current !== previous && name in updateAttribute) updateAttribute[name](root, current);
+      if (current !== previous && name in updateAttribute) updateAttribute[name].call(this, root, current);
     }
 
   /** Является ли узел элементом {MaterialInput} @static

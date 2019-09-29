@@ -3,3 +3,7 @@
 :host, slot {
   display: inline-block;
 }
+
+material-button-upload {
+  width: 100%;
+}

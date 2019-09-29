@@ -34,10 +34,11 @@ const component = Material.meta(import.meta.url, 'material-list-item');
         }
       });
 
-      const root = content.querySelector('div.root');
+      const root = content.querySelector('#root');
+      const ripple = root.querySelector('#ripple');
       root.addEventListener('click', event => {
         const position = pointerOffset(root, event);
-        drawRipple.call(root, position);
+        drawRipple.call(ripple, position);
       });
     }
 

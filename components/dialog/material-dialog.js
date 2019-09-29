@@ -55,7 +55,7 @@ const updateAttribute = {
     }
 
   /** */
-    open(z = 100, root = document.body) {
+    open(callback, z = 100, root = document.body) {
       this.cache.root = root;
       this.cache.z = z;
 
@@ -86,6 +86,7 @@ const updateAttribute = {
         root.style.overflow = 'hidden';
       }
 
+      if (callback) this.addEventListener('transitionend', _ => callback.call(this, this.shadowRoot), {once: true});
       return this.promise;
     }
 

@@ -4,6 +4,10 @@
   display: inline-block;
 }
 
+material-button {
+  width: 100%;
+}
+
 label {
   padding: 0;
   margin: 0;

@@ -3,3 +3,7 @@
 :host, slot {
   display: inline-block;
 }
+
+material-button {
+  width: 100%;
+}

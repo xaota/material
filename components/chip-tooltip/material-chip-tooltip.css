@@ -1,5 +1,5 @@
 @charset "utf-8";
 
 :host, slot {
-  display: inline;
+  display: inline-block;
 }

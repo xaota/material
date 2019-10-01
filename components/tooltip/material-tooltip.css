@@ -3,13 +3,14 @@
 :host {
   --color: #616161;
   --arrow: 4px;
+  --width: 320px;
 
   display: inline-block;
   position: relative;
 }
 
 ::slotted(*) {
-  display: block;
+  /* display: inline-block; */
 }
 
 :host > div.root {
@@ -17,7 +18,7 @@
   color: #fff;
   padding: 4px 8px;
   font-size: 0.625rem;
-  max-width: 300px;
+  max-width: var(--width);
   font-family: "Roboto", "Helvetica", "Arial", sans-serif;
   line-height: 1.4em;
   border-radius: 4px;

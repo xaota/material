@@ -28,17 +28,18 @@ div.root:hover {
 
 button.action {
   display: none;
-  height: 32px;
-  width: 32px;
-  margin: -6px -16px -6px 6px;
+  height: 24px;
+  width: 24px;
+  margin-right: -12px;
+  margin-top: -3px;
   cursor: pointer;
-  border-radius: 16px;
+  border-radius: 12px;
   border: none;
   background-color: #f70c5e;
   text-align: center;
   outline: none;
-  vertical-align: bottom;
-  padding: 0 4px;
+  vertical-align: middle;
+  padding: 0 0px;
 }
 
 button.action:hover {
@@ -46,9 +47,9 @@ button.action:hover {
 }
 
 button.action > material-icon {
-  display: block;
+  display: inline;
 }
 
 :host([action]) button.action {
-  display: inline-block;
+  display: inline;
 }

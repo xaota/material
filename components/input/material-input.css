@@ -12,18 +12,19 @@
   --stroke-ripple: var(--color-text-lighten);
   --fill-ripple:   var(--color-details-light);
 
+  --padding-left: 0px;
+  --left: calc(var(--padding-left) + 0.6em);
   vertical-align: bottom;
 }
 
 div.root {
-  box-sizing: border-box;
   user-select: none;
   font: normal 1em / normal Tahoma, sans-serif;
   transition: 0.3s all ease;
   position: relative;
   overflow: hidden;
   outline: none;
-  padding: 0;
+  /* padding: 0; */
   border-bottom: 1px solid var(--stroke-static);
   background-repeat: no-repeat;
 }
@@ -37,12 +38,12 @@ div.root:focus-within {
 }
 
 div.root > input {
-  box-sizing: border-box;
+  /* box-sizing: border-box; */
   outline: none;
   display: block;
   width: 100%;
   margin: 0;
-  padding: 1.2em 0.6em;
+  padding: 1.2em 0.6em 1.2em var(--left);
   background: none;
   border: none;
   font: normal 1em / normal Tahoma, sans-serif;
@@ -50,24 +51,39 @@ div.root > input {
 }
 
 div.root > input:focus, div.root > input:valid {
-  padding: 1.5em 0.6em 0.9em;
+  padding: 1.5em 0.6em 0.9em var(--left);
 }
 
 div.root > input + label {
   position: absolute;
   color: gray;
-  left: 0.6em;
+  left: var(--left);
   pointer-events: none;
   transition: 0.2s all ease;
   top: 1.5em;
   font: normal 1em / normal Tahoma, sans-serif;
+  white-space: nowrap;
 }
 
 div.root > input:focus + label, div.root > input:valid + label {
   font-size: .8em;
   color: var(--stroke-active);
+  /* left: 0.6em; */
   top: .2em;
 }
+
+div.root > input:valid:not(:focus) + label {
+  left: 0.6em;
+}
+
+div.root > input::-webkit-input-placeholder {
+  color: transparent;
+}
+div.root > input:focus::-webkit-input-placeholder {
+  color: lightgray;
+}
+/* ::-moz-placeholder          { color: blue; } // Firefox 19+
+:-ms-input-placeholder      { color: blue; } */
 
 :host([icon]:not([right])) div.root {
   background-position: left 0.3em top 1.4em;

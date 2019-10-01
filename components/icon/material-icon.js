@@ -15,7 +15,6 @@ const component = Material.meta(import.meta.url, 'material-icon');
 
   /** */
     mount(content) {
-      this;
       const slot = content.querySelector('slot');
       const root = content.querySelector('img');
       const theme = 'light';
@@ -29,6 +28,7 @@ const component = Material.meta(import.meta.url, 'material-icon');
         root.setAttribute('alt', icon);
         root.src = MaterialIcon.src(icon, theme);
       });
+      return this;
     }
 
   /** */

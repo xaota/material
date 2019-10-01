@@ -22,11 +22,13 @@ const updateAttribute = {
   /** Создание элемента
     * @param {string} html текст на фишке
     * @param {string} content текст подсказки на фишке
+    * @param {string} action иконка действия
     */
-    constructor(html, content) {
+    constructor(html, content, action) {
       super(component);
       if (html)    this.innerHTML = html;
       if (content) this.content = content;
+      if (action)  this.action = action;
     }
 
   /** Отслеживаемые атрибуты элемента / observedAttributes @readonly

@@ -125,9 +125,11 @@ import Template from './Template.js';
     static updateChildrenAttribute(root, selector, attribute, value) {
       const children = root.querySelector(selector);
       if (!children) return;
-      value === null || value === false
+      const remove = value === null || value === false;
+      remove
         ? children.removeAttribute(attribute)
         : children.setAttribute(attribute, value);
+      if (children[attribute] && !remove) children[attribute] = value;
     }
 
   /** */

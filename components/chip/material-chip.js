@@ -15,11 +15,12 @@ const updateAttribute = {
   export default class MaterialChip extends Material {
   /** Создание элемента
     * @param {string} html текст на фишке
-    * @param {string} tooltip текст подсказки на фишке
+    * @param {string} action иконка действия
     */
-    constructor(html) {
+    constructor(html, action) {
       super(component);
       if (html) this.innerHTML = html;
+      if (action) this.action = action;
     }
 
   /** Отслеживаемые атрибуты элемента / observedAttributes @readonly

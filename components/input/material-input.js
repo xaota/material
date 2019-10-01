@@ -20,7 +20,7 @@ const updateAttribute = {
     * @param {string} label название поля
     */
     constructor(label) {
-      super(component, 'closed');
+      super(component);
       if (label) this.innerHTML = label;
     }
 
@@ -63,6 +63,8 @@ const updateAttribute = {
         // .forEach(attribute => updateAttribute[attribute](root, this[attribute]));
 
       input.addEventListener('input', _ => this.value = input.value);
+      input.addEventListener('change', _ => this.event('change'));
+      input.addEventListener('keydown', e => {if (e.key === 'Enter') return this.event('enter')});
       this.addEventListener('focus', _ => input.focus());
       return this;
     }

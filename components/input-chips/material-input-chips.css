@@ -1,0 +1,20 @@
+@charset "utf-8";
+
+:host {
+  display: inline-block;
+  position: relative;
+}
+
+material-input {
+  display: block;
+  width: 100%;
+}
+
+slot {
+  display: block;
+  position: absolute;
+  left: 0;
+  /* top: 0; */
+  bottom: 0.4em;
+  white-space: nowrap;
+}

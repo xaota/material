@@ -8,12 +8,12 @@ div.root slot {
   display: flex;
 }
 
-::slotted(a) {
+::slotted(a), ::slotted(span) {
   margin-right: 0.5em;
   text-decoration: none;
 }
 
-::slotted(a)::after {
+::slotted(a:not(:last-child))::after, ::slotted(span:not(:last-child))::after {
   content: "→";
   margin-left: 0.5em;
 }

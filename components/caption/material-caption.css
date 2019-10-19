@@ -6,3 +6,11 @@
   font-family: var(--font);
   font-weight: 300;
 }
+
+:host([small]) {
+  font-size: 18px;
+}
+
+:host([large]) {
+  font-size: 30px;
+}

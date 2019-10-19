@@ -25,8 +25,8 @@ const updateAttribute = {
     * @param {string} label название поля
     */
     constructor(label) {
-      if (label) this.label = label;
       super(component);
+      if (label) this.label = label;
     }
 
   /** Отслеживаемые атрибуты элемента / observedAttributes @readonly

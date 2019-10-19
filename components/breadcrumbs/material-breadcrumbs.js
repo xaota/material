@@ -1,4 +1,4 @@
-import Material from '../../script/Material.js'
+import Material from '../../script/Material.js';
 
 const component = Material.meta(import.meta.url, 'material-breadcrumbs');
 /**

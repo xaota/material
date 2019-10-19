@@ -76,6 +76,13 @@ const component = Material.meta(import.meta.url, 'material-select');
     }
 
   /** */
+    get text() {
+      const node = this.shadowRoot;
+      const input = node.querySelector('material-input');
+      return input.value;
+    }
+
+  /** */
     // set value(value = '') {
     //   value
     //     ? this.setAttribute('value', value)

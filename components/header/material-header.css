@@ -1,56 +1,19 @@
 @charset "utf-8";
 
 :host {
-	display: block;
-	position: fixed;
-	top: 0;
-	width: 100%;
-	background: #fff;
-	border-bottom: 1px solid #eee;
-	box-shadow: 0 1px 15px 0 hsla(0, 0%, 48.2%, .05);
+  display: block;
+  background: #fff;
+  border-bottom: 1px solid #eee;
+  box-shadow: 0 1px 15px 0 hsla(0, 0%, 48.2%, .05);
+  --content-width: var(--width, 100%);
 }
 
-.container {
-	display: flex;
-	justify-content: space-between;
-	align-items: stretch;
-	max-width: var(--width);
-	margin: 0 auto;
-	padding: 16px;
+.root {
+  display: flex;
+  justify-content: space-between;
+  /* align-items: stretch; */
+  max-width: var(--width);
+  margin: 0 auto;
+  padding: 0 16px;
+  align-items: baseline;
 }
-
-slot[name="logo"] {
-	display: flex;
-	align-items: center;
-	padding-right: 32px;
-	font-family: 'Billabong';
-	font-size: 48px;
-	border-right: 1px solid #e9ecef;
-}
-
-::slotted(*) {
-	vertical-align: bottom;
-	line-height: 56px;
-	height: 48px;
-}
-
-slot[name="center"] {
-	display: flex;
-	justify-content: space-between;
-	align-items: center;
-	flex-grow: 1;
-	padding: 0 32px;
-}
-
-slot[name="buttons"] {
-	display: flex;
-	flex-direction: column;
-	justify-content: space-around;
-	align-items: stretch;
-	border-left: 1px solid #e9ecef;
-	padding-left: 32px;
-}
-
-/* slot[name="buttons"]::slotted(creative-button) {
-	width: 100%;
-} */

@@ -1,11 +1,9 @@
 <template>
-	<link rel="stylesheet" href="./material-header.css" />
+  <link rel="stylesheet" href="./material-header.css" />
 
-	<div class="container">
-		<slot name="left"></slot>
-		<slot name="logo"></slot>
-		<slot name="center"></slot>
-		<slot name="buttons"></slot>
-		<slot name="right"></slot>
-	</div>
+  <div class="root">
+    <slot name="left"></slot>
+    <slot></slot>
+    <slot name="right"></slot>
+  </div>
 </template>

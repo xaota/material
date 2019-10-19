@@ -75,7 +75,7 @@ import MaterialButton from '/material/components/button/material-button.js';
 - [x] [#27](//github.com/xaota/material/issues/27) Caption | Заголовок
 - [ ] [#10](//github.com/xaota/material/issues/10) Progress | Отображение уровня загрузки
 - [ ] [#9](//github.com/xaota/material/issues/9) Loader | Отображение бесконечной загрузки
-- [ ] [#39](//github.com/xaota/material/issues/39) Rating | Рейтинг (звездочки)
+- [x] [#39](//github.com/xaota/material/issues/39) Rating | Рейтинг (звездочки)
 - [ ] [#23](//github.com/xaota/material/issues/23) Drawer |
 - [ ] [#25](//github.com/xaota/material/issues/25) Badge | Счетчик уведомлений
 - [ ] [#37](//github.com/xaota/material/issues/37) Stack | Экраны и история переходов
@@ -90,7 +90,7 @@ import MaterialButton from '/material/components/button/material-button.js';
 - [ ] Slider | Ползунок
 - [ ] Table | Отображение таблиц
 - [ ] Footer | Подвал (сводная информация)
-- [ ] #24 Charm | Выдвигаемая панель быстрых действий
+- [ ] [#24](//github.com/xaota/material/issues/24) Charm | Выдвигаемая панель быстрых действий
 
 > Эти компоненты уже можно использовать в ваших проектах, со временем в них все будет доведено "до ума", не потребуется(?) дополнительных действий с вашей стороны
 

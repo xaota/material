@@ -1,6 +1,6 @@
-import Material from '../../script/Material.js';
-import '/material/components/chip/material-chip.js';
-import '/material/components/tooltip/material-tooltip.js';
+import Material     from '../../script/Material.js';
+import MaterialChip from '../chip/material-chip.js';
+import '../tooltip/material-tooltip.js';
 
 const component = Material.meta(import.meta.url, 'material-chip-tooltip');
 const updateAttribute = {
@@ -62,7 +62,7 @@ const updateAttribute = {
     * @return {boolean} node instanceof MaterialChipTooltip
     */
     static is(node) {
-      return Material.is(node, MaterialChipTooltip);
+      return Material.is(node, MaterialChipTooltip, MaterialChip);
     }
   }
 

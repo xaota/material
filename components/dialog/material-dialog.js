@@ -86,18 +86,25 @@ const updateAttribute = {
         root.style.overflow = 'hidden';
       }
 
-      if (callback) this.addEventListener('transitionend', _ => callback.call(this, this.shadowRoot), {once: true});
+      const init = () => callback.call(this, this.shadowRoot);
+      if (callback) this.addEventListener('transitionend', _ => setTimeout(init, 50), {once: true});
       return this.promise;
     }
 
   /** */
     close() {
-      this.addEventListener('transitionend', () => {
-        if (this.splash) this.splash.remove();
-        this.remove();
+      let restore = false;
 
+      const restoreRootView = () => {
+        if (restore) return;
+        if (this.splash) this.splash.remove();
         if (this.settings.scroll === false) this.cache.root.style.overflow = this.cache.scroll;
-      });
+        this.remove();
+        restore = true;
+      }
+
+      this.addEventListener('transitionend', restoreRootView);
+      setTimeout(restoreRootView, 500);
 
       this.style.opacity = 0;
       this.style.transform = 'translateY(0)';

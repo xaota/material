@@ -1,6 +1,7 @@
-import Material      from '../../script/Material.js';
-import MaterialInput from '../input/material-input.js';
-import MaterialChip  from '../chip/material-chip.js';
+import Material            from '../../script/Material.js';
+import MaterialInput       from '../input/material-input.js';
+import MaterialChip        from '../chip/material-chip.js';
+import MaterialChipTooltip from '../chip-tooltip/material-chip-tooltip.js';
 
 const component = Material.meta(import.meta.url, 'material-input-chips');
 
@@ -44,10 +45,22 @@ const updateAttribute = {
       super.mount(node, updateAttribute);
       const input = node.querySelector('material-input');
       const slot  = node.querySelector('slot');
+      this.addEventListener('focus',      _ => input.dispatchEvent(new FocusEvent('focus')));
       input.addEventListener('enter',     _ => calculateValue.call(this, input));
       input.addEventListener('change',    _ => calculateValue.call(this, input));
       slot.addEventListener('slotchange', _ => setTimeout(_ => calculateChips.call(this, input, slot), 100));
       return this;
+    }
+
+  /** */
+    append(content, params = {}) {
+      const chip = params.tooltip
+        ? new MaterialChipTooltip(content, params.tooltip, 'clear')
+        : new MaterialChip(content, 'clear');
+      if (params.value) chip.value = params.value;
+      chip.addEventListener('action', _ => chip.remove());
+      this.appendChild(chip);
+      this.event('change');
     }
 
   /** Отслеживаемые атрибуты элемента / observedAttributes @readonly
@@ -74,13 +87,10 @@ Material.define(component, MaterialInputChips);
 // #region [Private]
 /** */
   function calculateValue(input) {
-    const value = input.value.trim();
+    const value = (input.value || '').trim();
     if (!value) return;
     input.value = ``;
-    const chip = new MaterialChip(value, 'clear');
-    chip.addEventListener('action', _ => chip.remove());
-    this.appendChild(chip);
-    this.event('change');
+    this.append(value);
   }
 
 /** */

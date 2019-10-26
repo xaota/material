@@ -1,0 +1,14 @@
+@charset "utf-8";
+
+:host {
+  display: block;
+}
+
+slot {
+  display: flex;
+}
+
+::slotted(*) {
+  margin: 2px;
+  width: 100%;
+}

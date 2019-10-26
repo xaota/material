@@ -2,32 +2,36 @@
 
 :host {
   display: grid;
-  grid-template-areas: "avatar content";
   grid-template-columns: 0 auto;
+  grid-template-areas:"avatar content"
+                      "avatar markup";
   justify-items: center;
   align-items: end;
   grid-column-gap: 1em;
+  grid-row-gap: 2px;
 }
 
 :host([left]) {
-  grid-template-areas: "avatar content";
+  grid-template-areas:"avatar content"
+                      ". markup";
   grid-template-columns: fit-content(48px) auto;
   justify-items: start;
 }
 :host([right]) {
-  grid-template-areas: "content avatar";
+  grid-template-areas:"content avatar"
+                      "markup .";
   grid-template-columns: auto fit-content(48px);
   justify-items: end;
 }
 
 slot {
   font-family: var(--font);
+  display: block;
 }
 
 slot:not([name]) {
   display: inline-block;
-  grid-row: content;
-  grid-column: content;
+  grid-area: content;
   background: var(--color-default-light);
   border: 1px solid #eee;
   box-shadow: 0px 1px 3px 0px rgba(0, 0, 0, 0.2), 0px 1px 1px 0px rgba(0, 0, 0, 0.14), 0px 2px 1px -1px rgba(0, 0, 0, 0.12);
@@ -72,7 +76,11 @@ slot:not([name]) {
 }
 
 slot[name="avatar"] {
-  grid-row: avatar;
-  grid-column: avatar;
-  width: 0;
+  grid-area: avatar;
+  /* width: 0; */
+}
+
+slot[name="markup"] {
+  grid-area: markup;
+  /* width: 0; */
 }

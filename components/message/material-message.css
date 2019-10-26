@@ -39,6 +39,7 @@ slot:not([name]) {
   position: relative;
   border-radius: .4em;
   padding: 1em;
+  /* max-width: 100%; */
 }
 
 :host([left]) slot:not([name]):after, :host([right]) slot:not([name]):after {
@@ -76,11 +77,17 @@ slot:not([name]) {
 }
 
 slot[name="avatar"] {
+  display: block;
   grid-area: avatar;
   /* width: 0; */
 }
 
 slot[name="markup"] {
+  display: inline-block;
   grid-area: markup;
-  /* width: 0; */
+  /* width: 100%; */
+}
+
+slot[name="markup"]::slotted(*) {
+  width: 100%;
 }

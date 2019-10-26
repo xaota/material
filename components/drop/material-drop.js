@@ -12,6 +12,12 @@ const component = Material.meta(import.meta.url, 'material-drop');
       super(component);
     }
 
+  /** */
+    mount(node) {
+      /* transition: var(--duration) ease transform; */
+      this.style.transition = 'var(--duration) ease transform';
+    }
+
   /** Является ли узел элементом {MaterialDrop} @static
     * @param {HTMLElement} node проверяемый узел
     * @return {boolean} node instanceof MaterialDrop

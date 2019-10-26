@@ -8,12 +8,13 @@
 
 ::slotted(material-drop) {
   position: absolute;
+  /* transform: scaleY(0); */
   /* top: var(--indent);
   left: var(--indent); */
 }
 
 :host(:focus-within) ::slotted(material-drop) {
-  transform: scaleY(1);
+  /* transform: scaleY(1); */
 }
 
 /* #region [Layout] Положение подсказки @TODO: */
@@ -35,17 +36,17 @@
 :host ::slotted(material-drop), :host([x="center"]) ::slotted(material-drop) {
   left: 50%;
   transform: translateX(-50%);
-}
+}*/
 :host([x="left"]) ::slotted(material-drop) {
   left: auto;
-  right: calc(100% + var(--indent));
-  transform: none;
+  right: var(--indent);
+  /* transform: none; */
 }
-:host([x="right"]) ::slotted(material-drop) {
+/* :host([x="right"]) ::slotted(material-drop) {
   left: calc(100% + var(--indent));
   transform: none;
-}
-
+} */
+/*
 :host([x="center"][y="center"]) ::slotted(material-drop) {
   transform: translate(-50%, -50%);
 }

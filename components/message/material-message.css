@@ -27,6 +27,7 @@
 slot {
   font-family: var(--font);
   display: block;
+  max-width: 80%;
 }
 
 slot:not([name]) {

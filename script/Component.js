@@ -83,16 +83,18 @@ import Template from './Template.js';
 
   /** @subsection @static */
   /** */
-    static is(component, constructor) {
+    static is(component, ...constructors) {
       // if (!isString(constructor)) return node instanceof constructor;
       // // !
       // const tag = node && node.nodeName && node.nodeName.toLowerCase();
       // return tag === constructor.toLowerCase();
 
       if (typeof component !== 'object') component = document.createElement(component);
-      return constructor
+      const is = constructor => constructor
         ? component instanceof constructor
         : Object.getPrototypeOf(component.constructor) !== HTMLElement && component.constructor !== HTMLElement;
+
+        return constructors.some(is);
     }
 
   /** */

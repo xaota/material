@@ -83,6 +83,17 @@ const component = Material.meta(import.meta.url, 'material-select');
     }
 
   /** */
+    select(value) {
+      const node = this.shadowRoot;
+      const slot  = node.querySelector('slot');
+      if (!slot) return;
+      const list = [...slot.assignedNodes()];
+      const item = list.find(e => e.value === value);
+      if (!item) return;
+      item.click();
+    }
+
+  /** */
     // set value(value = '') {
     //   value
     //     ? this.setAttribute('value', value)

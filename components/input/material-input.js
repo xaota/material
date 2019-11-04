@@ -2,13 +2,12 @@ import Material, {drawRipple, pointerOffset} from '../../script/Material.js';
 import MaterialIcon from '../icon/material-icon.js';
 
 const component = Material.meta(import.meta.url, 'material-input');
-
 const updateAttribute = {
 // disabled(root, value) {Material.updateChildrenAttribute(root, '*', 'disabled', value)}
 /** */
-        value(root, value) { Material.updateChildrenAttribute(root, 'input', 'value', value) },
+        value(root, value) { Material.updateChildrenElement(root, 'input', 'value', value) },
 /** */
-  placeholder(root, value) { Material.updateChildrenAttribute(root, 'input', 'placeholder', value) },
+  placeholder(root, value) { Material.updateChildrenElement(root, 'input', 'placeholder', value) },
 /** */
          icon(root, value) { setIcon(value, root) }
 };
@@ -57,14 +56,10 @@ const updateAttribute = {
       const root  = node.querySelector('div.root');
       const input = node.querySelector('input');
       super.mount(root, updateAttribute);
-      // Object
-      //   .keys(updateAttribute)
-        // .filter(attribute => attribute in updateAttribute)
-        // .forEach(attribute => updateAttribute[attribute](root, this[attribute]));
 
       input.addEventListener('input', _ => this.value = input.value);
       input.addEventListener('change', _ => this.event('change'));
-      input.addEventListener('keydown', e => {if (e.key === 'Enter') return this.event('enter')});
+      input.addEventListener('keydown', e => { if (e.key === 'Enter') return this.event('enter') });
       this.addEventListener('focus', _ => input.focus());
       return this;
     }
@@ -79,7 +74,7 @@ const updateAttribute = {
       if (current !== previous && name in updateAttribute) updateAttribute[name].call(this, root, current);
     }
 
-  /** Является ли узел элементом {MaterialInput} @static
+  /** Является ли узел элементом {MaterialInput} / is @static
     * @param {HTMLElement} node проверяемый узел
     * @return {boolean} node instanceof MaterialInput
     */

@@ -37,6 +37,14 @@ const component = Material.meta(import.meta.url, 'material-tabs');
       const tabs  = node.querySelector('slot').assignedNodes().filter(e => e.caption);
       changeTab(links, tabs, name);
     }
+
+  /** Является ли узел элементом {MaterialTabs} / is @static
+    * @param {HTMLElement} node проверяемый узел
+    * @return {boolean} node instanceof MaterialTabs
+    */
+    static is(node) {
+      return Material.is(node, MaterialTabs);
+    }
   }
 
 Material.define(component, MaterialTabs);

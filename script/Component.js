@@ -20,10 +20,12 @@ import Template from './Template.js';
       return this.#store;
     }
 
-  /** */
-    ready(template) {
-      this;
-      return template;
+  /** Создание элемента в DOM (DOM не доступен) / ready @lifecycle
+    * @param {HTMLElement} node ShadowRoot узел элемента
+    * @return {Component} @this
+    */
+    ready(node) {
+      return this;
     }
 
   /** */
@@ -32,11 +34,15 @@ import Template from './Template.js';
       return this;
     }
 
-  /** */
-    mount(root, attributes = {}) {
+  /** Создание элемента в DOM (DOM доступен) / mount @lifecycle
+    * @param {HTMLElement} node ShadowRoot узел элемента
+    * @param {object} attributes функции, вызываемые при изменении отслеживаемых атрибутов
+    * @return {Component} @this
+    */
+    mount(node, attributes = {}) {
       Object
         .keys(attributes)
-        .forEach(attribute => attributes[attribute].call(this, root, this[attribute]));
+        .forEach(attribute => attributes[attribute].call(this, node, this[attribute]));
       return this;
     }
 
@@ -82,7 +88,11 @@ import Template from './Template.js';
     }
 
   /** @subsection @static */
-  /** */
+  /** Является ли узел элементом определенного класса / is @static
+    * @param {any} component проверяемый элемент
+    * @param {...Function} constructors список конструкторов для проверки
+    * @return {boolean} true, если элемент является одним из элементов списка constructors
+    */
     static is(component, ...constructors) {
       // if (!isString(constructor)) return node instanceof constructor;
       // // !
@@ -121,6 +131,14 @@ import Template from './Template.js';
       const attributes = constructor.observedAttributes || [];
       if (list.length === 0 && attributes) list = attributes;
       list.forEach(property => setProperty(constructor.prototype, property));
+    }
+
+
+  /** */
+    static updateChildrenElement(root, selector, attribute, value) {
+      const children = root.querySelector(selector);
+      if (!children) return;
+      children[attribute] = value || '';
     }
 
   /** */

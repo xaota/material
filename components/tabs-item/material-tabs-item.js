@@ -17,6 +17,14 @@ const component = Material.meta(import.meta.url, 'material-tabs-item');
     get caption() {
       return this.getAttribute('caption');
     }
+
+  /** Является ли узел элементом {MaterialTabsItem} / is @static
+    * @param {HTMLElement} node проверяемый узел
+    * @return {boolean} node instanceof MaterialTabsItem
+    */
+    static is(node) {
+      return Material.is(node, MaterialTabsItem);
+    }
   }
 
 Material.define(component, MaterialTabsItem);

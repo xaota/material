@@ -71,7 +71,10 @@ Material.define(component, MaterialExpand);
 // #region [Private]
 /** */
   function expand(root, value) {
-    Material.updateChildrenClass(root, 'div.root', {expand: value === ''})
-    this.event('expand', {expanded: this.expand});
+    Material.updateChildrenClass(root, 'div.root', {expand: value === ''});
+
+    const expanded = this.expand;
+    this.event('expand', {expanded});
+    this.event(expanded ? 'unfold' : 'fold');
   }
 // #endregion

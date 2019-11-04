@@ -2,127 +2,97 @@ import Material, {drawRipple, pointerOffset} from '../../script/Material.js';
 import MaterialIcon from '../icon/material-icon.js';
 
 const component = Material.meta(import.meta.url, 'material-textarea');
-/** @class MaterialTextarea @extends {Material}
+const updateAttribute = {
+// disabled(root, value) {Material.updateChildrenAttribute(root, '*', 'disabled', value)}
+/** */
+        value(root, value) { Material.updateChildrenElement(root, 'textarea', 'value', value) },
+/** */
+  placeholder(root, value) { Material.updateChildrenElement(root, 'textarea', 'placeholder', value) },
+/** */
+         icon(root, value) { setIcon(value, root) }
+};
+
+/** Область ввода текста @class MaterialTextarea @extends {Material}
   */
   export default class MaterialTextarea extends Material {
-  /**
-    *
+  /** Создание элемента
+    * @param {string} label название поля
     */
-    constructor() {
-      super(component, 'closed');
+    constructor(label) {
+      super(component);
+      if (label) this.innerHTML = label;
     }
 
-  /**
-    *
+  /** Создание элемента в DOM (DOM не доступен) / ready @lifecycle
+    * @param {HTMLElement} node ShadowRoot узел элемента
+    * @return {MaterialTextarea} @this
     */
-    ready(content) {
-      this;
-      const root = content.querySelector('div.root');
+    ready(node) {
+      const root = node.querySelector('div.root');
       root.addEventListener('click', event => {
         const position = pointerOffset(root, event);
         root.style.setProperty('--position', position.x + 'px');
         drawRipple.call(root, position);
       });
-      const textarea = content.querySelector('div.root > textarea');
+      const textarea = node.querySelector('div.root > textarea');
       textarea.addEventListener('blur', _ => {
         root.style.setProperty('--position', '50%');
       });
+      return this;
     }
 
-  /** */
-    mount(content) {
-      this;
-      const root = content.querySelector('div.root');
-      setIcon(this.icon, root);
-      const textarea = content.querySelector('textarea');
-      textarea.value = this.value;
+  /** Создание элемента в DOM (DOM доступен) / mount @lifecycle
+    * @param {HTMLElement} node ShadowRoot узел элемента
+    * @return {MaterialTextarea} @this
+    */
+    mount(node) {
+      const root     = node.querySelector('div.root');
+      const textarea = node.querySelector('textarea');
+      super.mount(root, updateAttribute);
+
       textarea.addEventListener('input', _ => this.value = textarea.value);
+      textarea.addEventListener('change', _ => this.event('change'));
       this.addEventListener('focus', _ => textarea.focus());
+      return this;
     }
 
-  /** */
+  /** Отслеживаемые атрибуты элемента / observedAttributes @readonly
+    * @return {array} список изменяемых атрибутов компонента
+    */
     static get observedAttributes() {
-      return ['value', 'placeholder', 'icon', 'right'];
+      // return ['value', 'placeholder', 'icon', 'right'];
+      return [...Object.keys(updateAttribute), 'right', 'disabled'];
     }
 
-  /** */
-    attributeChangedCallback(attribute, previous, current) {
-      const content = this.shadowRoot;
-      const root =  content.querySelector('div.root');
-      if (!root) return; // !
-      const textarea = root.querySelector('textarea');
-      switch (attribute) {
-        case 'value':
-          // alert(current);
-          textarea.value = current;
-          break;
-        case 'placeholder':
-          current
-            ? textarea[attribute] = current
-            : textarea[attribute] = '';
-          break;
-        case 'icon':
-          setIcon(current, root);
-          break;
-
-      }
+  /** Изменение отслеживаемого атрибута / attributeChangedCallback @lifecycle
+    * @param {string} name название изменяемого атрибута
+    * @param {string} previous предыдущее значение ?null
+    * @param {string} current устанавливаемое значение
+    */
+    attributeChangedCallback(name, previous, current) {
+      const root = this.shadowRoot;
+      if (current !== previous && name in updateAttribute) updateAttribute[name].call(this, root, current);
     }
 
-  /** */
-    get value() {
-      return this.getAttribute('value') || '';
-    }
-
-  /** */
-    set value(value) {
-      this.setAttribute('value', value);
-    }
-
-  /** */
-    get placeholder() {
-      return this.getAttribute('placeholder');
-    }
-
-  /** */
-    set placeholder(value) {
-      value
-        ? this.setAttribute('placeholder', value)
-        : this.removeAttribute('placeholder');
-    }
-
-  /** */
-    get right() {
-      return this.hasAttribute('right');
-    }
-
-  /** */
-    set right(value) {
-      value
-        ? this.setAttribute('right', '')
-        : this.removeAttribute('right');
-    }
-
-  /** */
-    get icon() {
-      return this.getAttribute('icon');
-    }
-
-  /** */
-    set icon(value) {
-      value
-        ? this.setAttribute('icon', value)
-        : this.removeAttribute('icon');
+  /** Является ли узел элементом {MaterialTextarea} / is @static
+    * @param {HTMLElement} node проверяемый узел
+    * @return {boolean} node instanceof MaterialTextarea
+    */
+    static is(node) {
+      return Material.is(node, MaterialTextarea);
     }
   }
 
+Material.attributes(MaterialTextarea, ...Object.keys(updateAttribute));
+Material.properties(MaterialTextarea, 'right', 'disabled');
 Material.define(component, MaterialTextarea);
 
 // #region [Private]
-  /** */
-    function setIcon(icon, root) {
-      if (!root) return;
-      if (!icon) return root.style.backgroundImage = 'none';
-      icon = MaterialIcon.src(icon);
-      root.style.backgroundImage = `url(${icon})`;
-    }
+/** */
+  function setIcon(icon, root) {
+    if (!root || !root.style) return;
+    if (!icon) return root.style.backgroundImage = 'none';
+    const href = MaterialIcon.src(icon);
+    root.style.backgroundImage = `url(${href.toString()})`;
+  }
 // #endregion

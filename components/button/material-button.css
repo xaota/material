@@ -13,6 +13,7 @@
   --fill-ripple: var(--color-default-light);
   --text-stroke: var(--color-text-darken);
   --text-shadow: var(--color-text-addition);
+  /* box-sizing: border-box; */
 }
 
 
@@ -157,6 +158,7 @@ button {
 
 :host([text="outline"]) button {
   border: 1px solid var(--fill-static);
+  padding: calc(0.4em - 1px) calc(1.2em - 1px) calc(0.5em - 1px);
 }
 
 button:hover {
@@ -190,8 +192,8 @@ slot {
 
 ::slotted(material-icon),
 ::slotted(label) {
-  margin-top:    -0.6em;
-  margin-bottom: -0.4em;
+  margin-top:    -0.7em;
+  margin-bottom: -0.3em;
 }
 
 ::slotted(material-icon:not(:only-child):first-child) {

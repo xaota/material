@@ -74,6 +74,17 @@ div.root > textarea:focus + label, div.root > textarea:valid + label {
   top: .2em;
 }
 
+div.root > textarea::-webkit-input-placeholder {
+  color: transparent;
+}
+div.root > textarea:focus::-webkit-input-placeholder {
+  color: lightgray;
+}
+/*
+::-moz-placeholder          { color: blue; } // Firefox 19+
+:-ms-input-placeholder      { color: blue; }
+*/
+
 :host([icon]:not([right])) div.root {
   background-position: left 0.3em top 1.4em;
 }

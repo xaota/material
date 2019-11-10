@@ -1,6 +1,13 @@
 <template>
   <link rel="stylesheet" href="./material-slider.css" />
-    <slot>
 
-    </slot>
+  <!-- слайды -->
+  <slot></slot>
+
+  <!-- стрелочки -->
+  <material-button-icon text id="left">keyboard_arrow_left</material-button-icon>
+  <material-button-icon text id="right">keyboard_arrow_right</material-button-icon>
+
+  <!-- переход к слайдам по точкам -->
+  <material-radio-group></material-radio-group>
 </template>

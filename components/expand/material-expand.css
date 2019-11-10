@@ -25,7 +25,8 @@ header > p {
 header p.summary {
   color: black;
   text-overflow: ellipsis;
-  overflow: auto;
+  overflow: hidden;
+  white-space: nowrap;
 }
 
 header p.description {

@@ -1,9 +1,12 @@
 @charset "utf-8";
 
 :host {
+  --content-width: var(--width);
+  --content-height: var(--height);
+
   display: block;
-  width: 400px;
-  border: 1px solid black;
+  width: var(--content-width);
+  position: relative;
 }
 
 slot {
@@ -11,7 +14,6 @@ slot {
   display: block;
   scroll-snap-type: x mandatory;
   width: 100%;
-  height: 400px;
   overflow-x: scroll;
   overflow-y: hidden;
   white-space: nowrap;
@@ -25,9 +27,37 @@ slot::-webkit-scrollbar {
 ::slotted(material-slider-item) {
   scroll-snap-align: center;
   display: block;
-  width: 400px;
-  height: 400px;
+  width: 100%;
+  height: var(--content-height);
   position: relative;
   display: inline-block;
   font-size: 1em;
+}
+
+material-button-icon {
+  position: absolute;
+  top: 50%;
+  transform: translate(0, -50%);
+}
+
+#left {
+  left: 0.5em;
+}
+
+#right {
+  right: 0.5em;
+}
+
+material-radio-group {
+  display: block;
+  text-align: center;
+  white-space: nowrap;
+  position: absolute;
+  bottom: 0;
+  left: 0;
+  right: 0;
+}
+
+material-radio {
+  transform: scale(0.4);
 }

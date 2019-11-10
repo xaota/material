@@ -5,9 +5,9 @@ const updateAttribute = {
   // disabled(root, value) {Material.updateChildrenAttribute(root, '*', 'disabled', value)}
   expand,
   /** */
-      summary(root, value) { Material.updateChildrenText(root, 'header > p.summary', value) },
+      summary(root, value) { Material.updateChildrenText(root, 'header > p.summary', (value || '').trim().split('\n')[0]) },
   /** */
-  description(root, value) { Material.updateChildrenText(root, 'header > p.description', value) }
+  description(root, value) { Material.updateChildrenText(root, 'header > p.description', (value || '').trim().split('\n')[0]) }
 };
 
 /** {MaterialExpand} Разворачивающаяся панель @class @extends {Material}

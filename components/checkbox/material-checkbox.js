@@ -3,7 +3,14 @@ import Material from '../../script/Material.js';
 const component = Material.meta(import.meta.url, 'material-checkbox');
 const updateAttribute = {
 /** */
-  checked(root, value) { Material.updateChildrenProperty(root, 'input[type="checkbox"]', 'checked', value) }
+  checked(root, value) {
+    Material.updateChildrenProperty(root, '#checkbox', 'checked', [true, ''].includes(value))
+  },
+
+/** */
+  disabled(root, value) {
+    Material.updateChildrenElement(root, '#checkbox', 'disabled', [true, ''].includes(value));
+  }
 };
 
 /** Поле выбора флажком @class MaterialCheckbox @extends {Material}
@@ -29,8 +36,8 @@ const updateAttribute = {
     * @return {MaterialCheckbox} @this
     */
     mount(node) {
-      const checkbox = node.querySelector('input[type="checkbox"]');
       super.mount(node, updateAttribute);
+      const checkbox = node.querySelector('#checkbox');
       checkbox.addEventListener('change', _ => {
         this.checked = checkbox.checked;
         this.event('change');

@@ -5,15 +5,17 @@ import '../tooltip/material-tooltip.js';
 const component = Material.meta(import.meta.url, 'material-chip-tooltip');
 const updateAttribute = {
 /** */
-   action(root, value) { Material.updateChildrenAttribute(root, 'material-chip',    'action', value) },
+   action(root, value) { Material.updateChildrenAttribute(root, 'material-chip',    'action',  value) },
 /** */
-    value(root, value) { Material.updateChildrenAttribute(root, 'material-chip',    'value',  value) },
+    value(root, value) { Material.updateChildrenAttribute(root, 'material-chip',    'value',   value) },
 /** */
   content(root, value) { Material.updateChildrenAttribute(root, 'material-tooltip', 'content', value) },
 /** */
         x(root, value) { Material.updateChildrenAttribute(root, 'material-tooltip', 'x',       value) },
 /** */
-        y(root, value) { Material.updateChildrenAttribute(root, 'material-tooltip', 'y',       value) }
+        y(root, value) { Material.updateChildrenAttribute(root, 'material-tooltip', 'y',       value) },
+/** */
+  outline(root, value) { Material .updateChildrenProperty(root, 'material-chip',    'outline', value) }
 };
 
 /** {MaterialChipTooltip} Фишка с подсказкой @class @extends {Material}
@@ -66,8 +68,8 @@ const updateAttribute = {
     }
   }
 
-Material.attributes(MaterialChipTooltip);
-// Material.properties(MaterialChipTooltip, 'disabled');
+Material.attributes(MaterialChipTooltip, 'action', 'value', 'content', 'x', 'y');
+Material.properties(MaterialChipTooltip, 'outline');
 Material.define(component, MaterialChipTooltip);
 
 // #region [Private]

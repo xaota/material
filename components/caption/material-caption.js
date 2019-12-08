@@ -22,4 +22,5 @@ const component = Material.meta(import.meta.url, 'material-caption');
     }
   }
 
+Material.properties(MaterialCaption, 'small', 'large');
 Material.define(component, MaterialCaption);

@@ -2,14 +2,26 @@
 
 :host {
   display: inline-block;
+
+  --color-text:   #fff;
+  --color-static: #e10050;
+  --color-active: #f51c68;
+  --color-button: #f70c5e;
+  --color-action: #cf0049;
 }
 
-div.root {
-  background-color: #e10050;
+:host([outline]) {
+  --color-text: #222;
+  --color-button: #f6f6f6;
+  --color-action: #e9aabc;
+}
+
+:host div.root {
+  background-color: var(--color-static);
   border: none;
   border-radius: 16px;
   box-sizing: border-box;
-  color: rgb(255, 255, 255);
+  color: var(--color-text);
   cursor: default;
   display: block;
   font-family: Roboto, Helvetica, Arial, sans-serif;
@@ -22,28 +34,40 @@ div.root {
   white-space: nowrap
 }
 
-div.root:hover {
-  background-color: #f51c68;
+:host div.root:hover {
+  background-color: var(--color-active);
+}
+
+:host([outline]) div.root {
+  background: none;
+  border: 1px solid var(--color-static);
+  padding: 5px 15px;
+}
+
+:host([outline]) div.root:hover {
+  background-color: none;
+  border-color: var(--color-active);
 }
 
 button.action {
   display: none;
   height: 24px;
   width: 24px;
+  margin-left: 2px;
   margin-right: -12px;
   margin-top: -3px;
   cursor: pointer;
   border-radius: 12px;
   border: none;
-  background-color: #f70c5e;
+  background-color: var(--color-button);
   text-align: center;
   outline: none;
   vertical-align: middle;
-  padding: 0 0px;
+  padding: 0;
 }
 
 button.action:hover {
-  background-color: #cf0049;
+  background-color: var(--color-action);
 }
 
 button.action > material-icon {

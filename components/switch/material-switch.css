@@ -1,6 +1,6 @@
 @charset "utf-8";
 
-.lbl {
+label {
   position: relative;
   display: block;
   height: 20px;
@@ -11,7 +11,7 @@
   transition: all 0.3s ease;
 }
 
-.lbl:after {
+label:after {
   position: absolute;
   left: -2px;
   top: -3px;
@@ -25,20 +25,20 @@
   transition: all 0.3s ease;
 }
 
-.lbl:active:after { transform: scale(1.15, 0.85); }
+label:active:after { transform: scale(1.15, 0.85); }
 
-.cbx:checked ~ label { background: #6fbeb5; }
+#checkbox:checked ~ label { background: #6fbeb5; }
 
-.cbx:checked ~ label:after {
+#checkbox:checked ~ label:after {
   left: 20px;
   background: #179588;
 }
 
-.cbx:disabled ~ label {
+#checkbox:disabled ~ label {
   background: #d5d5d5;
   pointer-events: none;
 }
 
-.cbx:disabled ~ label:after { background: #bcbdbc; }
+#checkbox:disabled ~ label:after { background: #bcbdbc; }
 
-.hidden { display: none; }
+/* .hidden { display: none; } */

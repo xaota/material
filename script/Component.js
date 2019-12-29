@@ -209,7 +209,6 @@ import Template from './Template.js';
 
   /** */
     static items(root) {
-      // console.log(root);
       return [root, ...root.querySelectorAll('*')]
         .filter(e => Component.is(e));
     }
@@ -217,7 +216,6 @@ import Template from './Template.js';
   /** */
     static onload(root = document.body, deep = true) {
       const elements = Component.items(root);
-      // console.log('x', elements);
       return Promise
         .all(elements.map(e => mounted(e, deep)))
         .then(loaded => loaded.flat(Infinity));
@@ -259,14 +257,11 @@ import Template from './Template.js';
 
 /** */
   function mounted(element, deep, timeout = 5000) {
-    // console.log('y', element, element.nodeType);
     return new Promise(async (resolve, reject) => {
       if (element.mounted === true) return resolve(element);
       if (element.nodeType !== 11) { // document-fragment
         element.addEventListener('load', async () => await loaded(element, resolve, deep));
       } else {
-        // console.log('df', element.children.length, element.children);
-        // debugger;
         await Promise.all([...element.children].map(Component.items).flat(Infinity).map(e => Component.onload(e, deep)));
         resolve(element);
       }

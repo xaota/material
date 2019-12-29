@@ -43,12 +43,16 @@ const component = Material.meta(import.meta.url, 'material-timepicker');
       return ['label'];
     }
 
-  /** */
-    attributeChangedCallback(attribute, previous, current) {
-      if (attribute !== 'label') return;
+  /** Изменение отслеживаемого атрибута / attributeChangedCallback @lifecycle
+    * @param {string} name название изменяемого атрибута
+    * @param {string} previous предыдущее значение ?null
+    * @param {string} current устанавливаемое значение
+    */
+    attributeChangedCallback(name, previous, current) {
+      if (name !== 'label') return;
       const shadow = this.shadowRoot;
       const input = shadow.querySelector('material-input');
-      // console.log(shadow, input, attribute, previous, current);
+      // console.log(shadow, input, name, previous, current);
       if (!input) return; //
       input.innerHTML = current;
     }

@@ -41,9 +41,13 @@ const component = Material.meta(import.meta.url, 'material-search-drop');
       return ['label', 'right'];
     }
 
-  /** */
-    attributeChangedCallback(attribute, previous, current) {
-      switch (attribute) {
+  /** Изменение отслеживаемого атрибута / attributeChangedCallback @lifecycle
+    * @param {string} name название изменяемого атрибута
+    * @param {string} previous предыдущее значение ?null
+    * @param {string} current устанавливаемое значение
+    */
+    attributeChangedCallback(name, previous, current) {
+      switch (name) {
         case 'label': setLabel(current, this); break;
         case 'right': setRight(current, this); break;
         // case 'value': setValue(current, this); break;

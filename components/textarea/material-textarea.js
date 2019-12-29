@@ -3,7 +3,8 @@ import MaterialIcon from '../icon/material-icon.js';
 
 const component = Material.meta(import.meta.url, 'material-textarea');
 const updateAttribute = {
-// disabled(root, value) {Material.updateChildrenAttribute(root, '*', 'disabled', value)}
+/** */
+     disabled(root, value) { Material.updateChildrenElement(root, 'textarea', 'disabled', [true, ''].includes(value)) },
 /** */
         value(root, value) { Material.updateChildrenElement(root, 'textarea', 'value', value) },
 /** */
@@ -83,7 +84,7 @@ const updateAttribute = {
     }
   }
 
-Material.attributes(MaterialTextarea, ...Object.keys(updateAttribute));
+Material.attributes(MaterialTextarea, 'value', 'placeholder', 'icon');
 Material.properties(MaterialTextarea, 'right', 'disabled');
 Material.define(component, MaterialTextarea);
 

@@ -81,7 +81,11 @@ const updateAttribute = {
       window.cancelAnimationFrame(this.animation);
     }
 
-  /** */
+  /** Изменение отслеживаемого атрибута / attributeChangedCallback @lifecycle
+    * @param {string} name название изменяемого атрибута
+    * @param {string} previous предыдущее значение ?null
+    * @param {string} current устанавливаемое значение
+    */
     attributeChangedCallback(name, previous, current) {
       const root = this.shadowRoot;
       if (current !== previous) {

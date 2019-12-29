@@ -63,8 +63,10 @@ const updateAttribute = {
       this.event('change');
     }
 
-  /** Отслеживаемые атрибуты элемента / observedAttributes @readonly
-    * @return {array} список изменяемых атрибутов компонента
+  /** Изменение отслеживаемого атрибута / attributeChangedCallback @lifecycle
+    * @param {string} name название изменяемого атрибута
+    * @param {string} previous предыдущее значение ?null
+    * @param {string} current устанавливаемое значение
     */
     attributeChangedCallback(name, previous, current) {
       const root = this.shadowRoot;

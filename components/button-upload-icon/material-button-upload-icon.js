@@ -1,6 +1,6 @@
-import Material from '../../script/Material.js';
-import '/material/components/button-upload/material-button-upload.js';
-import '/material/components/icon/material-icon.js';
+import Material             from '../../script/Material.js';
+import MaterialButtonUpload from '../button-upload/material-button-upload.js';
+import MaterialIcon         from '../icon/material-icon.js';
 
 const component = Material.meta(import.meta.url, 'material-button-upload-icon');
 const updateAttribute = {
@@ -35,7 +35,11 @@ const updateAttribute = {
         .forEach(attribute => updateAttribute[attribute](root, this[attribute]));
     }
 
-  /** */
+  /** Изменение отслеживаемого атрибута / attributeChangedCallback @lifecycle
+    * @param {string} name название изменяемого атрибута
+    * @param {string} previous предыдущее значение ?null
+    * @param {string} current устанавливаемое значение
+    */
     attributeChangedCallback(name, previous, current) {
       const root = this.shadowRoot;
       if (current !== previous) updateAttribute[name](root, current);

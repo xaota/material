@@ -1,0 +1,9 @@
+@charset "utf-8";
+
+:host, slot {
+  display: inline-block;
+}
+
+material-button-icon {
+  width: 100%;
+}

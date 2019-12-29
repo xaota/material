@@ -2,7 +2,7 @@ import Material       from '../../script/Material.js';
 import MaterialButton from '../button/material-button.js';
 import MaterialIcon   from '../icon/material-icon.js';
 
-const component = Material.meta(import.meta.url, 'material-button-voice');
+const component = Material.meta(import.meta.url, 'material-button-speech');
 const updateAttribute = {
   /** */
     active(root, value) {
@@ -13,15 +13,15 @@ const updateAttribute = {
   /** */
     disabled(root, value) {
       const disabled = [true, ''].includes(value);
-      const icon = disabled ? 'mic_off' : 'keyboard_voice';
+      const icon = disabled ? 'volume_off' : 'volume_up';
       Material.updateChildrenHTML(root, 'material-button-icon', icon);
       Material.updateChildrenProperty(root, 'material-button-icon', 'disabled', disabled);
     }
   };
 
-/** {MaterialButtonVoice} Кнопка для голосового ввода @class @extends {Material}
+/** {MaterialButtonSpeech} Кнопка для голосового ввода @class @extends {Material}
   */
-  export default class MaterialButtonVoice extends Material {
+  export default class MaterialButtonSpeech extends Material {
   /** Создание элемента
     */
     constructor() {
@@ -29,68 +29,54 @@ const updateAttribute = {
     }
 
   /** */
-    #recognition = null;
-
-  /** */
     #toggle = () => {
-      this.active
-        ? this.#stop()
-        : this.#start();
+      const text = this.value;
+      if (!text) return;
+      if (!this.active) return this.#start(text);
+      // todo: queue
     }
 
   /** */
-    #start = () => {
+    #start = text => {
       // eslint-disable-next-line no-undef
-      const recognition = new webkitSpeechRecognition();
-      recognition.continuous = true;
-      recognition.interimResults = true;
-      recognition.onstart = () => {};
-      recognition.onerror = e => { console.error(e); this.#stop(); };
-      recognition.onend = () => {};
-      recognition.onresult = this.#result;
-      recognition.lang = 'ru-RU';
-      recognition.start();
+      const utterance = new SpeechSynthesisUtterance();
+      utterance.text = text;
+      utterance.lang = 'ru-RU';
+      utterance.volume = 1;
+      utterance.rate = 1;
+      utterance.pitch = 1;
+      const voices = window.speechSynthesis.getVoices();
+      utterance.voice = voices.filter(voice => voice.default === true)[0]; // + .lang, + .localService
+      // mark (ssml)
 
-      this.#recognition = recognition;
+      utterance.onend = this.#stop;
+      window.speechSynthesis.speak(utterance);
+
       this.active = true;
     }
 
   /** */
     #stop = () => {
-      if (this.#recognition) this.#recognition.stop();
-      this.#recognition = null;
       this.active = false;
-    }
-
-  /** */
-    #result = event => {
-      if (!event.results === undefined) return this.#stop();
-
-      let text;
-      for (let i = event.resultIndex; i < event.results.length; ++i) {
-        if (event.results[i].isFinal) {
-          text = event.results[i][0].transcript;
-          this.#stop();
-          break;
-        } else {
-          text = [...event.results].map(e => e[0].transcript).join(' ');
-        }
-      }
-      this.event('recognize', {text});
     }
 
   /** Отслеживаемые атрибуты элемента / observedAttributes @readonly
     * @return {array} список изменяемых атрибутов компонента
     */
     static get observedAttributes() {
-      return [...Object.keys(updateAttribute)];
+      return [...Object.keys(updateAttribute)]; // ? 'value'
     }
 
   /** Создание элемента в DOM (DOM доступен) / mount @lifecycle
     * @param {HTMLElement} node ShadowRoot узел элемента
-    * @return {MaterialButtonVoice} @this
+    * @return {MaterialButtonSpeech} @this
     */
     mount(node) {
+      if (!('speechSynthesis' in window)) {
+        this.disabled = true;
+        return this;
+      }
+
       super.mount(node, updateAttribute);
       const button = node.querySelector('material-button-icon');
 
@@ -112,17 +98,18 @@ const updateAttribute = {
       if (current !== previous && name in updateAttribute) updateAttribute[name].call(this, root, current);
     }
 
-  /** Является ли узел элементом {MaterialButtonVoice} @static
+  /** Является ли узел элементом {MaterialButtonSpeech} @static
     * @param {HTMLElement} node проверяемый узел
-    * @return {boolean} node instanceof {MaterialButtonVoice}
+    * @return {boolean} node instanceof {MaterialButtonSpeech}
     */
     static is(node) {
-      return Material.is(node, MaterialButtonVoice);
+      return Material.is(node, MaterialButtonSpeech);
     }
   }
 
-Material.properties(MaterialButtonVoice, 'disabled', 'active');
-Material.define(component, MaterialButtonVoice);
+Material.properties(MaterialButtonSpeech, 'disabled', 'active');
+Material.attributes(MaterialButtonSpeech, 'value');
+Material.define(component, MaterialButtonSpeech);
 
 // #region [Private]
 

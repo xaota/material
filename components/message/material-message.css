@@ -2,9 +2,10 @@
 
 :host {
   display: grid;
-  grid-template-columns: 0 auto;
-  grid-template-areas:"avatar content"
-                      "avatar markup";
+  grid-template-columns: 1fr auto 1fr;
+  grid-template-areas:". avatar ."
+                      ". content ."
+                      ". markup .";
   justify-items: center;
   align-items: end;
   grid-column-gap: 1em;
@@ -12,22 +13,22 @@
 }
 
 :host([left]) {
-  grid-template-areas:"avatar content"
-                      ". markup";
-  grid-template-columns: fit-content(48px) auto;
+  grid-template-areas:"avatar content ."
+                      ". markup .";
+  grid-template-columns: fit-content(48px) fit-content(80%) auto;
   justify-items: start;
 }
 :host([right]) {
-  grid-template-areas:"content avatar"
-                      "markup .";
-  grid-template-columns: auto fit-content(48px);
+  grid-template-areas:". content avatar"
+                      ". markup .";
+  grid-template-columns: auto fit-content(80%) fit-content(48px);
   justify-items: end;
 }
 
 slot {
   font-family: var(--font);
   display: block;
-  max-width: 80%;
+  /* max-width: 80%; */
 }
 
 slot:not([name]) {
@@ -86,9 +87,13 @@ slot[name="avatar"] {
 slot[name="markup"] {
   display: inline-block;
   grid-area: markup;
-  /* width: 100%; */
+  width: 100%;
 }
 
 slot[name="markup"]::slotted(*) {
   width: 100%;
+}
+
+slot[name="markup"]::slotted(material-text) {
+  text-align: center;
 }

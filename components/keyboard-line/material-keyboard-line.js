@@ -13,8 +13,9 @@ const updateAttribute = {
   /** Создание компонента {MaterialKeyboardLine} @constructor
     *
     */
-    constructor() {
+    constructor(...items) {
       super(component);
+      if (items.length) items.forEach(item => this.appendChild(item));
     }
 
   /** Отслеживаемые атрибуты / observedAttributes @readonly @static

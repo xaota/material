@@ -16,8 +16,10 @@ import Template from './Template.js';
 
   /** */
     store(...data) {
+      if (data.length === 0) return this.#store;
+
       Object.assign(this.#store, ...data);
-      return this.#store;
+      return this;
     }
 
   /** Создание элемента в DOM (DOM не доступен) / ready @lifecycle

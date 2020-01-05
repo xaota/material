@@ -1,4 +1,5 @@
 import Material from '../../script/Material.js';
+import MaterialText from '../text/material-text.js';
 
 const component = Material.meta(import.meta.url, 'material-message');
 /**
@@ -6,10 +7,11 @@ const component = Material.meta(import.meta.url, 'material-message');
   */
   export default class MaterialMessage extends Material {
   /**
-    *
+    * @param {string?} side сторона показа сообщения (left / right)
     */
-    constructor() {
+    constructor(side) {
       super(component);
+      if (side) this[side] = true;
     }
 
   /** Создание элемента в DOM (DOM доступен) / mount @lifecycle
@@ -17,14 +19,28 @@ const component = Material.meta(import.meta.url, 'material-message');
     * @return {MaterialCheckbox} @this
     */
     mount(node) {
-      this;
-      // super.mount(node, updateAttribute);
-      const slot   = node.querySelector('slot:not([name])');
-      const markup = node.querySelector('slot[name="markup"]');
 
-      resizeMarkup(slot, markup);
-      slot  .addEventListener('slotchange', _ => resizeMarkup(slot, markup));
-      markup.addEventListener('slotchange', _ => resizeMarkup(slot, markup));
+      return this;
+    }
+
+  /** */
+    content(...nodes) {
+      nodes = nodes.map(toDOMelement);
+      nodes.forEach(node => this.appendChild(node));
+      return this;
+    }
+
+  /** */
+    avatar() {
+      return this;
+    }
+
+  /** */
+    markup(...nodes) {
+      nodes = nodes.map(toDOMelement);
+      nodes.forEach(node => node.setAttribute('slot', 'markup'));
+      nodes.forEach(node => this.appendChild(node));
+      return this;
     }
 
   /** Является ли узел элементом {MaterialMessage} @static
@@ -36,17 +52,14 @@ const component = Material.meta(import.meta.url, 'material-message');
     }
   }
 
+Material.properties(MaterialMessage, 'left', 'right');
 Material.define(component, MaterialMessage);
 
 // #region [Private]
 /** */
-  function resizeMarkup(slot, markup) {
-    // console.log(1, slot);
-    setTimeout(() => {
-      // const width = getComputedStyle(slot); // .width;
-      const width = slot.getBoundingClientRect().width;
-      // console.log(width);
-      markup.style.width = width + 'px';
-    }, 10);
+  function toDOMelement(node) {
+    return typeof node !== 'object' || !('nodeType' in node)
+      ? new MaterialText(node)
+      : node;
   }
 // #endregion

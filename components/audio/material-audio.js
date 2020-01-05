@@ -1,20 +1,23 @@
 import Material from '../../script/Material.js';
 
-const component = Material.meta(import.meta.url, 'material-keyboard');
+const component = Material.meta(import.meta.url, 'material-audio');
 const updateAttribute = {
-  /** */
+/** */
+  src(root, value) { Material.updateChildrenAttribute(root, 'audio', 'src', value); } //,
+/** */
   // disabled(root, value) {Material.updateChildrenAttribute(root, '*', 'disabled', value)}
 };
 
-/** Клавиатура @class
-  * @description Набор строк кнопок и других элементов для совершения действий
+/** Аудио @class
+  * @description Элемент для воспроизведения аудиофайлов
   */
-  export default class MaterialKeyboard extends Material {
-  /** Создание компонента {MaterialKeyboard} @constructor
-    *
+  export default class MaterialAudio extends Material {
+  /** Создание компонента {MaterialAudio} @constructor
+    * @param {string?} src адрес аудиофайла
     */
-    constructor() {
+    constructor(src) {
       super(component);
+      if (src) this.src = src;
     }
 
   /** Отслеживаемые атрибуты / observedAttributes @readonly @static
@@ -25,11 +28,11 @@ const updateAttribute = {
     }
 
   /** Создание элемента в DOM (DOM доступен) / mount @lifecycle
-    * @param {HTMLElement} root ShadowRoot узел элемента
-    * @return {MaterialKeyboard} @this
+    * @param {HTMLElement} node ShadowRoot узел элемента
+    * @return {MaterialAudio} @this
     */
-    mount(root) {
-      return super.mount(root, updateAttribute);
+    mount(node) {
+      return super.mount(node, updateAttribute);
     }
 
   /** Обновление отслеживаемого атрибута / attributeChangedCallback @lifecycle
@@ -42,15 +45,15 @@ const updateAttribute = {
       if (current !== previous) updateAttribute[name](root, current);
     }
 
-  /** Является ли узел элементом {MaterialKeyboard} / is @static
+  /** Является ли узел элементом {MaterialAudio} / is @static
     * @param {HTMLElement} node проверяемый узел
-    * @return {boolean} node instanceof MaterialKeyboard
+    * @return {boolean} node instanceof MaterialAudio
     */
     static is(node) {
-      return Material.is(node, MaterialKeyboard);
+      return Material.is(node, MaterialAudio);
     }
   }
 
-Material.attributes(MaterialKeyboard);
-// Material.properties(MaterialKeyboard);
-Material.define(component, MaterialKeyboard);
+Material.attributes(MaterialAudio, 'src');
+// Material.properties(MaterialAudio);
+Material.define(component, MaterialAudio);

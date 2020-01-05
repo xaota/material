@@ -1,0 +1,13 @@
+@charset "utf-8";
+
+:host {
+  display: block;
+}
+
+audio {
+  border-radius: 0;
+  outline: none;
+  background-color: #F3F4F5;
+  display: block;
+  width: 100%;
+}

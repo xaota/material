@@ -12,13 +12,16 @@ import Template from './Template.js';
     }
 
   /** */
-    #store = {};
+    #store = null;
 
   /** */
     store(...data) {
       if (data.length === 0) return this.#store;
 
-      Object.assign(this.#store, ...data);
+      this.#store = data.length === 1 && data[0] === null
+        ? null
+        : Object.assign({}, this.#store, ...data);
+
       return this;
     }
 

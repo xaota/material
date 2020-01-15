@@ -47,7 +47,9 @@ const component = Material.meta(import.meta.url, 'material-input-count');
 
   /** */
     set value(value) {
+      if (isValidValue(value, this.min, this.max)) {
       this.setAttribute('value', value);
+      }
     }
 
   /** */
@@ -122,7 +124,13 @@ Material.define(component, MaterialInputCount);
   /** */
     function setValue(input, value, current, max, min) {
       if (!input) return;
+      if (!isValidValue(input, min, max)) return;
       value = parseValue(value, current, max, min);
       input.value = value;
+    }
+
+  /** */
+    function isValidValue(input, min, max) {
+      return !(input < min || input > max);
     }
 // #endregion

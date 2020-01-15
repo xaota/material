@@ -1,6 +1,5 @@
-import Material       from '../../script/Material.js';
-import MaterialButton from '../button/material-button.js';
-import MaterialIcon   from '../icon/material-icon.js';
+import Material           from '../../script/Material.js';
+import MaterialButtonIcon from '../button-icon/material-button-icon.js';
 
 const component = Material.meta(import.meta.url, 'material-button-voice');
 const updateAttribute = {

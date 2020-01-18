@@ -1,9 +1,9 @@
 import Material from '../../script/Material.js';
 
-import MaterialSliderItem from '/material/components/slider-item/material-slider-item.js';
-import MaterialButtonIcon from '/material/components/button-icon/material-button-icon.js';
-import MaterialRadioGroup from '/material/components/radio-group/material-radio-group.js';
-import MaterialRadio      from '/material/components/radio/material-radio.js';
+import MaterialSliderItem from '../slider-item/material-slider-item.js';
+import MaterialButtonIcon from '../button-icon/material-button-icon.js';
+import MaterialRadioGroup from '../radio-group/material-radio-group.js';
+import MaterialRadio      from '../radio/material-radio.js';
 
 const component = Material.meta(import.meta.url, 'material-slider');
 const updateAttribute = {

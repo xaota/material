@@ -1,4 +1,5 @@
 @charset "utf-8";
+@import "../../style/color.css";
 
 :host {
   display: inline-block;
@@ -7,106 +8,11 @@
   --size: 200px;
   --radius: 2px;
   --contrast: 1px;
-
-  --fill-static: var(--color-default);
-  --fill-active: var(--color-default-dark);
-  --fill-ripple: var(--color-default-light);
-  --text-stroke: var(--color-text-darken);
-  --text-shadow: var(--color-text-addition);
   /* box-sizing: border-box; */
 }
 
-
 :host([hidden]) {
   display: none;
-}
-
-:host([mode="primary"]) {
-  --fill-static: var(--color-primary);
-  --fill-active: var(--color-primary-dark);
-  --fill-ripple: var(--color-primary-light);
-  --fill-stroke: var(--color-text-lighten);
-}
-
-:host([mode="secondary"]) {
-  --fill-static: var(--color-secondary);
-  --fill-active: var(--color-secondary-dark);
-  --fill-ripple: var(--color-secondary-light);
-  --fill-stroke: var(--color-text-lighten);
-}
-
-:host([mode="darken"]) {
-  --fill-static: var(--color-darken);
-  --fill-active: var(--color-darken-dark);
-  --fill-ripple: var(--color-darken-light);
-  --fill-stroke: var(--color-text-lighten);
-}
-
-:host([mode="lighten"]) {
-  --fill-static: var(--color-lighten);
-  --fill-active: var(--color-lighten-dark);
-  --fill-ripple: var(--color-lighten-light);
-}
-
-:host([mode="success"]) {
-  --fill-static: var(--color-success);
-  --fill-active: var(--color-success-dark);
-  --fill-ripple: var(--color-success-light);
-  --fill-stroke: var(--color-text-lighten);
-}
-
-:host([mode="process"]) {
-  --fill-static: var(--color-process);
-  --fill-active: var(--color-process-dark);
-  --fill-ripple: var(--color-process-light);
-  --fill-stroke: var(--color-text-lighten);
-}
-
-:host([mode="warning"]) {
-  --fill-static: var(--color-warning);
-  --fill-active: var(--color-warning-dark);
-  --fill-ripple: var(--color-warning-light);
-}
-
-:host([mode="failure"]) {
-  --fill-static: var(--color-failure);
-  --fill-active: var(--color-failure-dark);
-  --fill-ripple: var(--color-failure-light);
-  --fill-stroke: var(--color-text-lighten);
-}
-
-:host([mode="info"]) {
-  --fill-static: var(--color-info);
-  --fill-active: var(--color-info-dark);
-  --fill-ripple: var(--color-info-light);
-  --fill-stroke: var(--color-text-lighten);
-}
-
-:host([mode="details"]) {
-  --fill-static: var(--color-details);
-  --fill-active: var(--color-details-dark);
-  --fill-ripple: var(--color-details-light);
-  --fill-stroke: var(--color-text-lighten);
-}
-
-:host([mode="accent"]) {
-  --fill-static: var(--color-accent);
-  --fill-active: var(--color-accent-dark);
-  --fill-ripple: var(--color-accent-light);
-  --fill-stroke: var(--color-text-lighten);
-}
-
-:host([mode="alert"]) {
-  --fill-static: var(--color-alert);
-  --fill-active: var(--color-alert-dark);
-  --fill-ripple: var(--color-alert-light);
-}
-
-:host([mode="error"]) {
-  --fill-static: var(--color-error);
-  --fill-active: var(--color-error-dark);
-  --fill-ripple: var(--color-error-light);
-  --fill-stroke: var(--color-text-lighten);
 }
 
 :host([disabled]) {
@@ -143,7 +49,7 @@ button {
   text-align: center;
   cursor: pointer;
   position: relative;
-  overflow:hidden;
+  overflow: hidden;
   text-transform: lowercase;
   font-variant: small-caps;
 }

@@ -91,6 +91,8 @@ import MaterialButton from '/material/components/button/material-button.js';
 - [ ] Table | Отображение таблиц
 - [ ] Footer | Подвал (сводная информация)
 - [ ] [#24](//github.com/xaota/material/issues/24) Charm | Выдвигаемая панель быстрых действий
+- [x] Divider | Разделитель
+- [ ] Snackbar
 
 > Эти компоненты уже можно использовать в ваших проектах, со временем в них все будет доведено "до ума", не потребуется(?) дополнительных действий с вашей стороны
 
@@ -117,7 +119,6 @@ import MaterialButton from '/material/components/button/material-button.js';
 - [ ] MenuHorizontal
 - [ ] Notify
 - [ ] Toast
-- [ ] Snack
 - [ ] Hint
 - [ ] Stepper
 - [ ] Master
@@ -146,11 +147,12 @@ import MaterialButton from '/material/components/button/material-button.js';
 - [ ] Video
 - [ ] Layer
 - [ ] Ad
-- [ ] Divider
 - [ ] Remark
 - [ ] Route
 - [ ] Map
 - [ ] Address
+- [ ] Markdown
+- [ ] TextEditor
 
 и так далее...)
 

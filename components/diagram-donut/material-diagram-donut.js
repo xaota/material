@@ -1,21 +1,20 @@
 import Material from '../../script/Material.js';
 
-const component = Material.meta(import.meta.url, 'material-keyboard-line');
+const component = Material.meta(import.meta.url, 'material-diagram-donut');
 const updateAttribute = {
   /** */
   // disabled(root, value) {Material.updateChildrenAttribute(root, '*', 'disabled', value)}
 };
 
-/** Клавиатура @class
-  * @description Набор строк кнопок и других элементов для совершения действий
+/** Круговая Диаграмма @class
+  * @description круг, разделенный на секторы, относительный размер которых пропорционален численным значениям
   */
-  export default class MaterialKeyboardLine extends Material {
-  /** Создание компонента {MaterialKeyboardLine} @constructor
-    * @param {array} items список элементов клавиатуры
+  export default class MaterialDiagramDonut extends Material {
+  /** Создание компонента {MaterialDiagramDonut} @constructor
+    *
     */
-    constructor(...items) {
+    constructor() {
       super(component);
-      if (items.length) items.forEach(item => this.appendChild(item));
     }
 
   /** Отслеживаемые атрибуты / observedAttributes @readonly @static
@@ -26,11 +25,11 @@ const updateAttribute = {
     }
 
   /** Создание элемента в DOM (DOM доступен) / mount @lifecycle
-    * @param {HTMLElement} root ShadowRoot узел элемента
-    * @return {MaterialKeyboardLine} @this
+    * @param {HTMLElement} node ShadowRoot узел элемента
+    * @return {MaterialDiagramDonut} @this
     */
-    mount(root) {
-      return super.mount(root, updateAttribute);
+    mount(node) {
+      return super.mount(node, updateAttribute);
     }
 
   /** Обновление отслеживаемого атрибута / attributeChangedCallback @lifecycle
@@ -43,15 +42,15 @@ const updateAttribute = {
       if (current !== previous) updateAttribute[name](root, current);
     }
 
-  /** Является ли узел элементом {MaterialKeyboardLine} / is @static
+  /** Является ли узел элементом {MaterialDiagramDonut} / is @static
     * @param {HTMLElement} node проверяемый узел
-    * @return {boolean} node instanceof MaterialKeyboardLine
+    * @return {boolean} node instanceof MaterialDiagramDonut
     */
     static is(node) {
-      return Material.is(node, MaterialKeyboardLine);
+      return Material.is(node, MaterialDiagramDonut);
     }
   }
 
-Material.attributes(MaterialKeyboardLine);
-// Material.properties(MaterialKeyboardLine);
-Material.define(component, MaterialKeyboardLine);
+Material.attributes(MaterialDiagramDonut);
+// Material.properties(MaterialDiagramDonut);
+Material.define(component, MaterialDiagramDonut);

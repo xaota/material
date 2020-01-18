@@ -1,15 +1,14 @@
-import Material from '../../script/Material.js'
+import Material from '../../script/Material.js';
 
 const colors = ['lime', 'aqua', 'blue', 'magenta'];
 const speed = 1400;
 
 const component = Material.meta(import.meta.url, 'material-meter');
 const updateAttribute = {
-  /** */
-  value() {
-    this.increase = false
-  }
-    // min(root, value) { Material.updateChildrenAttribute(root, 'material-button-upload',  'text',     value) }
+/** */
+  value() { this.increase = false }
+/** */
+  // min(root, value) { Material.updateChildrenAttribute(root, 'material-button-upload',  'text',     value) }
 };
 
 /**

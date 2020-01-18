@@ -4,20 +4,23 @@ import MaterialIcon   from '../icon/material-icon.js';
 
 const component = Material.meta(import.meta.url, 'material-button-speech');
 const updateAttribute = {
-  /** */
-    active(root, value) {
-      value = [true, ''].includes(value) ? null : 'outline';
-      Material.updateChildrenAttribute(root, 'material-button-icon', 'text', value);
-    },
+/** */
+  active(root, value) {
+    value = [true, ''].includes(value) ? null : 'outline';
+    Material.updateChildrenAttribute(root, 'material-button-icon', 'text', value);
+  },
 
-  /** */
-    disabled(root, value) {
-      const disabled = [true, ''].includes(value);
-      const icon = disabled ? 'volume_off' : 'volume_up';
-      Material.updateChildrenHTML(root, 'material-button-icon', icon);
-      Material.updateChildrenProperty(root, 'material-button-icon', 'disabled', disabled);
-    }
-  };
+/** */
+  mode(root, value) { Material.updateChildrenAttribute(root, 'material-button-icon', 'mode', value) },
+
+/** */
+  disabled(root, value) {
+    const disabled = [true, ''].includes(value);
+    const icon = disabled ? 'volume_off' : 'volume_up';
+    Material.updateChildrenHTML(root, 'material-button-icon', icon);
+    Material.updateChildrenProperty(root, 'material-button-icon', 'disabled', disabled);
+  }
+};
 
 /** {MaterialButtonSpeech} Кнопка для голосового ввода @class @extends {Material}
   */

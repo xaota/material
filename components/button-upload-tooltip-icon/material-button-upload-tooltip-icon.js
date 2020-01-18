@@ -6,7 +6,9 @@ import MaterialTooltip      from '../tooltip/material-tooltip.js';
 const component = Material.meta(import.meta.url, 'material-button-upload-tooltip-icon');
 const updateAttribute = {
   /** */
-      text(root, value) { Material.updateChildrenAttribute(root, 'material-button-upload',  'text',     value) },
+      text(root, value) { Material.updateChildrenAttribute(root, 'material-button-upload', 'text', value) },
+  /** */
+      mode(root, value) { Material.updateChildrenAttribute(root, 'material-button-upload', 'mode', value) },
   /** */
   disabled(root, value) { Material.updateChildrenProperty(root, 'material-button-upload',  'disabled', value) },
   /** */

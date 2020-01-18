@@ -7,6 +7,8 @@ const updateAttribute = {
   /** */
       text(root, value) { Material.updateChildrenAttribute(root, 'material-button-upload', 'text',     value) },
   /** */
+      mode(root, value) { Material.updateChildrenAttribute(root, 'material-button-upload',  'mode',     value) },
+  /** */
   disabled(root, value) { Material.updateChildrenProperty(root, 'material-button-upload', 'disabled', value) },
   /** */
     accept(root, value) { Material.updateChildrenAttribute(root, 'material-button-upload', 'accept',   value) },

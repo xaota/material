@@ -2,16 +2,20 @@
 
 :host {
   display: inline-block;
+  min-width: 180px;
+}
+
+div {
+  display: flex;
 }
 
 material-input {
   margin-left: -0.3em;
   margin-right: -0.3em;
-  width: 108px;
+  flex-grow: 1;
 }
 
-material-button {
+material-button-icon {
   margin-bottom: 0.3em;
+  align-self: flex-end;
 }
-
-

@@ -1,15 +1,9 @@
 <template>
   <link rel="stylesheet" href="./material-input-count.css" />
 
-  <!-- <div class="root"> -->
-    <material-button id="remove">
-      <material-icon>remove</material-icon>
-    </material-button>
-    <material-input>
-      <slot></slot>
-    </material-input>
-    <material-button id="append">
-      <material-icon>add</material-icon>
-    </material-button>
-  <!-- </div> -->
+  <div>
+    <material-button-icon id="remove">remove</material-button-icon>
+    <material-input><slot></slot></material-input>
+    <material-button-icon id="append">add</material-button-icon>
+  </div>
 </template>

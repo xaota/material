@@ -1,136 +1,110 @@
 
-import Material, {drawRipple, pointerOffset} from '../../script/Material.js';
-import MaterialButton from '../button/material-button.js';
-import MaterialIcon from '../icon/material-icon.js';
-import MaterialInput from '../input/material-input.js';
+import Material           from '../../script/Material.js';
+import MaterialButtonIcon from '../button-icon/material-button-icon.js';
+import MaterialInput      from '../input/material-input.js';
+
+const updateAttribute = {
+/** */
+  value(root, value, previous) {
+    value = parseFloat(value);
+    if (isNaN(value)) value = 0; // !
+    const max = this.max ||  Infinity;
+    const min = this.min || -Infinity;
+    if (value > max) value = max;
+    if (value < min) value = min;
+    previous = parseFloat(previous) || 0;
+    if (value === previous) return;
+    Material.updateChildrenAttribute(root, 'material-input', 'value', value.toString());
+    this.value = value;
+  },
+
+/** */
+  disabled(root, value) {
+    Material.updateChildrenProperty(root, 'material-input', 'disabled', value);
+    Material.updateChildrenProperty(root, '#remove', 'disabled', value);
+    Material.updateChildrenProperty(root, '#append', 'disabled', value);
+  },
+
+/** */
+  text(root, value) {
+    Material.updateChildrenAttribute(root, '#append', 'text', value);
+    Material.updateChildrenAttribute(root, '#remove', 'text', value);
+  },
+
+/** */
+  mode(root, value) {
+    Material.updateChildrenAttribute(root, '#append', 'mode', value);
+    Material.updateChildrenAttribute(root, '#remove', 'mode', value);
+  },
+
+/** */
+  placeholder(root, value) { Material.updateChildrenAttribute(root, 'material-input', 'placeholder', value) }
+};
 
 const component = Material.meta(import.meta.url, 'material-input-count');
-/** @class MaterialInput @extends {Material}
+/** Поле для ввода количества @class MaterialInputCount @extends {Material}
   */
-  export default class MaterialInputCount extends Material { // MaterialInput?
-  /**
-    *
+  export default class MaterialInputCount extends Material {
+  /** Создание компонента {MaterialInputCount} @constructor
+    * @param {string|object} options название поля ввода либо настройки компонента {label, max, min, step, value}
     */
-    constructor() {
+    constructor(options) {
       super(component);
+
+      if (!options) return;
+      if (typeof options !== 'object') options = {label: options};
+
+      if (options.label) this.innerHTML = options.label;
+      ['max', 'min', 'step', 'value'].forEach(e => { if (options[e]) this[e] = options[e] });
     }
 
-  /** */
-    mount(content) {
-      const {append, remove, input} = elements(content);
-      append.addEventListener('click', _ => this.value += this.step);
-      remove.addEventListener('click', _ => this.value -= this.step);
-      setValue(input, this.value, this.value, this.max, this.min);
+  /** Создание элемента в DOM (DOM доступен) / mount @lifecycle
+    * @param {HTMLElement} root ShadowRoot узел элемента
+    * @return {MaterialKeyboardLine} @this
+    */
+    mount(root) {
+      super.mount(root, updateAttribute);
 
+      const append = root.querySelector('#append');
+      const remove = root.querySelector('#remove');
+      const input  = root.querySelector('material-input');
+
+      append.addEventListener('click', _ => this.value = (parseFloat(this.value) || 0) + (parseFloat(this.step) || 1));
+      remove.addEventListener('click', _ => this.value = (parseFloat(this.value) || 0) - (parseFloat(this.step) || 1));
       input.addEventListener('input', _ => this.value = input.value);
+
+      return this;
     }
 
-  /** */
+  /** Отслеживаемые атрибуты / observedAttributes @readonly @static
+    * @return {array} список изменяемых атрибутов компонента
+    */
     static get observedAttributes() {
-      return ['value', 'placeholder', 'min', 'max', 'step'];
+      return ['min', 'max', 'step', ...Object.keys(updateAttribute)];
     }
 
-  /** */
-    attributeChangedCallback(attribute, previous, current) {
-      const content = this.shadowRoot;
-      const {input} = elements(content);
-      switch (attribute) {
-        case 'placeholder': input.placeholder = this.placeholder; break;
-        case 'value'      : setValue(input, current, this.value, this.max, this.min);
+  /** Изменение отслеживаемого атрибута / attributeChangedCallback @lifecycle
+    * @param {string} name название изменяемого атрибута
+    * @param {string} previous предыдущее значение ?null
+    * @param {string} current устанавливаемое значение
+    */
+    attributeChangedCallback(name, previous, current) {
+      const root = this.shadowRoot;
+      if (current !== previous && name in updateAttribute) {
+        updateAttribute[name].call(this, root, current, previous);
       }
     }
 
-  /** */
-    get value() {
-      return parseInt(this.getAttribute('value')) || 0;
-    }
-
-  /** */
-    set value(value) {
-      if (isValidValue(value, this.min, this.max)) {
-      this.setAttribute('value', value);
-      }
-    }
-
-  /** */
-    get placeholder() {
-      return this.getAttribute('placeholder');
-    }
-
-  /** */
-    set placeholder(value) {
-      value
-        ? this.setAttribute('placeholder', value)
-        : this.removeAttribute('placeholder');
-    }
-
-  /** */
-    get min() {
-      return parseInt(this.getAttribute('min')) || -Infinity;
-    }
-
-  /** */
-    set min(value = '') {
-      value
-        ? this.setAttribute('min', value)
-        : this.removeAttribute('min');
-    }
-
-  /** */
-    get max() {
-      return parseInt(this.getAttribute('max')) || Infinity;
-    }
-
-  /** */
-    set max(value = '') {
-      value
-        ? this.setAttribute('max', value)
-        : this.removeAttribute('max');
-    }
-
-  /** */
-    get step() {
-      return parseInt(this.getAttribute('step')) || 1;
-    }
-
-  /** */
-    set step(value = '') {
-      value
-        ? this.setAttribute('step', value)
-        : this.removeAttribute('step');
+  /** Является ли узел элементом {MaterialInputCount} / is @static
+    * @param {HTMLElement} node проверяемый узел
+    * @return {boolean} node instanceof MaterialInputCount
+    */
+    static is(node) {
+      return Material.is(node, MaterialInputCount);
     }
   }
 
+Material.properties(MaterialInputCount, 'disabled');
+Material.attributes(MaterialInputCount, 'value', 'min', 'max', 'step', 'placeholder', 'text', 'mode');
 Material.define(component, MaterialInputCount);
 
-// #region [Private]
-  /** */
-    function elements(content) {
-      const append = content.querySelector('#append');
-      const remove = content.querySelector('#remove');
-      const input  = content.querySelector('material-input');
-      return {append, remove, input};
-    }
-
-  /** */
-    function parseValue(value, current, max, min) {
-      value = parseInt(value);
-      if (isNaN(value)) return current;
-      if (value > max) return current;
-      if (value < min) return current;
-      return value;
-    }
-
-  /** */
-    function setValue(input, value, current, max, min) {
-      if (!input) return;
-      if (!isValidValue(input, min, max)) return;
-      value = parseValue(value, current, max, min);
-      input.value = value;
-    }
-
-  /** */
-    function isValidValue(input, min, max) {
-      return !(input < min || input > max);
-    }
-// #endregion

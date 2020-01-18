@@ -17,26 +17,32 @@ const updateAttribute = {
 /** Ползунок @class MaterialInputSlider @extends {Material}
   */
   export default class MaterialInputSlider extends Material {
-  /**
-    *
+  /** Создание компонента {MaterialInputSlider} @constructor
+    * @param {string} label название поля
     */
     constructor(label) {
       super(component, 'closed');
       if (label) this.innerHTML = label;
     }
 
-  /** */
-    mount(content) {
+  /** Создание элемента в DOM (DOM доступен) / mount @lifecycle
+    * @param {HTMLElement} root ShadowRoot узел элемента
+    * @return {MaterialInputSlider} @this
+    */
+    mount(root) {
       Object
         .keys(updateAttribute)
-        .forEach(attribute => updateAttribute[attribute](content, this[attribute]));
-      const input = content.querySelector('input[type="range"]');
+        .forEach(attribute => updateAttribute[attribute](root, this[attribute]));
+      const input = root.querySelector('input[type="range"]');
       input.addEventListener('input', _ => setValue.call(this, input.value));
 
       setValue.call(this, this.value);
+      return this;
     }
 
-  /** */
+  /** Отслеживаемые атрибуты / observedAttributes @readonly @static
+    * @return {array} список изменяемых атрибутов компонента
+    */
     static get observedAttributes() {
       return Object.keys(updateAttribute);
     }
@@ -48,7 +54,7 @@ const updateAttribute = {
     */
     attributeChangedCallback(name, previous, current) {
       const root = this.shadowRoot;
-      if (current !== previous) updateAttribute[name](root, current);
+      if (current !== previous && name in updateAttribute) updateAttribute[name].call(this, root, current);
     }
 
 

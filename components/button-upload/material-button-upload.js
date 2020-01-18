@@ -7,6 +7,8 @@ const updateAttribute = {
   /** */
       text(root, value) { Material.updateChildrenAttribute(root, 'material-button',  'text',     value) },
   /** */
+      mode(root, value) {Material.updateChildrenAttribute(root, 'material-button',  'mode',     value)},
+  /** */
   disabled(root, value) { Material.updateChildrenProperty(root, 'material-button',  'disabled', value) },
   /** */
     accept(root, value) { Material.updateChildrenAttribute(root, 'input[type="file"]', 'accept', value) },

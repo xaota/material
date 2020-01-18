@@ -6,6 +6,7 @@ import MaterialTooltip from '../tooltip/material-tooltip.js';
 const component = Material.meta(import.meta.url, 'material-button-tooltip-icon');
 const updateAttribute = {
       text(root, value) {Material.updateChildrenAttribute(root, 'material-button',  'text',     value)},
+      mode(root, value) {Material.updateChildrenAttribute(root, 'material-button',  'mode',     value)},
   disabled(root, value) {Material.updateChildrenAttribute(root, 'material-button',  'disabled', value)},
    content(root, value) {Material.updateChildrenAttribute(root, 'material-tooltip', 'content',  value)},
          x(root, value) {Material.updateChildrenAttribute(root, 'material-tooltip', 'x',        value)},

@@ -4,8 +4,12 @@ import MaterialIcon   from '../icon/material-icon.js';
 
 const component = Material.meta(import.meta.url, 'material-button-icon');
 const updateAttribute = {
-      text(root, value) {Material.updateChildrenAttribute(root, 'material-button',  'text',     value)},
-  disabled(root, value) {Material.updateChildrenAttribute(root, 'material-button',  'disabled', value)}
+/** */
+  text(root, value) { Material.updateChildrenAttribute(root, 'material-button', 'text', value) },
+/** */
+  mode(root, value) { Material.updateChildrenAttribute(root, 'material-button', 'mode', value) },
+/** */
+  disabled(root, value) { Material.updateChildrenAttribute(root, 'material-button', 'disabled', value) }
 };
 
 /** {MaterialButtonIcon} Кнопка-иконка @class @extends {Material}

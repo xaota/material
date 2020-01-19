@@ -4,6 +4,11 @@
   --fill-ripple: var(--color-default-light);
   --text-stroke: var(--color-text-darken);
   --text-shadow: var(--color-text-addition);
+
+  --stroke-static: var(--color-details);
+  --stroke-active: var(--color-details-dark);
+  --stroke-ripple: var(--color-text-lighten);
+  /* --fill-ripple:   var(--color-details-light); */
 }
 
 :host([mode="primary"]) {

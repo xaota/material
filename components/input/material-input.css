@@ -1,4 +1,5 @@
 @charset "utf-8";
+@import "../../style/color.css";
 
 :host {
   display: inline-block;
@@ -6,11 +7,6 @@
   --size: 200px;
   --radius: 2px;
   --contrast: 1px;
-
-  --stroke-static: var(--color-details);
-  --stroke-active: var(--color-details-dark);
-  --stroke-ripple: var(--color-text-lighten);
-  --fill-ripple:   var(--color-details-light);
 
   --padding-left: 0px;
   --left: calc(var(--padding-left) + 0.6em);

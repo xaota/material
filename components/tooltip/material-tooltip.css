@@ -160,5 +160,4 @@
   :host([x="right"][y="top"]:not([inset])) > div.root {
     border-bottom-left-radius: 0;
   }
-
 /* #endregion */

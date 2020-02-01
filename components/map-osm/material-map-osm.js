@@ -39,6 +39,12 @@ const updateAttribute = {
       const resizeObserver = new ResizeObserver(entries => {
         const height = this.getBoundingClientRect().height;
         root.style.height = height + 'px';
+        const store = this.store();
+        const map = store.map;
+        if (!map) return;
+        setTimeout(() => map.invalidateSize(), 400);
+        // L.Map.invalidateSize();
+
       });
       resizeObserver.observe(this);
 
@@ -59,6 +65,7 @@ const updateAttribute = {
 
       const position = new LatLng(this.latitude, this.longitude);
       const map = L.sm.map(root, {center: position.array, zoom: this.zoom});
+      this.store({map});
 
       return this;
     }

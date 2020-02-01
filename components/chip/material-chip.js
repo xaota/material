@@ -1,5 +1,6 @@
-import Material     from '../../script/Material.js';
-import MaterialIcon from '../icon/material-icon.js';
+import Material       from '../../script/Material.js';
+import MaterialIcon   from '../icon/material-icon.js';
+import MaterialAvatar from '../avatar/material-avatar.js';
 
 const component = Material.meta(import.meta.url, 'material-chip');
 const updateAttribute = {
@@ -41,15 +42,17 @@ const updateAttribute = {
       return this;
     }
 
-  // /** Изменение отслеживаемого атрибута / attributeChangedCallback @lifecycle
-  //   * @param {string} name название изменяемого атрибута
-  //   * @param {string} previous предыдущее значение ?null
-  //   * @param {string} current устанавливаемое значение
-  //   */
-  //   attributeChangedCallback(name, previous, current) {
-  //     const root = this.shadowRoot;
-  //     if (current !== previous && name in updateAttribute) updateAttribute[name].call(this, root, current);
-  //   }
+  /** Обновление отслеживаемого атрибута / attributeChangedCallback @lifecycle
+    * @param {string} name     Название атрибута
+    * @param {string} previous Предыдущее значение ?null
+    * @param {string} current  Устанавливаемое значение
+    */
+    attributeChangedCallback(name, previous, current) {
+      const root = this.shadowRoot;
+      if (current !== previous && (name in updateAttribute)) {
+        updateAttribute[name].call(this, root, current, previous);
+      }
+    }
 
   /** Является ли узел элементом {MaterialChip} @static
     * @param {HTMLElement} node проверяемый узел

@@ -10,6 +10,11 @@ const templates = Object.create(null);
     return get(name);
   }
 
+/** path */
+  export function path(href, base) {
+    return new URL(href, base).href;
+  }
+
 // #region [Private]
   /** */
     async function load(name, href, base) {
@@ -52,11 +57,6 @@ const templates = Object.create(null);
       if (has(name)) return; // !
       template.id = name;
       root.appendChild(template);
-    }
-
-  /** */
-    function path(href, base) {
-      return new URL(href, base).href;
     }
 
   /** */

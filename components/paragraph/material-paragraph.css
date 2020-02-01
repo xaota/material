@@ -1,0 +1,24 @@
+@charset "utf-8";
+
+:host {
+  display: block;
+}
+
+slot {
+  display: block;
+  cursor: text;
+  tab-size: 4;
+  /* font-family: CustomSerif, Georgia, Cambria, 'Times New Roman',serif; */
+  font-family: CustomSansSerif, 'Lucida Grande', Arial, sans-serif;
+  font-weight: 400;
+  font-style: normal;
+  font-size: 18px;
+  line-height: 1.58;
+  /* color: rgba(0,0,0,.8); */
+  text-align: left;
+  padding: 0;
+  margin: 0 21px 12px;
+  word-wrap: break-word;
+  white-space: pre-wrap;
+  color: #333;
+}

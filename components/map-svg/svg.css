@@ -1,0 +1,9 @@
+path {
+  fill: rgb(224, 101, 101);
+  stroke: rgb(247, 247, 247);
+  stroke-width: 1.99638px;
+}
+
+path:hover {
+  fill: rgb(255, 182, 182);
+}

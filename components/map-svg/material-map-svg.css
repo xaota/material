@@ -1,0 +1,10 @@
+@charset "utf-8";
+
+:host {
+  display: block;
+}
+
+:host object {
+  display: block;
+  width: 100%;
+}

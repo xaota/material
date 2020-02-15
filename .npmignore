@@ -1,11 +1,19 @@
-.DS_store
-node_modules/
-contributing.md
-.eslintrc
-.babelrc
-.prettierrc.json
-
+.idea/
 .vscode/
-.github/
 
+.github/
+config/
+docker/
+**/ssl/
 .history/
+node_modules/
+
+contributing.md
+**/readme.md
+**/jsconfig.json
+
+.DS_store
+.eslintrc
+.gitignore
+.eslintignore
+.prettierrc.json

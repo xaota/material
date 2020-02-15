@@ -1,0 +1,10 @@
+@charset "utf-8";
+
+:host {
+  display: block;
+  min-height: 120px;
+}
+
+material-paragraph {
+  /* overflow-y: auto; */
+}

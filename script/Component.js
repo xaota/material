@@ -7,20 +7,18 @@ import Template from './Template.js';
   /** */
     constructor(component, mode = 'open') {
       super();
+      this[Symbol.store] = null;
       this.attachShadow({mode});
       this.component = component;
     }
 
   /** */
-    #store = null;
-
-  /** */
     store(...data) {
-      if (data.length === 0) return this.#store;
+      if (data.length === 0) return this[Symbol.store];
 
-      this.#store = data.length === 1 && data[0] === null
+      this[Symbol.store] = data.length === 1 && data[0] === null
         ? null
-        : Object.assign({}, this.#store, ...data);
+        : Object.assign({}, this[Symbol.store], ...data);
 
       return this;
     }

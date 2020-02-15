@@ -32,15 +32,15 @@ const updateAttribute = {
     }
 
   /** */
-    #toggle = () => {
+    [Symbol.toggle] = () => {
       const text = this.value;
       if (!text) return;
-      if (!this.active) return this.#start(text);
+      if (!this.active) return this[Symbol.start](text);
       // todo: queue
     }
 
   /** */
-    #start = text => {
+    [Symbol.start] = text => {
       // eslint-disable-next-line no-undef
       const utterance = new SpeechSynthesisUtterance();
       utterance.text = text;
@@ -52,14 +52,14 @@ const updateAttribute = {
       utterance.voice = voices.filter(voice => voice.default === true)[0]; // + .lang, + .localService
       // mark (ssml)
 
-      utterance.onend = this.#stop;
+      utterance.onend = this[Symbol.stop];
       window.speechSynthesis.speak(utterance);
 
       this.active = true;
     }
 
   /** */
-    #stop = () => {
+    [Symbol.stop] = () => {
       this.active = false;
     }
 
@@ -84,7 +84,7 @@ const updateAttribute = {
       const button = node.querySelector('material-button-icon');
 
       button.addEventListener('click', _ => {
-        this.#toggle();
+        this[Symbol.toggle]();
         // this.event('change');
       });
 

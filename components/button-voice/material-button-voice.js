@@ -31,48 +31,48 @@ const updateAttribute = {
     }
 
   /** */
-    #recognition = null;
+    [Symbol.recognition] = null;
 
   /** */
-    #toggle = () => {
+    [Symbol.toggle] = () => {
       this.active
-        ? this.#stop()
-        : this.#start();
+        ? this[Symbol.stop]()
+        : this[Symbol.start]();
     }
 
   /** */
-    #start = () => {
+    [Symbol.start] = () => {
       // eslint-disable-next-line no-undef
       const recognition = new webkitSpeechRecognition();
       recognition.continuous = true;
       recognition.interimResults = true;
       recognition.onstart = () => {};
-      recognition.onerror = e => { console.error(e); this.#stop(); };
+      recognition.onerror = e => { console.error(e); this[Symbol.stop](); };
       recognition.onend = () => {};
-      recognition.onresult = this.#result;
+      recognition.onresult = this[Symbol.result];
       recognition.lang = 'ru-RU';
       recognition.start();
 
-      this.#recognition = recognition;
+      this[Symbol.recognition] = recognition;
       this.active = true;
     }
 
   /** */
-    #stop = () => {
-      if (this.#recognition) this.#recognition.stop();
-      this.#recognition = null;
+    [Symbol.stop] = () => {
+      if (this[Symbol.recognition]) this[Symbol.recognition].stop();
+      this[Symbol.recognition] = null;
       this.active = false;
     }
 
   /** */
-    #result = event => {
-      if (!event.results === undefined) return this.#stop();
+    [Symbol.result] = event => {
+      if (!event.results === undefined) return this[Symbol.stop]();
 
       let text;
       for (let i = event.resultIndex; i < event.results.length; ++i) {
         if (event.results[i].isFinal) {
           text = event.results[i][0].transcript;
-          this.#stop();
+          this[Symbol.stop]();
           break;
         } else {
           text = [...event.results].map(e => e[0].transcript).join(' ');
@@ -97,7 +97,7 @@ const updateAttribute = {
       const button = node.querySelector('material-button-icon');
 
       button.addEventListener('click', _ => {
-        this.#toggle();
+        this[Symbol.toggle]();
         // this.event('change');
       });
 

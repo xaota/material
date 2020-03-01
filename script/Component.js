@@ -1,5 +1,7 @@
 import Template from './Template.js';
 
+const store = Symbol('store');
+
 /**
   *
   */
@@ -7,18 +9,18 @@ import Template from './Template.js';
   /** */
     constructor(component, mode = 'open') {
       super();
-      this[Symbol.store] = null;
+      this[store] = null;
       this.attachShadow({mode});
       this.component = component;
     }
 
   /** */
     store(...data) {
-      if (data.length === 0) return this[Symbol.store];
+      if (data.length === 0) return this[store];
 
-      this[Symbol.store] = data.length === 1 && data[0] === null
+      this[store] = data.length === 1 && data[0] === null
         ? null
-        : Object.assign({}, this[Symbol.store], ...data);
+        : Object.assign({}, this[store], ...data);
 
       return this;
     }

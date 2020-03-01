@@ -2,6 +2,10 @@ import Material       from '../../script/Material.js';
 import MaterialButton from '../button/material-button.js';
 import MaterialIcon   from '../icon/material-icon.js';
 
+const toggle = Symbol('toggle');
+const start  = Symbol('start');
+const stop   = Symbol('stop');
+
 const component = Material.meta(import.meta.url, 'material-button-speech');
 const updateAttribute = {
 /** */
@@ -32,15 +36,15 @@ const updateAttribute = {
     }
 
   /** */
-    [Symbol.toggle] = () => {
+    [toggle] = () => {
       const text = this.value;
       if (!text) return;
-      if (!this.active) return this[Symbol.start](text);
+      if (!this.active) return this[start](text);
       // todo: queue
     }
 
   /** */
-    [Symbol.start] = text => {
+    [start] = text => {
       // eslint-disable-next-line no-undef
       const utterance = new SpeechSynthesisUtterance();
       utterance.text = text;
@@ -52,14 +56,14 @@ const updateAttribute = {
       utterance.voice = voices.filter(voice => voice.default === true)[0]; // + .lang, + .localService
       // mark (ssml)
 
-      utterance.onend = this[Symbol.stop];
+      utterance.onend = this[stop];
       window.speechSynthesis.speak(utterance);
 
       this.active = true;
     }
 
   /** */
-    [Symbol.stop] = () => {
+    [stop] = () => {
       this.active = false;
     }
 
@@ -84,7 +88,7 @@ const updateAttribute = {
       const button = node.querySelector('material-button-icon');
 
       button.addEventListener('click', _ => {
-        this[Symbol.toggle]();
+        this[toggle]();
         // this.event('change');
       });
 

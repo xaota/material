@@ -1,6 +1,6 @@
 {
   "name": "web-material",
-  "version": "1.19.19",
+  "version": "1.19.20",
   "description": "web components like material-ui design library",
   "main": "index.js",
   "type": "module",

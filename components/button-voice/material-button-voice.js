@@ -1,6 +1,12 @@
 import Material           from '../../script/Material.js';
 import MaterialButtonIcon from '../button-icon/material-button-icon.js';
 
+const toggle      = Symbol('toggle');
+const start       = Symbol('start');
+const stop        = Symbol('stop');
+const result      = Symbol('result');
+const recognition = Symbol('recognition');
+
 const component = Material.meta(import.meta.url, 'material-button-voice');
 const updateAttribute = {
 /** */
@@ -31,48 +37,48 @@ const updateAttribute = {
     }
 
   /** */
-    [Symbol.recognition] = null;
+    [recognition] = null;
 
   /** */
-    [Symbol.toggle] = () => {
+    [toggle] = () => {
       this.active
-        ? this[Symbol.stop]()
-        : this[Symbol.start]();
+        ? this[stop]()
+        : this[start]();
     }
 
   /** */
-    [Symbol.start] = () => {
+    [start] = () => {
       // eslint-disable-next-line no-undef
       const recognition = new webkitSpeechRecognition();
       recognition.continuous = true;
       recognition.interimResults = true;
       recognition.onstart = () => {};
-      recognition.onerror = e => { console.error(e); this[Symbol.stop](); };
+      recognition.onerror = e => { console.error(e); this[stop](); };
       recognition.onend = () => {};
-      recognition.onresult = this[Symbol.result];
+      recognition.onresult = this[result];
       recognition.lang = 'ru-RU';
       recognition.start();
 
-      this[Symbol.recognition] = recognition;
+      this[recognition] = recognition;
       this.active = true;
     }
 
   /** */
-    [Symbol.stop] = () => {
-      if (this[Symbol.recognition]) this[Symbol.recognition].stop();
-      this[Symbol.recognition] = null;
+    [stop] = () => {
+      if (this[recognition]) this[recognition].stop();
+      this[recognition] = null;
       this.active = false;
     }
 
   /** */
-    [Symbol.result] = event => {
-      if (!event.results === undefined) return this[Symbol.stop]();
+    [result] = event => {
+      if (!event.results === undefined) return this[stop]();
 
       let text;
       for (let i = event.resultIndex; i < event.results.length; ++i) {
         if (event.results[i].isFinal) {
           text = event.results[i][0].transcript;
-          this[Symbol.stop]();
+          this[stop]();
           break;
         } else {
           text = [...event.results].map(e => e[0].transcript).join(' ');
@@ -97,7 +103,7 @@ const updateAttribute = {
       const button = node.querySelector('material-button-icon');
 
       button.addEventListener('click', _ => {
-        this[Symbol.toggle]();
+        this[toggle]();
         // this.event('change');
       });
 

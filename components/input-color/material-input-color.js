@@ -2,7 +2,7 @@ import Material from '../../script/Material.js';
 import '../paper/material-paper.js';
 import '../drop/material-drop.js';
 import '../drop-root/material-drop-root.js';
-import '../tabs/material-tabs.js';
+import MaterialTabs from '../tabs/material-tabs.js';
 import MaterialTabsItem from '../tabs-item/material-tabs-item.js';
 
 const component = Material.meta(import.meta.url, 'material-input-color');

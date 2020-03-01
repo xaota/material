@@ -20,6 +20,11 @@ const templates = Object.create(null);
     async function load(name, href, base) {
       if (name in templates) return await templates[name];
       const template = await web(href, base, name);
+      init({template, base, name});
+    }
+
+  /** */
+    export function init({template, base, name}) {
       stylesheets(template, base);
       add(name, template);
     }
@@ -30,8 +35,8 @@ const templates = Object.create(null);
     }
 
   /** */
-    function get(name) {
-      const template = dom(name);
+    export function get(name, prefix = '') {
+      const template = dom(prefix + name);
       return template.content.cloneNode(true);
     }
 
@@ -41,7 +46,7 @@ const templates = Object.create(null);
     }
 
   /** */
-    async function web(href, base, name) {
+    export async function web(href, base, name) {
       href = path(href, base);
       templates[name] = new Deferred();
       const data = await fetch(href);

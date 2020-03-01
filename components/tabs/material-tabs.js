@@ -26,6 +26,7 @@ const component = Material.meta(import.meta.url, 'material-tabs');
       });
 
       const selected = tabs.findIndex(e => e.classList.contains('selected'))[0] || 0;
+      if (!tabs[selected]) return this;
       const caption = tabs[selected].name || tabs[selected].caption;
       changeTab(links, tabs, caption);
     }

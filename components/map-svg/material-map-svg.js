@@ -45,8 +45,8 @@ const updateAttribute = {
       const image = node.querySelector('object');
       // const image = node.querySelector('#root');
       const store = this.store();
-      image.data = store.src;
-      console.log('!', store.src)
+      image.data = store && store.src;
+      // console.log('!', store.src)
       return this;
     }
 

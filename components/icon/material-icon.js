@@ -22,7 +22,7 @@ const component = Material.meta(import.meta.url, 'material-icon');
         const self = slot.assignedNodes()[0];
         const value = self instanceof HTMLSlotElement
           ? self.assignedNodes()[0].nodeValue
-          : self.nodeValue;
+          : self && self.nodeValue;
         if (!value) return;
         const icon = value.trim();
         root.setAttribute('alt', icon);

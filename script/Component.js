@@ -1,4 +1,4 @@
-import Template from './Template.js';
+import Template, {get, init, web} from './Template.js';
 
 const store = Symbol('store');
 
@@ -70,11 +70,11 @@ const store = Symbol('store');
     }
 
   /** */
-    async connectedCallback() {
+    connectedCallback() {
       if (!this.ownerDocument.defaultView) return; // !
       if (this.shadowRoot.firstChild) return; // ! loaded @TODO:
 
-      const template = await Template(this.component);
+      const template = get(this.component.name, 'template-');
       this.ready(template);
       this.render(template);
       this.mount(this.shadowRoot);
@@ -113,10 +113,13 @@ const store = Symbol('store');
     }
 
   /** */
-    static define({name}, constructor, options = undefined) {
+    static async define(component, constructor, template = '', options = undefined) {
       const registry = window.customElements;
       if (registry.get(name) !== undefined) return;
-      registry.define(name, constructor, options);
+      template === ''
+        ? await Template(component)
+        : init({template, name: '#template-' + component.name, base: component.base});
+      registry.define(component.name, constructor, options);
     }
 
   /** */

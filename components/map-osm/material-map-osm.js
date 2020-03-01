@@ -48,7 +48,7 @@ const updateAttribute = {
       });
       resizeObserver.observe(this);
 
-      const store = this.store();
+      const store = this.store() || {};
       if (store.L) setTimeout(() => this.init(), 100);
 
       return this;

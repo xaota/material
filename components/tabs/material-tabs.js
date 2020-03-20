@@ -1,4 +1,5 @@
 import Material from '../../script/Material.js';
+import MaterialTabsItem from '../tabs-item/material-tabs-item.js';
 
 const component = Material.meta(import.meta.url, 'material-tabs');
 /** */

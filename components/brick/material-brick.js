@@ -26,7 +26,7 @@ const updateAttribute = {
 
   /** Создание элемента в DOM (DOM доступен) / mount @lifecycle
     * @param {HTMLElement} root ShadowRoot узел элемента
-    * @return {MaterialBrick} @this
+    * @return {Material} @this {MaterialBrick} элемент
     */
     mount(root) {
       return super.mount(root, updateAttribute);

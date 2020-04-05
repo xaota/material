@@ -60,7 +60,7 @@ const component = Material.meta(import.meta.url, 'material-input-count');
 
   /** Создание элемента в DOM (DOM доступен) / mount @lifecycle
     * @param {HTMLElement} root ShadowRoot узел элемента
-    * @return {MaterialKeyboardLine} @this
+    * @return {MaterialInputCount} @this
     */
     mount(root) {
       super.mount(root, updateAttribute);
